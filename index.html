@@ -223,37 +223,63 @@
   .articles { padding: 6rem; background: var(--off-white); }
   .articles-grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
-    gap: 2rem;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 1.8rem;
     margin-top: 3rem;
   }
+  .article-featured { cursor: pointer; }
+  .article-featured .article-img {
+    aspect-ratio: 4/3; overflow: hidden;
+    background: var(--light-gray);
+    margin-bottom: 1rem;
+  }
+  .article-featured .article-img img { height: 100%; transition: transform 0.5s; }
+  .article-featured:hover .article-img img { transform: scale(1.04); }
+  .article-featured .article-cat {
+    font-size: 14px; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--primary-blue); margin-bottom: 0.4rem;
+  }
+  .article-featured .article-title {
+    font-family: var(--heading); font-size: 1.4rem;
+    font-weight: 700; line-height: 1.3;
+    color: var(--black); margin-bottom: 0.6rem;
+  }
+  .article-featured .article-excerpt {
+    font-size: 14px; line-height: 1.65;
+    color: var(--dark-gray); margin-bottom: 0.7rem;
+  }
+  .article-featured .article-meta {
+    font-size: 14px; color: var(--medium-gray);
+    letter-spacing: 0.08em;
+  }
+
+  .article-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
   .article-card { cursor: pointer; }
   .article-img {
     aspect-ratio: 4/3; overflow: hidden;
     background: var(--light-gray);
-    margin-bottom: 1.2rem;
+    margin-bottom: 0.7rem;
   }
-  .article-card:first-child .article-img { aspect-ratio: 3/4; }
   .article-img img { height: 100%; transition: transform 0.5s; }
   .article-card:hover .article-img img { transform: scale(1.04); }
   .article-cat {
-    font-size: 15px; font-weight: 500;
-    letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--primary-blue); margin-bottom: 0.5rem;
+    font-size: 13px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--primary-blue); margin-bottom: 0.35rem;
   }
   .article-title {
-    font-family: var(--heading); font-size: 1.35rem;
-    font-weight: 700; line-height: 1.3;
-    color: var(--black); margin-bottom: 0.6rem;
+    font-family: var(--heading); font-size: 1rem;
+    font-weight: 700; line-height: 1.35;
+    color: var(--black); margin-bottom: 0.4rem;
   }
-  .article-card:first-child .article-title { font-size: 1.9rem; }
   .article-excerpt {
-    font-size: 15px; line-height: 1.7;
-    color: var(--dark-gray); margin-bottom: 0.8rem;
+    font-size: 13px; line-height: 1.6;
+    color: var(--dark-gray); margin-bottom: 0.5rem;
   }
   .article-meta {
-    font-size: 16px; color: var(--medium-gray);
-    letter-spacing: 0.1em;
+    font-size: 13px; color: var(--medium-gray);
+    letter-spacing: 0.06em;
   }
   .articles-footer { text-align: center; margin-top: 3.5rem; }
 
@@ -374,7 +400,7 @@
   <a href="#" class="logo">LV<span>R</span>E</a>
   <nav>
     <a href="katalog.html">Katalog</a>
-    <a href="arsip-artikel.html">Artikel</a>
+    <a href="https://lvre.framer.website/">Artikel</a>
     <a href="#">Brand</a>
     <a href="katalog.html">Sale</a>
     <a href="#">Tentang</a>
@@ -410,7 +436,7 @@
         Belanja Sekarang
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <a href="arsip-artikel.html" class="btn-ghost">Inspirasi Gaya</a>
+      <a href="https://lvre.framer.website/" class="btn-ghost">Inspirasi Gaya</a>
     </div>
   </div>
   <div class="hero-right">
@@ -488,7 +514,7 @@
       </div>
     </a>
     <a href="katalog.html" class="cat-card">
-      <img src="https://images.unsplash.com/photo-1539533113208-f6df8cc8b2e3?w=600&q=80" alt="Outer" style="height:100%;object-fit:cover;">
+      <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&q=80" alt="Outer" style="height:100%;object-fit:cover;">
       <div class="cat-label">
         <div class="cat-label-name">Outer & Jacket</div>
         <div class="cat-label-count">44 Produk</div>
@@ -546,7 +572,7 @@
     <!-- Product 3 -->
     <a href="detail.html" class="product-card">
       <div class="product-img-wrap">
-        <img src="https://images.unsplash.com/photo-1617114191518-9e7d4eb77088?w=600&q=80" alt="Rima Blazer">
+        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80" alt="Rima Blazer">
         <button class="product-wishlist" aria-label="Wishlist">
           <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         </button>
@@ -619,10 +645,10 @@
   </div>
   <div class="articles-grid">
 
-    <!-- Article 1 (featured) -->
-    <div class="article-card">
+    <!-- Featured Article (left column) -->
+    <div class="article-featured">
       <div class="article-img">
-        <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=800&q=80" alt="Artikel 1" style="height:100%;object-fit:cover;">
+        <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=800&q=80" alt="Artikel Featured" style="height:100%;object-fit:cover;">
       </div>
       <div class="article-cat">Trend · 12 Jan 2025</div>
       <h3 class="article-title">Cool Tones Takeover: Panduan Warna Dingin untuk Lemari Minimalis</h3>
@@ -630,26 +656,53 @@
       <span class="article-meta">Oleh Almira Dewi · 5 menit baca</span>
     </div>
 
-    <!-- Article 2 -->
-    <div class="article-card">
-      <div class="article-img">
-        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&q=80" alt="Artikel 2" style="height:100%;object-fit:cover;">
-      </div>
-      <div class="article-cat">Tips · 8 Jan 2025</div>
-      <h3 class="article-title">5 Cara Styling Co-ord Set agar Tidak Terlihat Monoton</h3>
-      <p class="article-excerpt">Co-ord set yang sama bisa tampil empat cara berbeda — kuncinya ada di aksesori dan layering.</p>
-      <span class="article-meta">Oleh Tasya Kamila · 4 menit baca</span>
-    </div>
+    <!-- Article List (right column - 4 articles stacked) -->
+    <div class="article-list">
 
-    <!-- Article 3 -->
-    <div class="article-card">
-      <div class="article-img">
-        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Artikel 3" style="height:100%;object-fit:cover;">
+      <!-- Article 1 -->
+      <div class="article-card">
+        <div class="article-img">
+          <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&q=80" alt="Artikel 1" style="height:100%;object-fit:cover;">
+        </div>
+        <div class="article-cat">Tips · 8 Jan 2025</div>
+        <h3 class="article-title">5 Cara Styling Co-ord Set agar Tidak Terlihat Monoton</h3>
+        <p class="article-excerpt">Co-ord set yang sama bisa tampil empat cara berbeda — kuncinya ada di aksesori dan layering.</p>
+        <span class="article-meta">Oleh Tasya Kamila · 4 menit baca</span>
       </div>
-      <div class="article-cat">Inspirasi · 3 Jan 2025</div>
-      <h3 class="article-title">Brand Lokal yang Redefinisi Makna Luxury di Indonesia</h3>
-      <p class="article-excerpt">Dari Bali hingga Jakarta, brand-brand ini membuktikan bahwa lokal bisa setara dengan internasional.</p>
-      <span class="article-meta">Oleh Rara Setiawan · 6 menit baca</span>
+
+      <!-- Article 2 -->
+      <div class="article-card">
+        <div class="article-img">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Artikel 2" style="height:100%;object-fit:cover;">
+        </div>
+        <div class="article-cat">Inspirasi · 3 Jan 2025</div>
+        <h3 class="article-title">Brand Lokal yang Redefinisi Makna Luxury di Indonesia</h3>
+        <p class="article-excerpt">Dari Bali hingga Jakarta, brand-brand ini membuktikan bahwa lokal bisa setara dengan internasional.</p>
+        <span class="article-meta">Oleh Rara Setiawan · 6 menit baca</span>
+      </div>
+
+      <!-- Article 3 -->
+      <div class="article-card">
+        <div class="article-img">
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80" alt="Artikel 3" style="height:100%;object-fit:cover;">
+        </div>
+        <div class="article-cat">Styling · 28 Des 2024</div>
+        <h3 class="article-title">Mix & Match Patterns: Tutorial Layering untuk Pemula</h3>
+        <p class="article-excerpt">Takut salah paduain motif? Panduan ini akan mengajarkan dasar-dasar pattern mixing yang aman dan stylish.</p>
+        <span class="article-meta">Oleh Dinda Kirana · 4 menit baca</span>
+      </div>
+
+      <!-- Article 4 -->
+      <div class="article-card">
+        <div class="article-img">
+          <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80" alt="Artikel 4" style="height:100%;object-fit:cover;">
+        </div>
+        <div class="article-cat">Sustainable · 22 Des 2024</div>
+        <h3 class="article-title">Capsule Wardrobe 2025: Hemat, Stylish, dan Ramah Lingkungan</h3>
+        <p class="article-excerpt">Bagaimana membangun wardrobe yang serba guna dengan minimal item tapi maksimal gaya. Konsep less is more.</p>
+        <span class="article-meta">Oleh Amara Zahra · 7 menit baca</span>
+      </div>
+
     </div>
 
   </div>
