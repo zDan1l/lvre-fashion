@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linen Co-ord Set — Sage | Naura Studio | LVRE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── PRODUCT DETAIL PAGE STYLES ─────────────────── */
+    .product-detail {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      padding: 0 var(--container-padding) 6rem;
+    }
+
+    /* Gallery Section */
+    .gallery-section {
+      position: sticky;
+      top: calc(var(--header-height) + 2rem);
+      height: fit-content;
+    }
+
+    .main-image {
+      position: relative;
+      overflow: hidden;
+      background: var(--warm-sand);
+      aspect-ratio: 3/4;
+      margin-bottom: 1rem;
+    }
+    .main-image img {
+      height: 100%;
+      transition: transform 0.5s ease;
+    }
+    .main-image:hover img { transform: scale(1.03); }
+
+    .zoom-btn {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      width: 40px; height: 40px;
+      background: rgba(244,241,234,0.9);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.25s;
+    }
+    .zoom-btn:hover { background: var(--cream); }
+
+    .thumbnail-list {
+      display: flex;
+      gap: 0.8rem;
+    }
+    .thumbnail {
+      width: 80px;
+      aspect-ratio: 1;
+      overflow: hidden;
+      background: var(--warm-sand);
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color 0.25s;
+    }
+    .thumbnail.active { border-color: var(--terracotta); }
+    .thumbnail img {
+      height: 100%;
+      transition: transform 0.3s;
+    }
+    .thumbnail:hover img { transform: scale(1.05); }
+
+    /* Product Info Section */
+    .product-info {
+      padding-top: 2rem;
+    }
+
+    .product-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .product-brand-link {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      text-decoration: none;
+    }
+    .product-brand-link:hover { text-decoration: underline; }
+
+    .product-title {
+      font-family: var(--serif);
+      font-size: 2.5rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .stars { color: var(--terracotta); font-size: 18px; letter-spacing: 0.1em; }
+    .review-count {
+      font-size: 15px;
+      color: var(--ink-soft);
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    .review-count:hover { color: var(--terracotta); }
+
+    .product-price-detail {
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+    .price-detail-original {
+      font-size: 1.2rem;
+      color: var(--ink-muted);
+      text-decoration: line-through;
+      margin-left: 0.8rem;
+    }
+
+    .product-short-desc {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--ink-soft);
+      margin-bottom: 2rem;
+      max-width: 480px;
+    }
+
+    /* Divider */
+    .info-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 2rem 0;
+    }
+
+    /* Color Selector */
+    .selector-section {
+      margin-bottom: 2rem;
+    }
+    .selector-label {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    .selector-value {
+      color: var(--ink-soft);
+      font-weight: 400;
+    }
+
+    .color-options {
+      display: flex;
+      gap: 0.8rem;
+    }
+    .color-option {
+      position: relative;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid var(--border);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .color-option:hover { transform: scale(1.08); }
+    .color-option.active {
+      border-color: var(--terracotta);
+      box-shadow: 0 0 0 2px var(--cream), 0 0 0 3px var(--terracotta);
+    }
+    .color-option img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    /* Size Selector */
+    .size-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0.5rem;
+    }
+    .size-option {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      background: var(--off-white);
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.25s, border-color 0.25s;
+    }
+    .size-option:hover { border-color: var(--terracotta); }
+    .size-option.active {
+      background: var(--terracotta);
+      border-color: var(--terracotta);
+      color: #fff;
+    }
+    .size-option.disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      text-decoration: line-through;
+    }
+    .size-guide-link {
+      font-size: 14px;
+      color: var(--terracotta);
+      text-decoration: underline;
+      margin-top: 0.8rem;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    /* Quantity & Add to Cart */
+    .actions-row {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--border);
+    }
+    .qty-btn {
+      width: 44px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--ink);
+      transition: background 0.25s;
+    }
+    .qty-btn:hover { background: var(--cream); }
+    .qty-input {
+      width: 50px;
+      height: 48px;
+      text-align: center;
+      border: none;
+      background: none;
+      font-family: var(--sans);
+      font-size: 16px;
+      font-weight: 500;
+    }
+    .qty-input:focus { outline: none; }
+
+    .add-to-cart-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0 2rem;
+      background: var(--terracotta);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .add-to-cart-btn:hover { background: var(--terra-dark); transform: translateY(-1px); }
+
+    .secondary-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .wishlist-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.5rem;
+      border: 1px solid var(--border);
+      background: var(--off-white);
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: border-color 0.25s, background 0.25s;
+    }
+    .wishlist-btn:hover { border-color: var(--terracotta); background: var(--cream); }
+
+    /* Accordion Details */
+    .product-accordion {
+      margin-top: 3rem;
+    }
+    .accordion-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .accordion-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 0;
+      cursor: pointer;
+      transition: color 0.25s;
+    }
+    .accordion-header:hover { color: var(--terracotta); }
+    .accordion-title {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+    .accordion-icon {
+      transition: transform 0.3s;
+    }
+    .accordion-item.active .accordion-icon {
+      transform: rotate(180deg);
+    }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+    .accordion-item.active .accordion-content {
+      max-height: 500px;
+      padding-bottom: 1.5rem;
+    }
+    .accordion-body {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--ink-soft);
+    }
+    .accordion-body ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .accordion-body li {
+      padding: 0.4rem 0;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .accordion-body li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--terracotta);
+    }
+
+    /* Product Features */
+    .product-features {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2rem;
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 14px;
+      color: var(--ink-soft);
+    }
+    .feature-icon {
+      color: var(--terracotta);
+    }
+
+    /* Reviews Section */
+    .reviews-section {
+      padding: 6rem var(--container-padding);
+      background: var(--cream);
+    }
+    .reviews-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3rem;
+    }
+    .reviews-summary {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+    }
+    .summary-rating {
+      font-family: var(--serif);
+      font-size: 4rem;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .summary-details {
+      font-size: 15px;
+      color: var(--ink-soft);
+    }
+    .summary-stars { color: var(--terracotta); font-size: 18px; }
+    .summary-count { margin-top: 0.3rem; }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    .review-card {
+      padding: 2rem;
+      background: var(--off-white);
+      border: 1px solid var(--border);
+    }
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+    .review-stars { color: var(--terracotta); font-size: 16px; }
+    .review-date { font-size: 14px; color: var(--ink-muted); }
+    .review-author {
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .review-text {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--ink-soft);
+      font-style: italic;
+      font-family: var(--serif);
+    }
+    .review-verified {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 13px;
+      color: var(--terracotta);
+      margin-top: 0.8rem;
+    }
+
+    /* Related Products */
+    .related-section {
+      padding: 6rem var(--container-padding);
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 1024px) {
+      .product-detail {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .gallery-section {
+        position: static;
+      }
+      .size-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .review-grid { grid-template-columns: 1fr; }
+      .related-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .product-title { font-size: 1.8rem; }
+      .size-grid { grid-template-columns: repeat(3, 1fr); }
+      .actions-row { flex-direction: column; }
+      .quantity-selector { width: 100%; }
+      .quantity-selector .qty-input { flex: 1; }
+      .secondary-actions { flex-direction: column; }
+      .reviews-header { flex-direction: column; gap: 2rem; align-items: flex-start; }
+      .reviews-summary { flex-direction: column; gap: 1rem; align-items: flex-start; }
+      .related-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="site-header">
+  <a href="index.html" class="logo">LV<span>R</span>E</a>
+  <nav>
+    <a href="katalog.html">Katalog</a>
+    <a href="arsip-artikel.html">Artikel</a>
+    <a href="index.html">Brand</a>
+    <a href="katalog.html">Sale</a>
+    <a href="index.html">Tentang</a>
+  </nav>
+  <div class="header-actions">
+    <button class="icon-btn" aria-label="Cari">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+    </button>
+    <button class="icon-btn" aria-label="Akun">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+    </button>
+    <div class="cart-wrap">
+      <a href="keranjang.html" class="icon-btn" aria-label="Keranjang">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      </a>
+      <span class="cart-badge">2</span>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE BREADCRUMB -->
+<div class="page-header-simple">
+  <nav class="page-breadcrumb">
+    <a href="index.html">Beranda</a> <span>/</span>
+    <a href="katalog.html">Katalog</a> <span>/</span>
+    <a href="katalog.html">Clothing</a> <span>/</span>
+    Linen Co-ord Set — Sage
+  </nav>
+</div>
+
+<!-- PRODUCT DETAIL -->
+<div class="product-detail fade-up">
+
+  <!-- GALLERY SECTION -->
+  <div class="gallery-section">
+    <div class="main-image">
+      <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=900&q=80" alt="Linen Co-ord Set — Sage">
+      <button class="zoom-btn" aria-label="Zoom">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35M15 11h6M11 7v6"/></svg>
+      </button>
+    </div>
+    <div class="thumbnail-list">
+      <div class="thumbnail active">
+        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=200&q=80" alt="Thumbnail 1">
+      </div>
+      <div class="thumbnail">
+        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=200&q=80" alt="Thumbnail 2">
+      </div>
+      <div class="thumbnail">
+        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=200&q=80" alt="Thumbnail 3">
+      </div>
+      <div class="thumbnail">
+        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=200&q=80" alt="Thumbnail 4">
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCT INFO -->
+  <div class="product-info">
+    <div class="product-meta">
+      <a href="katalog.html" class="product-brand-link">Naura Studio</a>
+      <span class="product-badge badge-new" style="position:static;">New</span>
+    </div>
+
+    <h1 class="product-title">Linen Co-ord Set — Sage</h1>
+
+    <div class="product-rating">
+      <span class="stars">★★★★★</span>
+      <span class="review-count">24 Ulasan</span>
+    </div>
+
+    <div class="product-price-detail">
+      Rp 485.000
+    </div>
+
+    <p class="product-short-desc">
+      Co-ord set berbahan linen premium yang dirancang untuk comfort dan style. Hadir dengan atasan crop dan celana straight-cut, cocok untuk casual hingga semi-formal occasions.
+    </p>
+
+    <div class="info-divider"></div>
+
+    <!-- Color Selector -->
+    <div class="selector-section">
+      <div class="selector-label">
+        Warna: <span class="selector-value">Sage Green</span>
+      </div>
+      <div class="color-options">
+        <div class="color-option active">
+          <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=100&q=80" alt="Sage">
+        </div>
+        <div class="color-option">
+          <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=100&q=80" alt="Sand">
+        </div>
+        <div class="color-option">
+          <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=100&q=80" alt="Ivory">
+        </div>
+        <div class="color-option">
+          <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=100&q=80" alt="Charcoal">
+        </div>
+      </div>
+    </div>
+
+    <!-- Size Selector -->
+    <div class="selector-section">
+      <div class="selector-label">
+        Ukuran: <span class="selector-value">Pilih Ukuran</span>
+      </div>
+      <div class="size-grid">
+        <button class="size-option">XS</button>
+        <button class="size-option">S</button>
+        <button class="size-option active">M</button>
+        <button class="size-option">L</button>
+        <button class="size-option">XL</button>
+        <button class="size-option disabled">XXL</button>
+      </div>
+      <a class="size-guide-link">Panduan Ukuran</a>
+    </div>
+
+    <!-- Actions -->
+    <div class="actions-row">
+      <div class="quantity-selector">
+        <button class="qty-btn" onclick="decrementQty()">−</button>
+        <input type="number" class="qty-input" value="1" min="1" max="10" id="qtyInput">
+        <button class="qty-btn" onclick="incrementQty()">+</button>
+      </div>
+      <button class="add-to-cart-btn">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        Tambah ke Keranjang
+      </button>
+    </div>
+
+    <div class="secondary-actions">
+      <button class="wishlist-btn">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        Tambah ke Wishlist
+      </button>
+      <button class="wishlist-btn">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+        Bagikan
+      </button>
+    </div>
+
+    <!-- Features -->
+    <div class="product-features">
+      <div class="feature-item">
+        <span class="feature-icon">✓</span>
+        Original Brand Lokal
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">✓</span>
+        Material Premium
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">✓</span>
+        Free Ongkir Jabodetabek
+      </div>
+    </div>
+
+    <!-- Accordion -->
+    <div class="product-accordion">
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span class="accordion-title">Deskripsi Produk</span>
+          <span class="accordion-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p>Linen Co-ord Set dari Naura Studio adalah pilihan sempurna untuk yang mencari kenyamanan tanpa mengorbankan style. Set ini terdiri dari:</p>
+            <ul style="margin-top: 1rem;">
+              <li>Crop top dengan kerah mandarin dan detail kancing depan</li>
+              <li>Selim tangan 3/4 dengan elastis di cuff</li>
+              <li>Straight-cut pants dengan elastic waistband</li>
+              <li>Potongan relaxed fit yang flattering di segala bentuk tubuh</li>
+            </ul>
+            <p style="margin-top: 1rem;">Linen blend yang digunakan breathable, lightweight, dan semakin lembut setelah dicuci. Cocok untuk daily wear di iklim tropis.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span class="accordion-title">Material & Perawatan</span>
+          <span class="accordion-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p><strong>Material:</strong> 70% Linen, 30% Cotton</p>
+            <p style="margin-top: 0.5rem;"><strong>Perawatan:</strong></p>
+            <ul>
+              <li>Cuci terpisah dengan warna sejenis</li>
+              <li>Gunakan air dingin, detergent lembut</li>
+              <li>Jangan gunakan pemutih</li>
+              <li>Jemur di tempat teduh, hindari sinar matahari langsung</li>
+              <li>Setrika dengan suhu medium jika perlu</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span class="accordion-title">Panduan Ukuran</span>
+          <span class="accordion-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+              <thead>
+                <tr style="border-bottom: 1px solid var(--border);">
+                  <th style="padding: 0.5rem; text-align: left; font-size: 14px;">Ukuran</th>
+                  <th style="padding: 0.5rem; text-align: center; font-size: 14px;">Lingkar Dada</th>
+                  <th style="padding: 0.5rem; text-align: center; font-size: 14px;">Panjang Top</th>
+                  <th style="padding: 0.5rem; text-align: center; font-size: 14px;">Panjang Celana</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--border);">
+                  <td style="padding: 0.5rem; font-size: 14px;">S</td>
+                  <td style="padding: 0.5rem; text-align: center; font-size: 14px;">88 cm</td>
+                  <td style="padding: 0.5rem; text-align: center; font-size: 14px;">38 cm</td>
+                  <td style="padding: 0.5rem; text-align: center; font-size: 14px;">95 cm</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                  <td style="padding: 0.5rem; font-size: 14px;">M</td>
+                  <td style="padding: 0.5rem; text-align: center; font-size: 14px;">92 cm</td>
+                  <td style="padding: 0.5rem; text-align: center; font-size: 14px;">39 cm</td>
+                  <td style="padding: 0.5rem; text-align: center; font-size: 14px;">96 cm</td>
+                </tr>
+                <tr>
+                  <td style="padding: 0.5rem; font-size: 14px;">L</td>
+                  <td style="padding: 0.5rem; text-align: center; font-size: 14px;">96 cm</td>
+                  <td style="padding: 0.5rem; text-align: center; font-size: 14px;">40 cm</td>
+                  <td style="padding: 0.5rem; text-align: center; font-size: 14px;">97 cm</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span class="accordion-title">Pengiriman & Return</span>
+          <span class="accordion-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p><strong>Pengiriman:</strong></p>
+            <ul>
+              <li>Gratis ongkir Jabodetabek min. belanja Rp 200.000</li>
+              <li>Regular delivery: 2-4 hari kerja</li>
+              <li>Express delivery: 1-2 hari kerja (biaya tambahan)</li>
+            </ul>
+            <p style="margin-top: 1rem;"><strong>Return Policy:</strong></p>
+            <ul>
+              <li>30 hari garansi retur</li>
+              <li>Produk harus dalam kondisi original dengan tag lengkap</li>
+              <li>Gratis ongkir retur untuk defective items</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- REVIEWS SECTION -->
+<section class="reviews-section fade-up">
+  <div class="reviews-header">
+    <div>
+      <p class="eyebrow">Ulasan Pelanggan</p>
+      <h2 class="page-title" style="margin-top: 0.5rem;">Apa Kata Mereka</h2>
+    </div>
+    <a href="#" class="btn-ghost">Lihat Semua Ulasan</a>
+  </div>
+
+  <div class="reviews-summary">
+    <div class="summary-rating">4.8</div>
+    <div class="summary-details">
+      <div class="summary-stars">★★★★★</div>
+      <div class="summary-count">Berdasarkan 24 ulasan</div>
+    </div>
+  </div>
+
+  <div class="review-grid" style="margin-top: 3rem;">
+    <!-- Review 1 -->
+    <div class="review-card">
+      <div class="review-header">
+        <span class="review-stars">★★★★★</span>
+        <span class="review-date">2 hari lalu</span>
+      </div>
+      <div class="review-author">Clarissa Putri</div>
+      <p class="review-text">"Bahannya adem banget, cocok buat iklim Indonesia. Potongannya juga flattering, nggak kebesaran atau kekecilan. Worth every penny!"</p>
+      <span class="review-verified">
+        <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        Pembelian Terverifikasi
+      </span>
+    </div>
+
+    <!-- Review 2 -->
+    <div class="review-card">
+      <div class="review-header">
+        <span class="review-stars">★★★★★</span>
+        <span class="review-date">5 hari lalu</span>
+      </div>
+      <div class="review-author">Amalia R.</div>
+      <p class="review-text">"Packagingnya cantik banget, pengiriman cepat. Warnanya sage persis kayak di foto. Bakal order warna lain soon!"</p>
+      <span class="review-verified">
+        <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        Pembelian Terverifikasi
+      </span>
+    </div>
+
+    <!-- Review 3 -->
+    <div class="review-card">
+      <div class="review-header">
+        <span class="review-stars">★★★★☆</span>
+        <span class="review-date">1 minggu lalu</span>
+      </div>
+      <div class="review-author">Nina Wijaya</div>
+      <p class="review-text">"Overall bagus, cuma sayang ada sedikit loose thread di bagian cuff. Tapi it's manageable,产品质量还是不错的."</p>
+      <span class="review-verified">
+        <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        Pembelian Terverifikasi
+      </span>
+    </div>
+
+    <!-- Review 4 -->
+    <div class="review-card">
+      <div class="review-header">
+        <span class="review-stars">★★★★★</span>
+        <span class="review-date">2 minggu lalu</span>
+      </div>
+      <div class="review-author">Dinda Kirana</div>
+      <p class="review-text">"Suka banget sama brand lokal ini. Kualitas nggak kalah sama international brand tapi harga lebih reasonable. Will repurchase!"</p>
+      <span class="review-verified">
+        <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        Pembelian Terverifikasi
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- RELATED PRODUCTS -->
+<section class="related-section fade-up">
+  <div class="section-header">
+    <p class="eyebrow">Produk Serupa</p>
+    <h2 class="page-title" style="margin-top: 0.5rem;">Anda Mungkin Juga Suka</h2>
+  </div>
+
+  <div class="related-grid">
+    <a href="detail.html" class="product-card">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Wrap Midi Dress">
+      </div>
+      <div class="product-brand">Fiera Label</div>
+      <div class="product-stars">★★★★☆</div>
+      <div class="product-name">Wrap Midi Dress — Ivory</div>
+      <div class="product-price">
+        <span class="price-current">Rp 320.000</span>
+      </div>
+    </a>
+
+    <a href="detail.html" class="product-card">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1617114191518-9e7d4eb77088?w=600&q=80" alt="Oversized Blazer">
+      </div>
+      <div class="product-brand">Rima Collective</div>
+      <div class="product-stars">★★★★★</div>
+      <div class="product-name">Oversized Blazer — Forest</div>
+      <div class="product-price">
+        <span class="price-current">Rp 620.000</span>
+      </div>
+    </a>
+
+    <a href="detail.html" class="product-card">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600&q=80" alt="Satin Slip Skirt">
+      </div>
+      <div class="product-brand">Kaia Haus</div>
+      <div class="product-stars">★★★★☆</div>
+      <div class="product-name">Satin Slip Skirt — Moss</div>
+      <div class="product-price">
+        <span class="price-current">Rp 255.000</span>
+      </div>
+    </a>
+
+    <a href="detail.html" class="product-card">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&q=80" alt="Pleated Midi Skirt">
+      </div>
+      <div class="product-brand">Fiera Label</div>
+      <div class="product-stars">★★★★☆</div>
+      <div class="product-name">Pleated Midi Skirt — Blush</div>
+      <div class="product-price">
+        <span class="price-current">Rp 295.000</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">LV<span style="color:var(--terracotta)">R</span>E</a>
+      <p class="footer-tagline">Fashion yang Bercerita, Gaya yang Abadi. Platform editorial fashion Indonesia terkurasi.</p>
+      <div class="footer-socials">
+        <a href="#" class="social-link" aria-label="Instagram">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="TikTok">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.77a4.85 4.85 0 0 1-1.01-.08z"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="Pinterest">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Belanja</div>
+      <ul class="footer-links">
+        <li><a href="katalog.html">Katalog Produk</a></li>
+        <li><a href="#">Tas & Dompet</a></li>
+        <li><a href="#">Sepatu</a></li>
+        <li><a href="#">Aksesori</a></li>
+        <li><a href="#">Sale</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Informasi</div>
+      <ul class="footer-links">
+        <li><a href="#">Tentang LVRE</a></li>
+        <li><a href="#">Artikel Fashion</a></li>
+        <li><a href="#">Brand Partner</a></li>
+        <li><a href="#">Karir</a></li>
+        <li><a href="#">Press</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Bantuan</div>
+      <ul class="footer-links">
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Pengiriman</a></li>
+        <li><a href="#">Return & Refund</a></li>
+        <li><a href="#">Hubungi Kami</a></li>
+        <li><a href="#">Panduan Ukuran</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 LVRE — Live Fashion Revolution Experience. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Kebijakan Privasi</a>
+      <a href="#">Syarat & Ketentuan</a>
+      <a href="#">Cookie</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Header scroll effect
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Fade-up on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Quantity selector
+  function incrementQty() {
+    const input = document.getElementById('qtyInput');
+    if (input.value < 10) input.value++;
+  }
+  function decrementQty() {
+    const input = document.getElementById('qtyInput');
+    if (input.value > 1) input.value--;
+  }
+
+  // Accordion toggle
+  function toggleAccordion(header) {
+    const item = header.parentElement;
+    const isActive = item.classList.contains('active');
+
+    // Close all items
+    document.querySelectorAll('.accordion-item').forEach(i => {
+      i.classList.remove('active');
+    });
+
+    // Open clicked item if it wasn't active
+    if (!isActive) {
+      item.classList.add('active');
+    }
+  }
+
+  // Thumbnail gallery
+  document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
+    thumb.addEventListener('click', () => {
+      document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
+      // Update main image (in a real app, you'd change the src)
+    });
+  });
+
+  // Size selector
+  document.querySelectorAll('.size-option:not(.disabled)').forEach(size => {
+    size.addEventListener('click', () => {
+      document.querySelectorAll('.size-option').forEach(s => s.classList.remove('active'));
+      size.classList.add('active');
+      document.querySelector('.selector-value').textContent = size.textContent;
+    });
+  });
+
+  // Color selector
+  document.querySelectorAll('.color-option').forEach(color => {
+    color.addEventListener('click', () => {
+      document.querySelectorAll('.color-option').forEach(c => c.classList.remove('active'));
+      color.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>

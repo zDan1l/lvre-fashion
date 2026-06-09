@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design System — LVRE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="site-header">
+  <a href="../index.html" class="logo">LV<span>R</span>E</a>
+  <nav>
+    <a href="index.html" class="active">Design System</a>
+    <a href="../katalog.html">Katalog</a>
+    <a href="../arsip-artikel.html">Artikel</a>
+    <a href="../index.html">Brand</a>
+  </nav>
+  <div class="header-actions">
+    <button class="icon-btn" aria-label="Cari">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+    </button>
+    <button class="icon-btn" aria-label="Akun">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="ds-container">
+  <!-- HEADER -->
+  <div class="ds-header">
+    <h1 class="ds-title">LVRE Design System</h1>
+    <p class="ds-subtitle">
+      Panduan komprehensif untuk identitas visual dan komponen UI LVRE.
+      Dokumentasi ini mencakup warna, tipografi, spasi, komponen, dan pola desain yang digunakan di seluruh platform.
+    </p>
+  </div>
+
+  <!-- COLORS SECTION -->
+  <section class="ds-section">
+    <h2 class="ds-section-title">Color Palette</h2>
+
+    <div class="ds-subsection">
+      <h3 class="ds-subsection-title">Primary Colors — Blue Theme</h3>
+      <div class="color-grid">
+        <div class="color-card">
+          <div class="color-swatch" style="background: #1E5A8D;"></div>
+          <div class="color-info">
+            <div class="color-name">Primary Blue</div>
+            <div class="color-value">#1E5A8D</div>
+            <div class="color-usage">CTA, links, active states</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: #0D2D4A;"></div>
+          <div class="color-info">
+            <div class="color-name">Dark Blue</div>
+            <div class="color-value">#0D2D4A</div>
+            <div class="color-usage">Hover states, dark backgrounds</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: #E8F4FC;"></div>
+          <div class="color-info">
+            <div class="color-name">Light Blue</div>
+            <div class="color-value">#E8F4FC</div>
+            <div class="color-usage">Backgrounds, subtle highlights</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-subsection">
+      <h3 class="ds-subsection-title">Neutral Colors</h3>
+      <div class="color-grid">
+        <div class="color-card">
+          <div class="color-swatch" style="background: #000000;"></div>
+          <div class="color-info">
+            <div class="color-name">Black</div>
+            <div class="color-value">#000000</div>
+            <div class="color-usage">Primary text, headings</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: #FFFFFF; border: 1px solid #DEE2E6;"></div>
+          <div class="color-info">
+            <div class="color-name">Pure White</div>
+            <div class="color-value">#FFFFFF</div>
+            <div class="color-usage">Backgrounds, cards</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: #F8F9FA;"></div>
+          <div class="color-info">
+            <div class="color-name">Off White</div>
+            <div class="color-value">#F8F9FA</div>
+            <div class="color-usage">Page backgrounds</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: #E9ECEF;"></div>
+          <div class="color-info">
+            <div class="color-name">Light Gray</div>
+            <div class="color-value">#E9ECEF</div>
+            <div class="color-usage">Borders, dividers</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: #6C757D;"></div>
+          <div class="color-info">
+            <div class="color-name">Medium Gray</div>
+            <div class="color-value">#6C757D</div>
+            <div class="color-usage">Secondary text, meta</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: #212529;"></div>
+          <div class="color-info">
+            <div class="color-name">Dark Gray</div>
+            <div class="color-value">#212529</div>
+            <div class="color-usage">Body text, descriptions</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-subsection">
+      <h3 class="ds-subsection-title">Semantic Colors</h3>
+      <div class="color-grid">
+        <div class="color-card">
+          <div class="color-swatch" style="background: #10B981;"></div>
+          <div class="color-info">
+            <div class="color-name">Success</div>
+            <div class="color-value">#10B981</div>
+            <div class="color-usage">Success messages, positive indicators</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: #EF4444;"></div>
+          <div class="color-info">
+            <div class="color-name">Error</div>
+            <div class="color-value">#EF4444</div>
+            <div class="color-usage">Error messages, destructive actions</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: #F59E0B;"></div>
+          <div class="color-info">
+            <div class="color-name">Warning</div>
+            <div class="color-value">#F59E0B</div>
+            <div class="color-usage">Warning messages, alerts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alt-system-notice">
+      <div class="alt-system-notice-title">Alternative Color System</div>
+      <div class="alt-system-notice-text">
+        <strong>Halaman katalog, detail, keranjang, dan pembayaran</strong> menggunakan sistem warna alternatif dengan palet earth tones:
+        <br>• Terracotta (#C4A484) — primary, CTA, links
+        <br>• Cream (#FFF8F0) — backgrounds
+        <br>• Warm Sand (#E8D8C8) — subtle backgrounds
+      </div>
+    </div>
+  </section>
+
+  <!-- TYPOGRAPHY SECTION -->
+  <section class="ds-section">
+    <h2 class="ds-section-title">Typography</h2>
+
+    <div class="ds-subsection">
+      <h3 class="ds-subsection-title">Type Families</h3>
+      <table class="type-table">
+        <thead>
+          <tr>
+            <th>Family</th>
+            <th>Weight</th>
+            <th>Usage</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="type-info">Plus Jakarta Sans</td>
+            <td class="type-info">400–900</td>
+            <td class="type-usage">Headings, body text, UI elements</td>
+            <td class="type-demo" style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;">Heading 700</td>
+          </tr>
+          <tr>
+            <td class="type-info">Plus Jakarta Sans</td>
+            <td class="type-info">400</td>
+            <td class="type-usage">Body text, descriptions</td>
+            <td class="type-demo" style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 400;">Body text 400</td>
+          </tr>
+          <tr>
+            <td class="type-info">Playfair Display</td>
+            <td class="type-info">400–700</td>
+            <td class="type-usage">Editorial headings, product names (alt system)</td>
+            <td class="type-demo" style="font-family: 'Playfair Display', serif; font-weight: 400;">Playfair 400</td>
+          </tr>
+          <tr>
+            <td class="type-info">DM Sans</td>
+            <td class="type-info">300–500</td>
+            <td class="type-usage">Body text, forms (alt system)</td>
+            <td class="type-demo" style="font-family: 'DM Sans', sans-serif; font-weight: 400;">DM Sans 400</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ds-subsection">
+      <h3 class="ds-subsection-title">Type Scale — Main System</h3>
+      <table class="type-table">
+        <thead>
+          <tr>
+            <th>Size</th>
+            <th>Weight</th>
+            <th>Usage</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="type-info">4.8rem (clamp)</td>
+            <td class="type-info">900</td>
+            <td class="type-usage">Hero titles</td>
+            <td class="type-demo" style="font-size: 4.8rem; font-weight: 900; line-height: 1.1;">Aa</td>
+          </tr>
+          <tr>
+            <td class="type-info">3.4rem (clamp)</td>
+            <td class="type-info">700</td>
+            <td class="type-usage">Page titles, section titles</td>
+            <td class="type-demo" style="font-size: 3.4rem; font-weight: 700;">Aa</td>
+          </tr>
+          <tr>
+            <td class="type-info">2.2rem</td>
+            <td class="type-info">700</td>
+            <td class="type-usage">Card titles</td>
+            <td class="type-demo" style="font-size: 2.2rem; font-weight: 700;">Aa</td>
+          </tr>
+          <tr>
+            <td class="type-info">1.35rem</td>
+            <td class="type-info">600–700</td>
+            <td class="type-usage">Product names, card headings</td>
+            <td class="type-demo" style="font-size: 1.35rem; font-weight: 600;">Aa</td>
+          </tr>
+          <tr>
+            <td class="type-info">16px</td>
+            <td class="type-info">400</td>
+            <td class="type-usage">Body text</td>
+            <td class="type-demo" style="font-size: 16px;">Aa</td>
+          </tr>
+          <tr>
+            <td class="type-info">15px</td>
+            <td class="type-info">500</td>
+            <td class="type-usage">Nav links, labels, metadata</td>
+            <td class="type-demo" style="font-size: 15px; font-weight: 500;">Aa</td>
+          </tr>
+          <tr>
+            <td class="type-info">14px</td>
+            <td class="type-info">400</td>
+            <td class="type-usage">Secondary text, captions</td>
+            <td class="type-demo" style="font-size: 14px;">Aa</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ds-subsection">
+      <h3 class="ds-subsection-title">Letter Spacing & Text Transform</h3>
+      <table class="type-table">
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Letter Spacing</th>
+            <th>Transform</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="type-info">Eyebrow, labels</td>
+            <td class="type-info">0.18em – 0.22em</td>
+            <td class="type-usage">UPPERCASE</td>
+            <td class="type-demo" style="font-size: 15px; letter-spacing: 0.22em; text-transform: uppercase;">KOLEKSI MUSIM PANAS</td>
+          </tr>
+          <tr>
+            <td class="type-info">Navigation</td>
+            <td class="type-info">0.18em</td>
+            <td class="type-usage">UPPERCASE</td>
+            <td class="type-demo" style="font-size: 15px; letter-spacing: 0.18em; text-transform: uppercase;">KATALOG</td>
+          </tr>
+          <tr>
+            <td class="type-info">Body text</td>
+            <td class="type-info">Normal</td>
+            <td class="type-usage">None</td>
+            <td class="type-demo" style="font-size: 16px;">Normal text</td>
+          </tr>
+          <tr>
+            <td class="type-info">Hero titles</td>
+            <td class="type-info">-0.02em</td>
+            <td class="type-usage">None</td>
+            <td class="type-demo" style="font-size: 2rem; letter-spacing: -0.02em;">Eksplorasi Gaya</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SPACING SECTION -->
+  <section class="ds-section">
+    <h2 class="ds-section-title">Spacing & Layout</h2>
+
+    <div class="ds-subsection">
+      <h3 class="ds-subsection-title">Spacing Scale</h3>
+      <div class="spacing-showcase">
+        <div class="spacing-item">
+          <div class="spacing-visual" style="width: 6rem;">6rem</div>
+          <div class="spacing-info">
+            <div class="spacing-name">Container Padding</div>
+            <div class="spacing-value">--container-padding: 6rem (desktop), 1.5rem (mobile)</div>
+          </div>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-visual" style="width: 4rem;">4rem</div>
+          <div class="spacing-info">
+            <div class="spacing-name">Section Spacing</div>
+            <div class="spacing-value">Margin/padding for major sections</div>
+          </div>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-visual" style="width: 3rem;">3rem</div>
+          <div class="spacing-info">
+            <div class="spacing-name">Element Gap</div>
+            <div class="spacing-value">Gaps between grid items, cards</div>
+          </div>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-visual" style="width: 2rem;">2rem</div>
+          <div class="spacing-info">
+            <div class="spacing-name">Component Spacing</div>
+            <div class="spacing-value">Padding inside components, small gaps</div>
+          </div>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-visual" style="width: 1.5rem;">1.5rem</div>
+          <div class="spacing-info">
+            <div class="spacing-name">Small Spacing</div>
+            <div class="spacing-value">Margins, tight gaps</div>
+          </div>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-visual" style="width: 1rem;">1rem</div>
+          <div class="spacing-info">
+            <div class="spacing-name">Base Unit</div>
+            <div class="spacing-value">Basic spacing unit</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-subsection">
+      <h3 class="ds-subsection-title">Grid Layouts</h3>
+      <table class="type-table">
+        <thead>
+          <tr>
+            <th>Layout</th>
+            <th>Columns</th>
+            <th>Gap</th>
+            <th>Usage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="type-info">Product Grid</td>
+            <td class="type-info">4 (desktop), 2 (tablet), 1 (mobile)</td>
+            <td class="type-info">1.5rem – 2rem</td>
+            <td class="type-usage">Katalog, featured products</td>
+          </tr>
+          <tr>
+            <td class="type-info">Article Grid</td>
+            <td class="type-info">3 (desktop), 1 (mobile)</td>
+            <td class="type-info">2rem – 2.5rem</td>
+            <td class="type-usage">Arsip artikel</td>
+          </tr>
+          <tr>
+            <td class="type-info">Split Layout</td>
+            <td class="type-info">1fr 1fr</td>
+            <td class="type-info">3rem – 6rem</td>
+            <td class="type-usage">Editorial sections, product detail</td>
+          </tr>
+          <tr>
+            <td class="type-info">Category Grid</td>
+            <td class="type-info">2fr 1fr 1fr</td>
+            <td class="type-info">1rem</td>
+            <td class="type-usage">Category cards (homepage)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- BUTTONS SECTION -->
+  <section class="ds-section">
+    <h2 class="ds-section-title">Buttons</h2>
+
+    <div class="ds-subsection">
+      <h3 class="ds-subsection-title">Primary Buttons</h3>
+      <div class="button-group">
+        <div class="button-group-title">Main Actions</div>
+        <a href="#" class="btn-primary">
+          Belanja Sekarang
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <button class="btn-primary">Add to Cart</button>
+        <a href="#" class="btn-primary btn-small">Small</a>
+      </div>
+    </div>
+
+    <div class="ds-subsection">
+      <h3 class="ds-subsection-title">Secondary & Ghost Buttons</h3>
+      <div class="button-group">
+        <div class="button-group-title">Secondary Actions</div>
+        <a href="#" class="btn-secondary">Secondary Action</a>
+        <a href="#" class="btn-ghost">Lihat Semua</a>
+        <a href="#" class="btn-outline">Outline</a>
+        <a href="#" class="btn-outline btn-small">Small</a>
+      </div>
+    </div>
+
+    <div class="ds-subsection">
+      <h3 class="ds-subsection-title">Button Specifications</h3>
+      <table class="type-table">
+        <thead>
+          <tr>
+            <th>Variant</th>
+            <th>Background</th>
+            <th>Text</th>
+            <th>Border</th>
+            <th>Hover</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="type-info">Primary</td>
+            <td class="type-info">#1E5A8D</td>
+            <td class="type-info">#FFFFFF</td>
+            <td class="type-info">None</td>
+            <td class="type-usage">Bg: #0D2D4A</td>
+          </tr>
+          <tr>
+            <td class="type-info">Secondary</td>
+            <td class="type-info">#000000</td>
+            <td class="type-info">#FFFFFF</td>
+            <td class="type-info">None</td>
+            <td class="type-usage">Bg: #1E5A8D</td>
+          </tr>
+          <tr>
+            <td class="type-info">Ghost</td>
+            <td class="type-info">Transparent</td>
+            <td class="type-info">#000000</td>
+            <td class="type-info">Bottom border</td>
+            <td class="type-usage">Color: #1E5A8D</td>
+          </tr>
+          <tr>
+            <td class="type-info">Outline</td>
+            <td class="type-info">Transparent</td>
+            <td class="type-info">#000000</td>
+            <td class="type-info">#DEE2E6</td>
+            <td class="type-usage">Bg: #E8F4FC, Border: #1E5A8D</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FORMS SECTION -->
+  <section class="ds-section">
+    <h2 class="ds-section-title">Form Elements</h2>
+
+    <div class="form-showcase">
+      <div class="form-showcase-item">
+        <div class="form-showcase-label">Text Input</div>
+        <input type="text" class="form-input" placeholder="Masukkan email Anda" style="width: 100%; padding: 0.9rem 1rem; border: 1px solid var(--border); background: var(--off-white); font-family: var(--body); font-size: 15px;">
+      </div>
+
+      <div class="form-showcase-item">
+        <div class="form-showcase-label">Select</div>
+        <select class="form-select" style="width: 100%; padding: 0.9rem 1rem; border: 1px solid var(--border); background: var(--off-white); font-family: var(--body); font-size: 15px;">
+          <option>Pilih ukuran</option>
+          <option>XS</option>
+          <option>S</option>
+          <option>M</option>
+          <option>L</option>
+          <option>XL</option>
+        </select>
+      </div>
+
+      <div class="form-showcase-item">
+        <div class="form-showcase-label">Checkbox</div>
+        <label style="display: flex; align-items: center; gap: 0.8rem; cursor: pointer;">
+          <input type="checkbox" style="width: 18px; height: 18px; accent-color: var(--primary-blue);">
+          <span style="font-size: 15px; color: var(--dark-gray);">Remember me</span>
+        </label>
+      </div>
+
+      <div class="form-showcase-item">
+        <div class="form-showcase-label">Radio Button</div>
+        <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+          <label style="display: flex; align-items: center; gap: 0.8rem; cursor: pointer;">
+            <input type="radio" name="shipping" style="width: 18px; height: 18px; accent-color: var(--primary-blue);">
+            <span style="font-size: 15px; color: var(--dark-gray);">Regular Shipping</span>
+          </label>
+          <label style="display: flex; align-items: center; gap: 0.8rem; cursor: pointer;">
+            <input type="radio" name="shipping" style="width: 18px; height: 18px; accent-color: var(--primary-blue);">
+            <span style="font-size: 15px; color: var(--dark-gray);">Express Shipping</span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPONENTS SECTION -->
+  <section class="ds-section">
+    <h2 class="ds-section-title">Components</h2>
+
+    <div class="component-grid">
+      <!-- Product Card -->
+      <div class="component-card">
+        <div class="component-preview">
+          <a href="#" class="product-card">
+            <div class="product-img-wrap" style="aspect-ratio: 3/4; background: var(--light-gray); overflow: hidden; margin-bottom: 1rem;">
+              <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=400&q=80" alt="Product" style="height: 100%; object-fit: cover;">
+            </div>
+            <div class="product-brand" style="font-size: 15px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--primary-blue);">NAURA STUDIO</div>
+            <div class="product-name" style="font-family: var(--heading); font-size: 1.35rem; font-weight: 600; color: var(--black); margin: 0.5rem 0;">Linen Co-ord Set</div>
+            <div class="product-price">
+              <span class="price-current" style="font-size: 16px; font-weight: 600;">Rp 485.000</span>
+            </div>
+          </a>
+        </div>
+        <div class="component-info">
+          <div class="component-name">Product Card</div>
+          <div class="component-desc">Used in katalog, featured products, and related items sections.</div>
+        </div>
+      </div>
+
+      <!-- Article Card -->
+      <div class="component-card">
+        <div class="component-preview">
+          <a href="#" class="article-card" style="display: block;">
+            <div class="article-img" style="aspect-ratio: 4/3; overflow: hidden; background: var(--light-gray); margin-bottom: 1rem;">
+              <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&q=80" alt="Article" style="height: 100%; object-fit: cover;">
+            </div>
+            <div class="article-cat" style="font-size: 15px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--primary-blue); margin-bottom: 0.5rem;">TREND</div>
+            <h3 class="article-title" style="font-family: var(--heading); font-size: 1.35rem; font-weight: 700; line-height: 1.3; color: var(--black); margin-bottom: 0.6rem;">Cool Tones Takeover</h3>
+            <p class="article-excerpt" style="font-size: 15px; line-height: 1.7; color: var(--dark-gray);">Membangun wardrobe yang timeless dimulai dari pilihan warna.</p>
+          </a>
+        </div>
+        <div class="component-info">
+          <div class="component-name">Article Card</div>
+          <div class="component-desc">Used in artikel arsip and featured article sections.</div>
+        </div>
+      </div>
+
+      <!-- Category Card -->
+      <div class="component-card">
+        <div class="component-preview">
+          <a href="#" class="cat-card" style="position: relative; overflow: hidden; display: block;">
+            <img src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=400&q=80" alt="Category" style="height: 200px; object-fit: cover;">
+            <div class="cat-label" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
+              <div class="cat-label-name" style="font-family: var(--heading); font-size: 1.2rem; font-weight: 700; color: #fff;">Clothing</div>
+              <div class="cat-label-count" style="font-size: 14px; letter-spacing: 0.15em; color: rgba(255,255,255,0.75); text-transform: uppercase;">142 Produk</div>
+            </div>
+          </a>
+        </div>
+        <div class="component-info">
+          <div class="component-name">Category Card</div>
+          <div class="component-desc">Used in homepage category grid with overlay gradient.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ICONS SECTION -->
+  <section class="ds-section">
+    <h2 class="ds-section-title">Icons</h2>
+
+    <div class="component-grid">
+      <div class="component-card">
+        <div class="component-preview" style="display: flex; gap: 1rem; align-items: center;">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+          <span style="font-size: 14px; color: var(--dark-gray);">Search</span>
+        </div>
+        <div class="component-info">
+          <div class="component-name">Search Icon</div>
+          <div class="component-desc">Used in header search button</div>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-preview" style="display: flex; gap: 1rem; align-items: center;">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          <span style="font-size: 14px; color: var(--dark-gray);">Account</span>
+        </div>
+        <div class="component-info">
+          <div class="component-name">User Icon</div>
+          <div class="component-desc">Used for account/profile access</div>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-preview" style="display: flex; gap: 1rem; align-items: center;">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span style="font-size: 14px; color: var(--dark-gray);">Cart</span>
+        </div>
+        <div class="component-info">
+          <div class="component-name">Shopping Cart</div>
+          <div class="component-desc">Used for cart access with badge count</div>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-preview" style="display: flex; gap: 1rem; align-items: center;">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span style="font-size: 14px; color: var(--dark-gray);">Wishlist</span>
+        </div>
+        <div class="component-info">
+          <div class="component-name">Heart Icon</div>
+          <div class="component-desc">Used for wishlist functionality</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BREAKPOINTS SECTION -->
+  <section class="ds-section">
+    <h2 class="ds-section-title">Responsive Breakpoints</h2>
+
+    <table class="type-table">
+      <thead>
+        <tr>
+          <th>Breakpoint</th>
+          <th>Width</th>
+          <th>Changes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="type-info">Desktop</td>
+          <td class="type-info">> 1024px</td>
+          <td class="type-usage">Full layouts, 4-column grids, sidebar visible</td>
+        </tr>
+        <tr>
+          <td class="type-info">Tablet</td>
+          <td class="type-info">768px – 1024px</td>
+          <td class="type-usage">2-column grids, sidebar becomes modal</td>
+        </tr>
+        <tr>
+          <td class="type-info">Mobile</td>
+          <td class="type-info">< 768px</td>
+          <td class="type-usage">Single column, stacked layouts, mobile nav</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="logo">LV<span>R</span>E</a>
+      <p class="footer-tagline">Live Fashion Revolution Experience — Kurasi fashion editorial Indonesia terbaik.</p>
+      <div class="footer-socials">
+        <a href="#" class="social-link">IG</a>
+        <a href="#" class="social-link">TT</a>
+        <a href="#" class="social-link">YT</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-col-title">Belanja</h4>
+      <ul class="footer-links">
+        <li><a href="#">Katalog Produk</a></li>
+        <li><a href="#">Brand</a></li>
+        <li><a href="#">Sale</a></li>
+        <li><a href="#">New Arrivals</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-col-title">Perusahaan</h4>
+      <ul class="footer-links">
+        <li><a href="#">Tentang Kami</a></li>
+        <li><a href="#">Karir</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Kontak</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-col-title">Bantuan</h4>
+      <ul class="footer-links">
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Pengiriman</a></li>
+        <li><a href="#">Pengembalian</a></li>
+        <li><a href="#">Ukuran Guide</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 LVRE. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

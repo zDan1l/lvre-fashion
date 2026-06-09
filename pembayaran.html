@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pembayaran — LVRE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── PEMBAYARAN PAGE STYLES ─────────────────────────── */
+    .checkout-page {
+      padding: 0 var(--container-padding) 6rem;
+    }
+
+    .checkout-progress {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .progress-step {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 14px;
+      color: var(--ink-muted);
+    }
+
+    .progress-step.active {
+      color: var(--terracotta);
+    }
+
+    .progress-step.completed {
+      color: var(--ink);
+    }
+
+    .progress-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .progress-step.active .progress-num {
+      border-color: var(--terracotta);
+      background: var(--terracotta);
+      color: #fff;
+    }
+
+    .progress-step.completed .progress-num {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: #fff;
+    }
+
+    .checkout-layout {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 3rem;
+    }
+
+    /* Checkout Form Section */
+    .checkout-form-section {
+      padding-top: 1rem;
+    }
+
+    .form-section {
+      margin-bottom: 3rem;
+    }
+
+    .form-section:last-child { margin-bottom: 0; }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    .section-toggle {
+      font-size: 14px;
+      color: var(--ink-soft);
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: color 0.25s;
+    }
+    .section-toggle:hover { color: var(--terracotta); }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .form-full { grid-column: 1 / -1; }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-label {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .form-label .required {
+      color: var(--terracotta);
+      margin-left: 2px;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      padding: 0.9rem 1rem;
+      border: 1px solid var(--border);
+      background: var(--off-white);
+      font-family: var(--sans);
+      font-size: 15px;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.25s;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--terracotta);
+    }
+
+    .form-textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: var(--ink-muted);
+    }
+
+    /* Radio/Checkbox Options */
+    .option-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .option-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.2rem;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: border-color 0.25s, background 0.25s;
+    }
+
+    .option-item:hover {
+      border-color: var(--terracotta);
+      background: var(--cream);
+    }
+
+    .option-item.selected {
+      border-color: var(--terracotta);
+      background: rgba(45, 80, 22, 0.05);
+    }
+
+    .option-radio {
+      width: 18px;
+      height: 18px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      flex-shrink: 0;
+      position: relative;
+      margin-top: 2px;
+    }
+
+    .option-item.selected .option-radio {
+      border-color: var(--terracotta);
+    }
+
+    .option-item.selected .option-radio::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 8px; height: 8px;
+      background: var(--terracotta);
+      border-radius: 50%;
+    }
+
+    .option-content {
+      flex: 1;
+    }
+
+    .option-title {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+    }
+
+    .option-desc {
+      font-size: 14px;
+      color: var(--ink-soft);
+      line-height: 1.5;
+    }
+
+    .option-price {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+
+    .option-free {
+      color: var(--terracotta);
+    }
+
+    /* Shipping Method Icons */
+    .shipping-options .option-item {
+      gap: 1.2rem;
+    }
+
+    .shipping-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--terracotta);
+    }
+
+    /* Payment Methods */
+    .payment-methods {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.8rem;
+    }
+
+    .payment-card {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: border-color 0.25s, background 0.25s;
+    }
+
+    .payment-card:hover {
+      border-color: var(--terracotta);
+      background: var(--cream);
+    }
+
+    .payment-card.selected {
+      border-color: var(--terracotta);
+      background: rgba(45, 80, 22, 0.05);
+    }
+
+    .payment-icon {
+      width: 36px;
+      height: 24px;
+      background: var(--ink);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .payment-name {
+      font-size: 15px;
+      color: var(--ink);
+    }
+
+    .payment-card.selected .payment-name {
+      color: var(--terracotta);
+    }
+
+    /* Order Summary Sidebar */
+    .order-summary {
+      position: sticky;
+      top: calc(var(--header-height) + 2rem);
+      height: fit-content;
+    }
+
+    .summary-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      padding: 2rem;
+    }
+
+    .summary-title {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Order Items */
+    .order-items {
+      margin-bottom: 1.5rem;
+    }
+
+    .order-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .order-item:last-child {
+      border-bottom: none;
+    }
+
+    .order-item-img {
+      width: 60px;
+      height: 80px;
+      overflow: hidden;
+      background: var(--warm-sand);
+      flex-shrink: 0;
+    }
+
+    .order-item-img img {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .order-item-info {
+      flex: 1;
+    }
+
+    .order-item-name {
+      font-size: 14px;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+      line-height: 1.3;
+    }
+
+    .order-item-variant {
+      font-size: 12px;
+      color: var(--ink-muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .order-item-qty {
+      font-size: 13px;
+      color: var(--ink-soft);
+    }
+
+    .order-item-price {
+      font-size: 14px;
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    /* Summary Calculations */
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.7rem 0;
+      font-size: 14px;
+    }
+
+    .summary-label {
+      color: var(--ink-soft);
+    }
+
+    .summary-value {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .summary-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 1rem 0;
+    }
+
+    .summary-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      margin-top: 0.5rem;
+    }
+
+    .total-label {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .total-value {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--terracotta);
+    }
+
+    /* Place Order Button */
+    .place-order-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 1rem 2rem;
+      margin-top: 1.5rem;
+      background: var(--terracotta);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .place-order-btn:hover {
+      background: var(--terra-dark);
+      transform: translateY(-1px);
+    }
+
+    /* Terms */
+    .terms-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+
+    .terms-check input {
+      width: 16px;
+      height: 16px;
+      margin-top: 2px;
+      accent-color: var(--terracotta);
+    }
+
+    .terms-check label {
+      font-size: 13px;
+      color: var(--ink-soft);
+      line-height: 1.5;
+    }
+
+    .terms-check a {
+      color: var(--terracotta);
+      text-decoration: underline;
+    }
+
+    /* Secure Checkout Badge */
+    .secure-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      font-size: 13px;
+      color: var(--ink-muted);
+    }
+    .secure-badge svg {
+      color: var(--terracotta);
+    }
+
+    /* Back Link */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 15px;
+      color: var(--ink-soft);
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: color 0.25s;
+    }
+    .back-link:hover { color: var(--terracotta); }
+
+    @media (max-width: 1024px) {
+      .checkout-layout {
+        grid-template-columns: 1fr;
+      }
+      .order-summary {
+        position: static;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .checkout-progress {
+        gap: 1.5rem;
+      }
+      .progress-step span {
+        display: none;
+      }
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      .payment-methods {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="site-header">
+  <a href="index.html" class="logo">LV<span>R</span>E</a>
+  <nav>
+    <a href="katalog.html">Katalog</a>
+    <a href="arsip-artikel.html">Artikel</a>
+    <a href="index.html">Brand</a>
+    <a href="katalog.html">Sale</a>
+    <a href="index.html">Tentang</a>
+  </nav>
+  <div class="header-actions">
+    <button class="icon-btn" aria-label="Cari">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+    </button>
+    <button class="icon-btn" aria-label="Akun">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+    </button>
+    <div class="cart-wrap">
+      <a href="keranjang.html" class="icon-btn" aria-label="Keranjang">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      </a>
+      <span class="cart-badge">3</span>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE HEADER -->
+<div class="page-header-simple">
+  <nav class="page-breadcrumb">
+    <a href="index.html">Beranda</a> <span>/</span>
+    <a href="keranjang.html">Keranjang</a> <span>/</span>
+    Pembayaran
+  </nav>
+</div>
+
+<!-- CHECKOUT PAGE -->
+<div class="checkout-page fade-up">
+
+  <!-- Progress Steps -->
+  <div class="checkout-progress">
+    <div class="progress-step completed">
+      <div class="progress-num">1</div>
+      <span>Keranjang</span>
+    </div>
+    <div class="progress-step active">
+      <div class="progress-num">2</div>
+      <span>Informasi Pengiriman</span>
+    </div>
+    <div class="progress-step">
+      <div class="progress-num">3</div>
+      <span>Konfirmasi</span>
+    </div>
+  </div>
+
+  <a href="keranjang.html" class="back-link">
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Kembali ke Keranjang
+  </a>
+
+  <div class="checkout-layout">
+
+    <!-- CHECKOUT FORM -->
+    <div class="checkout-form-section">
+
+      <!-- Contact Information -->
+      <section class="form-section">
+        <div class="section-header">
+          <h2 class="section-title">Informasi Kontak</h2>
+        </div>
+        <div class="form-grid">
+          <div class="form-group form-full">
+            <label class="form-label">Email <span class="required">*</span></label>
+            <input type="email" class="form-input" placeholder="nama@email.com" value="customer@example.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">No. Handphone <span class="required">*</span></label>
+            <input type="tel" class="form-input" placeholder="0812xxxx" value="081234567890">
+          </div>
+          <div class="form-group">
+            <label class="form-label">WhatsApp (Opsional)</label>
+            <input type="tel" class="form-input" placeholder="0812xxxx">
+          </div>
+        </div>
+      </section>
+
+      <!-- Shipping Address -->
+      <section class="form-section">
+        <div class="section-header">
+          <h2 class="section-title">Alamat Pengiriman</h2>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Nama Depan <span class="required">*</span></label>
+            <input type="text" class="form-input" placeholder="Nama depan" value="Sarah">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Nama Belakang <span class="required">*</span></label>
+            <input type="text" class="form-input" placeholder="Nama belakang" value="Wijaya">
+          </div>
+          <div class="form-group form-full">
+            <label class="form-label">Alamat Lengkap <span class="required">*</span></label>
+            <input type="text" class="form-input" placeholder="Nama jalan, nomor rumah, apartemen" value="Jl. Sudirman No. 45, Apartemen Sudirman Park">
+          </div>
+          <div class="form-group form-full">
+            <label class="form-label">Detail Alamat (Opsional)</label>
+            <input type="text" class="form-input" placeholder="Patokan, kode gedung, dll." value="Tower B, Lantai 12, Unit 1205">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Kecamatan <span class="required">*</span></label>
+            <input type="text" class="form-input" placeholder="Kecamatan" value="Tanah Abang">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Kota/Kabupaten <span class="required">*</span></label>
+            <input type="text" class="form-input" placeholder="Kota" value="Jakarta Pusat">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Provinsi <span class="required">*</span></label>
+            <select class="form-select">
+              <option value="">Pilih provinsi</option>
+              <option value="DKI" selected>DKI Jakarta</option>
+              <option value="Jabar">Jawa Barat</option>
+              <option value="Banten">Banten</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Kode Pos <span class="required">*</span></label>
+            <input type="text" class="form-input" placeholder="xxxxx" value="10250">
+          </div>
+        </div>
+      </section>
+
+      <!-- Shipping Method -->
+      <section class="form-section">
+        <div class="section-header">
+          <h2 class="section-title">Metode Pengiriman</h2>
+        </div>
+        <div class="option-list shipping-options">
+
+          <div class="option-item selected" onclick="selectShipping(this)">
+            <div class="option-radio"></div>
+            <div class="shipping-icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <div class="option-content">
+              <div class="option-title">Regular Delivery</div>
+              <div class="option-desc">Estimasi tiba: 2-4 hari kerja</div>
+            </div>
+            <div class="option-price option-free">Gratis</div>
+          </div>
+
+          <div class="option-item" onclick="selectShipping(this)">
+            <div class="option-radio"></div>
+            <div class="shipping-icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <div class="option-content">
+              <div class="option-title">Express Delivery</div>
+              <div class="option-desc">Estimasi tiba: 1-2 hari kerja</div>
+            </div>
+            <div class="option-price">Rp 25.000</div>
+          </div>
+
+          <div class="option-item" onclick="selectShipping(this)">
+            <div class="option-radio"></div>
+            <div class="shipping-icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="option-content">
+              <div class="option-title">Same Day Delivery</div>
+              <div class="option-desc">Khusus area Jakarta (order sebelum 14:00)</div>
+            </div>
+            <div class="option-price">Rp 50.000</div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Payment Method -->
+      <section class="form-section">
+        <div class="section-header">
+          <h2 class="section-title">Metode Pembayaran</h2>
+        </div>
+
+        <p style="font-size: 14px; color: var(--ink-soft); margin-bottom: 1rem;">Pilih metode pembayaran untuk menyelesaikan pesanan:</p>
+
+        <div class="payment-methods">
+
+          <div class="payment-card selected" onclick="selectPayment(this)">
+            <div class="option-radio"></div>
+            <div class="payment-icon">VA</div>
+            <div class="payment-name">Transfer Bank (Virtual Account)</div>
+          </div>
+
+          <div class="payment-card" onclick="selectPayment(this)">
+            <div class="option-radio"></div>
+            <div class="payment-icon">CC</div>
+            <div class="payment-name">Kartu Kredit / Debit</div>
+          </div>
+
+          <div class="payment-card" onclick="selectPayment(this)">
+            <div class="option-radio"></div>
+            <div class="payment-icon">EW</div>
+            <div class="payment-name">E-Wallet (GoPay/ShopeePay/OVO)</div>
+          </div>
+
+          <div class="payment-card" onclick="selectPayment(this)">
+            <div class="option-radio"></div>
+            <div class="payment-icon">COD</div>
+            <div class="payment-name">Bayar di Tempat (COD)</div>
+          </div>
+
+        </div>
+
+        <!-- Bank Options (shown when VA is selected) -->
+        <div class="option-list" style="margin-top: 1rem; padding-left: 2.4rem;">
+          <div class="option-item selected" style="padding: 0.8rem 1rem;">
+            <div class="option-radio" style="width: 14px; height: 14px;"></div>
+            <div class="option-content">
+              <div class="option-title" style="font-size: 14px;">BCA Virtual Account</div>
+            </div>
+          </div>
+          <div class="option-item" style="padding: 0.8rem 1rem;">
+            <div class="option-radio" style="width: 14px; height: 14px;"></div>
+            <div class="option-content">
+              <div class="option-title" style="font-size: 14px;">Mandiri Virtual Account</div>
+            </div>
+          </div>
+          <div class="option-item" style="padding: 0.8rem 1rem;">
+            <div class="option-radio" style="width: 14px; height: 14px;"></div>
+            <div class="option-content">
+              <div class="option-title" style="font-size: 14px;">BNI Virtual Account</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Special Instructions -->
+      <section class="form-section">
+        <div class="section-header">
+          <h2 class="section-title">Catatan Pesanan (Opsional)</h2>
+        </div>
+        <div class="form-group">
+          <textarea class="form-textarea" placeholder="Tambahkan catatan khusus untuk pesanan Anda (misal: instruksi pengiriman, request khusus, dll.)"></textarea>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ORDER SUMMARY -->
+    <aside class="order-summary">
+      <div class="summary-card">
+        <h2 class="summary-title">Ringkasan Pesanan</h2>
+
+        <!-- Order Items -->
+        <div class="order-items">
+
+          <div class="order-item">
+            <div class="order-item-img">
+              <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=200&q=80" alt="Linen Co-ord Set">
+            </div>
+            <div class="order-item-info">
+              <div class="order-item-name">Linen Co-ord Set — Sage</div>
+              <div class="order-item-variant">Sage Green / M</div>
+              <div class="order-item-qty">Jumlah: 1</div>
+            </div>
+            <div class="order-item-price">Rp 485.000</div>
+          </div>
+
+          <div class="order-item">
+            <div class="order-item-img">
+              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&q=80" alt="Wrap Midi Dress">
+            </div>
+            <div class="order-item-info">
+              <div class="order-item-name">Wrap Midi Dress — Ivory</div>
+              <div class="order-item-variant">Ivory / S</div>
+              <div class="order-item-qty">Jumlah: 1</div>
+            </div>
+            <div class="order-item-price">Rp 320.000</div>
+          </div>
+
+          <div class="order-item">
+            <div class="order-item-img">
+              <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?w=200&q=80" alt="Structured Handbag">
+            </div>
+            <div class="order-item-info">
+              <div class="order-item-name">Structured Handbag — Cognac</div>
+              <div class="order-item-variant">Cognac</div>
+              <div class="order-item-qty">Jumlah: 1</div>
+            </div>
+            <div class="order-item-price">Rp 780.000</div>
+          </div>
+
+        </div>
+
+        <div class="summary-divider"></div>
+
+        <div class="summary-row">
+          <span class="summary-label">Subtotal (3 produk)</span>
+          <span class="summary-value">Rp 1.585.000</span>
+        </div>
+
+        <div class="summary-row">
+          <span class="summary-label">Diskon</span>
+          <span class="summary-value" style="color: var(--terracotta);">− Rp 80.000</span>
+        </div>
+
+        <div class="summary-row">
+          <span class="summary-label">Pengiriman (Regular)</span>
+          <span class="summary-value">Gratis</span>
+        </div>
+
+        <div class="summary-divider"></div>
+
+        <div class="summary-total">
+          <span class="total-label">Total</span>
+          <span class="total-value">Rp 1.505.000</span>
+        </div>
+
+        <!-- Terms -->
+        <div class="terms-check">
+          <input type="checkbox" id="terms" checked>
+          <label for="terms">
+            Saya setuju dengan <a href="#">Syarat & Ketentuan</a> dan <a href="#">Kebijakan Privasi</a> LVRE. Saya mengerti bahwa pesanan saya akan diproses sesuai dengan kebijakan pengembalian yang berlaku.
+          </label>
+        </div>
+
+        <button class="place-order-btn">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+          Buat Pesanan
+        </button>
+
+        <div class="secure-badge">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Pembayaran Aman & Terenkripsi
+        </div>
+
+      </div>
+
+      <!-- Support -->
+      <div style="margin-top: 1.5rem; text-align: center;">
+        <p style="font-size: 14px; color: var(--ink-soft); margin-bottom: 0.5rem">Butuh bantuan?</p>
+        <a href="#" style="font-size: 14px; color: var(--terracotta); text-decoration: underline;">Hubungi Customer Service</a>
+      </div>
+    </aside>
+
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="logo">LV<span>R</span>E</a>
+      <p class="footer-tagline">Live Fashion Revolution Experience — Kurasi fashion editorial Indonesia terbaik untuk wardrobe timeless Anda.</p>
+      <div class="footer-socials">
+        <a href="#" class="social-link" aria-label="Instagram">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="TikTok">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="Pinterest">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><path d="M15 12a5 5 0 0 0-5-5H7a5 5 0 0 0-5 5v3a5 5 0 0 0 5 5h3a5 5 0 0 0 5-5v-3"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-col-title">Belanja</h4>
+      <ul class="footer-links">
+        <li><a href="katalog.html">Katalog Produk</a></li>
+        <li><a href="#">Koleksi Terbaru</a></li>
+        <li><a href="#">Sale</a></li>
+        <li><a href="#">Brand</a></li>
+        <li><a href="#">Gift Card</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-col-title">Bantuan</h4>
+      <ul class="footer-links">
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Pengiriman</a></li>
+        <li><a href="#">Pengembalian</a></li>
+        <li><a href="#">Panduan Ukuran</a></li>
+        <li><a href="#">Hubungi Kami</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-col-title">Tentang</h4>
+      <ul class="footer-links">
+        <li><a href="#">Filosofi LVRE</a></li>
+        <li><a href="#">Brand Lokal</a></li>
+        <li><a href="arsip-artikel.html">Artikel</a></li>
+        <li><a href="#">Karir</a></li>
+        <li><a href="#">Kebijakan Privasi</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 LVRE. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Syarat & Ketentuan</a>
+      <a href="#">Kebijakan Privasi</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Header scroll effect
+  window.addEventListener('scroll', () => {
+    const header = document.getElementById('site-header');
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+
+  // Shipping selection
+  function selectShipping(element) {
+    document.querySelectorAll('.shipping-options .option-item').forEach(item => {
+      item.classList.remove('selected');
+    });
+    element.classList.add('selected');
+  }
+
+  // Payment selection
+  function selectPayment(element) {
+    document.querySelectorAll('.payment-card').forEach(card => {
+      card.classList.remove('selected');
+    });
+    element.classList.add('selected');
+  }
+
+  // Fade-up animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Place order button
+  document.querySelector('.place-order-btn').addEventListener('click', function() {
+    const terms = document.getElementById('terms');
+    if (!terms.checked) {
+      alert('Mohon setujui Syarat & Ketentuan untuk melanjutkan pesanan.');
+      return;
+    }
+
+    // Simulate order processing
+    this.innerHTML = '<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="animation: spin 1s linear infinite"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg> Memproses...';
+    this.style.pointerEvents = 'none';
+
+    setTimeout(() => {
+      alert('Pesanan berhasil dibuat! Terima kasih telah berbelanja di LVRE.');
+      // In production, redirect to order confirmation page
+    }, 2000);
+  });
+</script>
+
+<style>
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+</style>
+
+</body>
+</html>

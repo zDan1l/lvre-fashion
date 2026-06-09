@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seni Berpaca nan Minimalis: Kurasi Wardrobe Essentials untuk 2025 — The Journal — LVRE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── DETAIL ARTIKEL PAGE STYLES ───────────────────── */
+    .article-detail {
+      padding: 0 var(--container-padding) 6rem;
+    }
+
+    .article-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+    }
+
+    .article-meta {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
+      font-size: 15px;
+      color: var(--ink-muted);
+    }
+    .article-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .article-tag-detail {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1rem;
+    }
+
+    .article-title-detail {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+
+    .article-subtitle-detail {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--ink-soft);
+      font-style: italic;
+      font-family: var(--serif);
+    }
+
+    /* Featured Image */
+    .article-hero-img {
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      background: var(--warm-sand);
+      margin-bottom: 3rem;
+    }
+    .article-hero-img img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    /* Article Content */
+    .article-content {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      font-size: 17px;
+      line-height: 1.9;
+      color: var(--ink-soft);
+    }
+
+    .article-body p {
+      margin-bottom: 1.5rem;
+    }
+
+    .article-body h2 {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin: 2.5rem 0 1rem;
+    }
+
+    .article-body h3 {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin: 2rem 0 0.8rem;
+    }
+
+    .article-body blockquote {
+      border-left: 3px solid var(--terracotta);
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+    }
+
+    .article-body li {
+      margin-bottom: 0.5rem;
+      padding-left: 0.5rem;
+    }
+
+    .article-body li::marker {
+      color: var(--terracotta);
+    }
+
+    /* Article Images */
+    .article-img-large {
+      margin: 2.5rem 0;
+    }
+    .article-img-caption {
+      font-size: 14px;
+      color: var(--ink-muted);
+      text-align: center;
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+
+    /* Sidebar */
+    .article-sidebar {
+      position: sticky;
+      top: calc(var(--header-height) + 2rem);
+      height: fit-content;
+    }
+
+    .sidebar-widget {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .sidebar-widget:last-child {
+      border-bottom: none;
+    }
+
+    .sidebar-title {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    .author-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 1.5rem;
+      background: var(--cream);
+      border: 1px solid var(--border);
+    }
+
+    .author-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+
+    .author-name {
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .author-role {
+      font-size: 14px;
+      color: var(--ink-muted);
+      margin-top: 0.3rem;
+    }
+
+    .author-bio {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--ink-soft);
+      margin-top: 1rem;
+    }
+
+    /* Related Articles */
+    .related-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .related-item {
+      display: flex;
+      gap: 1rem;
+      text-decoration: none;
+      transition: opacity 0.25s;
+    }
+    .related-item:hover { opacity: 0.8; }
+
+    .related-item-img {
+      width: 80px;
+      height: 80px;
+      flex-shrink: 0;
+      overflow: hidden;
+      background: var(--warm-sand);
+    }
+
+    .related-item-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .related-item-tag {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+    }
+
+    .related-item-title {
+      font-family: var(--serif);
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    /* Tags Widget */
+    .tags-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag-pill {
+      padding: 0.35rem 0.8rem;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      font-size: 14px;
+      color: var(--ink-soft);
+      text-decoration: none;
+      transition: background 0.25s, border-color 0.25s, color 0.25s;
+    }
+    .tag-pill:hover {
+      background: var(--terracotta);
+      border-color: var(--terracotta);
+      color: #fff;
+    }
+
+    /* Share Widget */
+    .share-buttons {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .share-btn {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      background: var(--off-white);
+      color: var(--ink-soft);
+      transition: background 0.25s, border-color 0.25s, color 0.25s;
+    }
+    .share-btn:hover {
+      background: var(--terracotta);
+      border-color: var(--terracotta);
+      color: #fff;
+    }
+
+    /* Article Navigation */
+    .article-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 5rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .article-nav-link {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+    }
+
+    .article-nav-link.prev {
+      align-items: flex-start;
+    }
+
+    .article-nav-link.next {
+      align-items: flex-end;
+      text-align: right;
+    }
+
+    .article-nav-label {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .article-nav-title {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.3;
+      transition: color 0.25s;
+    }
+    .article-nav-link:hover .article-nav-title { color: var(--terracotta); }
+
+    @media (max-width: 1024px) {
+      .article-content {
+        grid-template-columns: 1fr;
+      }
+      .article-sidebar {
+        position: static;
+        order: 2;
+      }
+      .article-body {
+        order: 1;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .article-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .article-nav {
+        grid-template-columns: 1fr;
+      }
+      .article-nav-link.next {
+        align-items: flex-start;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="site-header">
+  <a href="index.html" class="logo">LV<span>R</span>E</a>
+  <nav>
+    <a href="katalog.html">Katalog</a>
+    <a href="arsip-artikel.html" class="active">Artikel</a>
+    <a href="index.html">Brand</a>
+    <a href="katalog.html">Sale</a>
+    <a href="index.html">Tentang</a>
+  </nav>
+  <div class="header-actions">
+    <button class="icon-btn" aria-label="Cari">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+    </button>
+    <button class="icon-btn" aria-label="Akun">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+    </button>
+    <div class="cart-wrap">
+      <a href="keranjang.html" class="icon-btn" aria-label="Keranjang">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      </a>
+      <span class="cart-badge">2</span>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE BREADCRUMB -->
+<div class="page-header-simple">
+  <nav class="page-breadcrumb">
+    <a href="index.html">Beranda</a> <span>/</span>
+    <a href="arsip-artikel.html">The Journal</a> <span>/</span>
+    Seni Berpakaian Minimalis
+  </nav>
+</div>
+
+<!-- ARTICLE DETAIL -->
+<div class="article-detail fade-up">
+
+  <!-- Article Header -->
+  <div class="article-header">
+    <span class="article-tag-detail">Editor's Pick</span>
+    <h1 class="article-title-detail">Seni Berpakaian Minimalis: Kurasi Wardrobe Essentials untuk 2025</h1>
+    <p class="article-subtitle-detail">"Minimalisme bukan berarti membosankan. Temukan bagaimana membangun wardrobe fungsional dengan 10 essentials yang tak lekang oleh waktu."</p>
+    <div class="article-meta">
+      <span class="article-meta-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        15 Januari 2025
+      </span>
+      <span class="article-meta-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Oleh Sarah Wijaya
+      </span>
+      <span class="article-meta-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        8 menit baca
+      </span>
+    </div>
+  </div>
+
+  <!-- Hero Image -->
+  <div class="article-hero-img">
+    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&q=80" alt="Minimalist Wardrobe Essentials">
+  </div>
+
+  <!-- Article Content -->
+  <div class="article-content">
+
+    <!-- Main Content -->
+    <article class="article-body">
+      <p>Minimalisme dalam fashion sering disalahartikan sebagai pakaian yang membosankan atau kurang menarik. Padahal, konsep sebenarnya jauh lebih mendalam: tentang <em>intentional choices</em>, kualitas over quantity, dan membangun wardrobe yang bekerja untuk Anda — bukan sebaliknya.</p>
+
+      <p>Meskipun tren fashion datang dan pergi, ada certain pieces yang tetap relevan dari musim ke musim, tahun ke tahun. Ini adalah所谓的 <em>wardrobe essentials</em> — fondasi dari gaya minimalis yang elegan dan fungsional.</p>
+
+      <blockquote>
+        "Fashion is not about standing out but about being remembered for the right reasons."
+      </blockquote>
+
+      <h2>Apa itu Wardrobe Essentials?</h2>
+
+      <p>Wardrobe essentials adalah item pakaian yang <strong>serbaguna, timeless, dan mudah dipadukan</strong>. Mereka adalah "workhorses" dari lemari Anda — piece yang bisa Anda andalkan untuk berbagai occasions, dari casual hangout hingga meeting penting.</p>
+
+      <p>Kunci dari wardrobe essentials yang baik adalah <strong>kualitas material</strong> dan <strong>siluet yang flattering</strong>. Investasi di sini akan terbayar dalam jangka panjang — tidak hanya lebih tahan lama, tapi juga terlihat dan terasa lebih premium.</p>
+
+      <h3>Tanda-tanda Wardrobe Essentials yang Baik:</h3>
+
+      <ul>
+        <li>Bisa dipadukan dengan minimal 3 outfit berbeda</li>
+        <li>Terbuat dari material berkualitas (tahan lama)</li>
+        <li>Siluet yang cocok dengan bentuk tubuh Anda</li>
+        <li>Warna netral yang mudah di-combine</li>
+        <li>Mencerminkan personal style Anda</li>
+      </ul>
+
+      <h2>10 Wardrobe Essentials untuk 2025</h2>
+
+      <div class="article-img-large">
+        <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=1000&q=80" alt="White Button Down Shirt" style="width:100%;height:auto;">
+        <p class="article-img-caption">White button-down shirt: essential yang tak lekang oleh waktu.</p>
+      </div>
+
+      <p>Berikut adalah kurasi essentials yang akan menjadi fondasi wardrobe minimalis Anda di tahun 2025:</p>
+
+      <ol>
+        <li><strong>White Button-Down Shirt</strong> — Classic piece yang bisa di-dress up atau down. Pilih material cotton atau linen berkualitas untuk comfort maksimal.</li>
+        <li><strong>Well-Fitted Blazer</strong> — Investasi worth-it yang instantly elevates any outfit. Neutral colors like black, navy, atau tan paling versatile.</li>
+        <li><strong>Straight-Leg Trousers</strong> — Balance antara comfort dan sophistication. Hitam, charcoal, atau khaki adalah safe bets.</li>
+        <li><strong>Quality Denim</strong> — Satu atau dua pasang jeans dengan fit yang sempurna. Raw denim atau selvedge untuk investment piece.</li>
+        <li><strong>Silk or Satin Camisole</strong> — Untuk effortless elegance saat musim panas atau sebagai layering piece.</li>
+        <li><strong>Cashmere Sweater</strong> — Warm, luxurious, dan timeless. Cream, grey, atau black colors paling versatile.</li>
+        <li><strong>Trench Coat</strong> — Outerwear yang classic dan sophisticated. Tan atau beige shades work with almost everything.</li>
+        <li><strong>Little Black Dress</strong> — Or little black anything — piece versatile untuk occasions apapun.</li>
+        <li><strong>Quality Leather Boots</strong> — Footwear investment yang bertahun-tahun tetap stylish. Care for them properly.</li>
+        <li><strong>Structured Handbag</strong> — Satu bag yang "does it all". Quality over quantity always applies here.</li>
+      </ol>
+
+      <div class="article-img-large">
+        <img src="https://images.unsplash.com/photo-1550614000-4b9519e002a0?w=1000&q=80" alt="Minimalist Wardrobe Organization" style="width:100%;height:auto;">
+        <p class="article-img-caption">Organisasi wardrobe minimalis: quality over quantity.</p>
+      </div>
+
+      <h2>Memulai Journey Menuju Minimalism</h2>
+
+      <p>Transisi ke wardrobe minimalis tidak terjadi overnight. Start dengan decluttering: evaluate each piece, tanya apakah itu truly sparks joy atau serves purpose. Donate, sell, atau recycle yang tidak lagi needed.</p>
+
+      <p>Focus pada <em>building, not replacing</em>. Tambah essentials satu per satu, prioritize quality, dan patient dengan process. Hasilnya: wardrobe yang curated, manageable, dan uniquely yours.</p>
+
+      <h2>Kesimpulan</h2>
+
+      <p>Minimalisme dalam fashion adalah tentang <strong>less but better</strong>. Dengan kurasi essentials yang tepat, Anda akan memiliki lebih banyak outfit options dengan fewer pieces — dan selalu terlihat polished, intentional, dan uniquely you.</p>
+
+      <p>Ready to start? Evaluate your current wardrobe, identify gaps, dan begin adding essentials satu per satu. The journey towards a more intentional closet starts now.</p>
+    </article>
+
+    <!-- Sidebar -->
+    <aside class="article-sidebar">
+
+      <!-- Author Widget -->
+      <div class="sidebar-widget">
+        <h4 class="sidebar-title">Tentang Penulis</h4>
+        <div class="author-card">
+          <div class="author-avatar">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80" alt="Sarah Wijaya" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="author-name">Sarah Wijaya</div>
+          <div class="author-role">Fashion Editor, LVRE</div>
+          <p class="author-bio">Fashion enthusiast dengan passion untuk sustainable style dan timeless elegance. Memberikan tips dan inspirasi untuk wardrobe yang meaningful.</p>
+        </div>
+      </div>
+
+      <!-- Share Widget -->
+      <div class="sidebar-widget">
+        <h4 class="sidebar-title">Bagikan Artikel</h4>
+        <div class="share-buttons">
+          <a href="#" class="share-btn" aria-label="Share to Facebook">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" class="share-btn" aria-label="Share to Twitter">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+          </a>
+          <a href="#" class="share-btn" aria-label="Share to WhatsApp">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M17.47 15.32c-.38-.19-.8-.3-1.22-.3s-.84.11-1.22.3c-.38.19-.69.47-.9.81s-.32.74-.32 1.18c0 .44.11.83.32 1.18s.52.62.9.81c.38.19.8.3 1.22.3s.84-.11 1.22-.3c.38-.19.69-.47.9-.81s.32-.74.32-1.18c0-.44-.11-.83-.32-1.18s-.52-.62-.9-.81zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3-12h-2v4h-4v2h4v4h2v-4h4v-2h-4V8z"/></svg>
+          </a>
+          <a href="#" class="share-btn" aria-label="Copy Link">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Related Articles -->
+      <div class="sidebar-widget">
+        <h4 class="sidebar-title">Artikel Terkait</h4>
+        <div class="related-list">
+          <a href="detail-artikel.html" class="related-item">
+            <div class="related-item-img">
+              <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=200&q=80" alt="Related" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="related-item-content">
+              <span class="related-item-tag">Style Guide</span>
+              <span class="related-item-title">5 Palette Warna Earthy untuk Musim Hujan</span>
+            </div>
+          </a>
+          <a href="detail-artikel.html" class="related-item">
+            <div class="related-item-img">
+              <img src="https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?w=200&q=80" alt="Related" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="related-item-content">
+              <span class="related-item-tag">Trend</span>
+              <span class="related-item-title">Quiet Luxury: Tren Elegan 2025</span>
+            </div>
+          </a>
+          <a href="detail-artikel.html" class="related-item">
+            <div class="related-item-img">
+              <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=200&q=80" alt="Related" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="related-item-content">
+              <span class="related-item-tag">Style Guide</span>
+              <span class="related-item-title">Styling Oversized Blazer</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Tags Widget -->
+      <div class="sidebar-widget">
+        <h4 class="sidebar-title">Tags</h4>
+        <div class="tags-cloud">
+          <a href="arsip-artikel.html" class="tag-pill">Minimalism</a>
+          <a href="arsip-artikel.html" class="tag-pill">Wardrobe</a>
+          <a href="arsip-artikel.html" class="tag-pill">Style Guide</a>
+          <a href="arsip-artikel.html" class="tag-pill">Essentials</a>
+          <a href="arsip-artikel.html" class="tag-pill">2025 Trends</a>
+          <a href="arsip-artikel.html" class="tag-pill">Capsule</a>
+        </div>
+      </div>
+
+    </aside>
+
+  </div>
+
+  <!-- Article Navigation -->
+  <nav class="article-nav">
+    <a href="detail-artikel.html" class="article-nav-link prev">
+      <span class="article-nav-label">← Artikel Sebelumnya</span>
+      <span class="article-nav-title">Kisah di Balik Naura Studio: Dari Home Industry ke National Brand</span>
+    </a>
+    <a href="detail-artikel.html" class="article-nav-link next">
+      <span class="article-nav-label">Artikel Selanjutnya →</span>
+      <span class="article-nav-title">Cara Merawat Linen Agar Awet dan Tetap Lembut</span>
+    </a>
+  </nav>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">LV<span>R</span>E</a>
+      <p class="footer-tagline">Live Fashion Revolution Experience. Menghadirkan fashion editorial Indonesia terkurasi untuk style yang abadi.</p>
+      <div class="footer-socials">
+        <a href="#" class="social-link" aria-label="Instagram">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2 0 2 .3 2.7.7.7.4 1.3 1 1.7 1.7.4.7.6 1.5.7 2.7 0 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c0 1.2-.3 2-.7 2.7-.4.7-1 1.3-1.7 1.7-.7.4-1.5.6-2.7.7-1.2 0-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2 0-2-.3-2.7-.7-.7-.4-1.3-1-1.7-1.7-.4-.7-.6-1.5-.7-2.7 0-1.2-.1-1.6-.1-4.8s0-3.6.1-4.8c0-1.2.3-2 .7-2.7.4-.7 1-1.3 1.7-1.7.7-.4 1.5-.6 2.7-.7 1.2 0 1.6-.1 4.8-.1zm0-2.2c-3.3 0-3.7 0-4.9.1-1.3 0-2.2.3-3 .7-.8.4-1.5.9-2.2 1.6-.7.7-1.2 1.4-1.6 2.2-.4.8-.7 1.7-.7 3 0 1.2-.1 1.6-.1 4.9s0 3.7.1 4.9c0 1.3.3 2.2.7 3 .4.8.9 1.5 1.6 2.2.7.7 1.4 1.2 2.2 1.6.8.4 1.7.7 3 .7 1.2 0 1.6.1 4.9.1s3.7 0 4.9-.1c1.3 0 2.2-.3 3-.7.8-.4 1.5-.9 2.2-1.6.7-.7 1.2-1.4 1.6-2.2.4-.8.7-1.7.7-3 0-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c0-1.3-.3-2.2-.7-3-.4-.8-.9-1.5-1.6-2.2-.7-.7-1.4-1.2-2.2-1.6-.8-.4-1.7-.7-3-.7-1.2 0-1.6-.1-4.9-.1z"/><circle cx="12" cy="12" r="3.5"/><path d="M18 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="TikTok">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M19.6 4.5c-.8.3-1.7.5-2.6.5-.5 0-1-.1-1.5-.2V15c0 3-2.4 5.5-5.5 5.5S4.5 18 4.5 15s2.4-5.5 5.5-5.5c.4 0 .7 0 1.1.1v2.7c-.3-.1-.7-.2-1.1-.2-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3V0h2.5c0 .2 0 .5.1.7.4 2.1 2.2 3.8 4.4 3.8v.5c0 0-.4.3-.4-.5z"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="YouTube">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.2c-.3-1-1-1.8-2-2-1.7-.5-8.5-.5-8.5-.5s-6.8 0-8.5.5c-1 .2-1.8 1-2 2-.5 1.7-.5 5.2-.5 5.2s0 3.5.5 5.2c.3 1 1 1.8 2 2 1.7.5 8.5.5 8.5.5s6.8 0 8.5-.5c1-.2 1.8-1 2-2 .5-1.7.5-5.2.5-5.2s0-3.5-.5-5.2zm-12.7 7.8V7.6l5.7 3.2-5.7 3.2z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-col-title">Belanja</h4>
+      <ul class="footer-links">
+        <li><a href="katalog.html">Katalog Produk</a></li>
+        <li><a href="katalog.html">Koleksi Baru</a></li>
+        <li><a href="katalog.html">Sale</a></li>
+        <li><a href="#">Brand</a></li>
+        <li><a href="#">Gift Card</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-col-title">The Journal</h4>
+      <ul class="footer-links">
+        <li><a href="arsip-artikel.html">Semua Artikel</a></li>
+        <li><a href="arsip-artikel.html">Style Guide</a></li>
+        <li><a href="arsip-artikel.html">Brand Story</a></li>
+        <li><a href="arsip-artikel.html">Tips</a></li>
+        <li><a href="arsip-artikel.html">Trend</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-col-title">Bantuan</h4>
+      <ul class="footer-links">
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Pengiriman</a></li>
+        <li><a href="#">Pengembalian</a></li>
+        <li><a href="#">Size Guide</a></li>
+        <li><a href="#">Hubungi Kami</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 LVRE. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Header scroll effect
+const header = document.getElementById('site-header');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+});
+
+// Fade-up animation
+const observerOptions = { threshold: 0.1 };
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

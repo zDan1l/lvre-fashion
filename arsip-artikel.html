@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arsip Artikel — The Journal — LVRE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── ARSIP ARTIKEL PAGE STYLES ───────────────────── */
+    .arsip-layout {
+      padding: 0 var(--container-padding) 6rem;
+    }
+
+    /* Featured Article */
+    .featured-article {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3rem;
+      margin-bottom: 5rem;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .featured-article-img {
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      background: var(--light-gray);
+    }
+    .featured-article-img img {
+      height: 100%;
+      transition: transform 0.5s ease;
+    }
+    .featured-article:hover .featured-article-img img { transform: scale(1.03); }
+
+    .featured-article-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 1rem 0;
+    }
+
+    .article-tag {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--primary-blue);
+      margin-bottom: 0.8rem;
+    }
+
+    .featured-article-title {
+      font-family: var(--heading);
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--black);
+      margin-bottom: 1.2rem;
+      text-decoration: none;
+    }
+
+    .featured-article-excerpt {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--dark-gray);
+      margin-bottom: 1.5rem;
+      max-width: 520px;
+    }
+
+    .article-meta-row {
+      display: flex;
+      gap: 2rem;
+      font-size: 15px;
+      color: var(--medium-gray);
+    }
+    .article-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* Filter & Sort Bar */
+    .arsip-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .category-filter {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-chip {
+      padding: 0.5rem 1.2rem;
+      border: 1px solid var(--border);
+      background: var(--off-white);
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--dark-gray);
+      text-decoration: none;
+      transition: background 0.25s, border-color 0.25s, color 0.25s;
+    }
+    .filter-chip:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
+    .filter-chip.active {
+      background: var(--primary-blue);
+      border-color: var(--primary-blue);
+      color: #fff;
+    }
+
+    .sort-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .sort-label {
+      font-size: 15px;
+      color: var(--dark-gray);
+    }
+    .sort-select {
+      padding: 0.4rem 2rem 0.4rem 0.8rem;
+      border: 1px solid var(--border);
+      background: var(--off-white);
+      font-family: var(--body);
+      font-size: 14px;
+      color: var(--black);
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23000000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.6rem center;
+    }
+
+    /* Article Grid */
+    .article-grid-arsip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+    }
+
+    .article-card-arsip {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .article-card-arsip-img {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: var(--light-gray);
+      margin-bottom: 1rem;
+    }
+    .article-card-arsip-img img {
+      height: 100%;
+      transition: transform 0.5s ease;
+    }
+    .article-card-arsip:hover .article-card-arsip-img img { transform: scale(1.05); }
+
+    .article-card-arsip-tag {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--primary-blue);
+      margin-bottom: 0.4rem;
+    }
+
+    .article-card-arsip-title {
+      font-family: var(--heading);
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--black);
+      margin-bottom: 0.6rem;
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+    .article-card-arsip:hover .article-card-arsip-title { color: var(--primary-blue); }
+
+    .article-card-arsip-excerpt {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--dark-gray);
+      margin-bottom: 0.8rem;
+      flex: 1;
+    }
+
+    .article-card-arsip-meta {
+      font-size: 15px;
+      color: var(--medium-gray);
+      letter-spacing: 0.1em;
+    }
+
+    /* Pagination */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 5rem;
+    }
+    .page-link {
+      width: 40px; height: 40px;
+      display: flex;
+      align-items: center; justify-content: center;
+      border: 1px solid var(--border);
+      font-size: 15px;
+      color: var(--dark-gray);
+      text-decoration: none;
+      transition: background 0.25s, border-color 0.25s, color 0.25s;
+    }
+    .page-link:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
+    .page-link.active {
+      background: var(--primary-blue);
+      border-color: var(--primary-blue);
+      color: #fff;
+    }
+    .page-nav {
+      padding: 0 0.8rem;
+      font-size: 14px;
+      color: var(--dark-gray);
+    }
+
+    /* Newsletter Box */
+    .newsletter-box {
+      margin-top: 6rem;
+      padding: 3rem;
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+    .newsletter-box-title {
+      font-family: var(--heading);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 0.8rem;
+    }
+    .newsletter-box-sub {
+      font-size: 15px;
+      color: var(--dark-gray);
+      max-width: 420px;
+      margin: 0 auto 1.5rem;
+    }
+    .newsletter-form {
+      display: flex;
+      max-width: 420px;
+      margin: 0 auto;
+      gap: 0.5rem;
+    }
+    .newsletter-input {
+      flex: 1;
+      padding: 0.85rem 1.2rem;
+      border: 1px solid var(--border);
+      background: var(--off-white);
+      font-family: var(--body);
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.25s;
+    }
+    .newsletter-input:focus { border-color: var(--primary-blue); }
+
+    @media (max-width: 1024px) {
+      .featured-article { grid-template-columns: 1fr; gap: 2rem; }
+      .featured-article-img { aspect-ratio: 16/9; }
+      .article-grid-arsip { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    }
+
+    @media (max-width: 600px) {
+      .arsip-toolbar { flex-direction: column; gap: 1rem; align-items: stretch; }
+      .article-grid-arsip { grid-template-columns: 1fr; }
+      .newsletter-form { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="site-header">
+  <a href="index.html" class="logo">LV<span>R</span>E</a>
+  <nav>
+    <a href="katalog.html">Katalog</a>
+    <a href="arsip-artikel.html" class="active">Artikel</a>
+    <a href="index.html">Brand</a>
+    <a href="katalog.html">Sale</a>
+    <a href="index.html">Tentang</a>
+  </nav>
+  <div class="header-actions">
+    <button class="icon-btn" aria-label="Cari">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+    </button>
+    <button class="icon-btn" aria-label="Akun">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+    </button>
+    <div class="cart-wrap">
+      <a href="keranjang.html" class="icon-btn" aria-label="Keranjang">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      </a>
+      <span class="cart-badge">2</span>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <nav class="page-breadcrumb">
+    <a href="index.html">Beranda</a> <span>/</span> The Journal
+  </nav>
+  <h1 class="page-title">The Journal</h1>
+  <p class="page-subtitle">Dari inspirasi style, tips fashion, hingga cerita di balik brand lokal favorit. Temukan reads yang menginspirasi wardrobe Anda.</p>
+</div>
+
+<!-- ARSIP LAYOUT -->
+<div class="arsip-layout fade-up">
+
+  <!-- FEATURED ARTICLE -->
+  <a href="detail-artikel.html" class="featured-article">
+    <div class="featured-article-img">
+      <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1000&q=80" alt="Featured Article">
+    </div>
+    <div class="featured-article-content">
+      <span class="article-tag">Editor's Pick</span>
+      <h2 class="featured-article-title">Seni Berpakaian Minimalis: Kurasi Wardrobe Essentials untuk 2025</h2>
+      <p class="featured-article-excerpt">Minimalisme bukan berarti membosankan. Temukan bagaimana membangun wardrobe fungsional dengan 10 essentials yang tak lekang oleh waktu.</p>
+      <div class="article-meta-row">
+        <span class="article-meta-item">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          15 Januari 2025
+        </span>
+        <span class="article-meta-item">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          8 min baca
+        </span>
+      </div>
+    </div>
+  </a>
+
+  <!-- TOOLBAR -->
+  <div class="arsip-toolbar">
+    <div class="category-filter">
+      <a href="#" class="filter-chip active">Semua</a>
+      <a href="#" class="filter-chip">Style Guide</a>
+      <a href="#" class="filter-chip">Brand Story</a>
+      <a href="#" class="filter-chip">Tips</a>
+      <a href="#" class="filter-chip">Trend</a>
+    </div>
+    <div class="sort-wrap">
+      <span class="sort-label">Urutkan:</span>
+      <select class="sort-select">
+        <option>Terbaru</option>
+        <option>Populer</option>
+        <option>Terlama</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- ARTICLE GRID -->
+  <div class="article-grid-arsip">
+
+    <!-- Article 1 -->
+    <a href="detail-artikel.html" class="article-card-arsip">
+      <div class="article-card-arsip-img">
+        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&q=80" alt="Article">
+      </div>
+      <span class="article-card-arsip-tag">Style Guide</span>
+      <h3 class="article-card-arsip-title">5 Palette Warna Earthy untuk Outfit Musim Hujan</h3>
+      <p class="article-card-arsip-excerpt">Tetap tampil stylish dengan pilihan warna yang cocok untuk cuaca berawan.</p>
+      <div class="article-card-arsip-meta">12 Jan 2025 · 5 min</div>
+    </a>
+
+    <!-- Article 2 -->
+    <a href="detail-artikel.html" class="article-card-arsip">
+      <div class="article-card-arsip-img">
+        <img src="https://images.unsplash.com/photo-1558769132-cb1aea11c0dc?w=600&q=80" alt="Article">
+      </div>
+      <span class="article-card-arsip-tag">Brand Story</span>
+      <h3 class="article-card-arsip-title">Kisah di Balik Naura Studio: Dari Home Industry to National Brand</h3>
+      <p class="article-card-arsip-excerpt">Perjalanan inspiratif brand lokal yang memulai dari garasi kini mendunia.</p>
+      <div class="article-card-arsip-meta">10 Jan 2025 · 12 min</div>
+    </a>
+
+    <!-- Article 3 -->
+    <a href="detail-artikel.html" class="article-card-arsip">
+      <div class="article-card-arsip-img">
+        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80" alt="Article">
+      </div>
+      <span class="article-card-arsip-tag">Tips</span>
+      <h3 class="article-card-arsip-title">Cara Merawat Linen Agar Awet dan Tetap Lembut</h3>
+      <p class="article-card-arsip-excerpt">Tips praktis perawatan bahan linen favorite untuk jangka panjang.</p>
+      <div class="article-card-arsip-meta">8 Jan 2025 · 4 min</div>
+    </a>
+
+    <!-- Article 4 -->
+    <a href="detail-artikel.html" class="article-card-arsip">
+      <div class="article-card-arsip-img">
+        <img src="https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?w=600&q=80" alt="Article">
+      </div>
+      <span class="article-card-arsip-tag">Trend</span>
+      <h3 class="article-card-arsip-title">Quiet Luxury: Tren Elegan yang Mendominasi 2025</h3>
+      <p class="article-card-arsip-excerpt">Mengapa fashion Indonesia semakin condong ke arah minimalis berkualitas.</p>
+      <div class="article-card-arsip-meta">5 Jan 2025 · 7 min</div>
+    </a>
+
+    <!-- Article 5 -->
+    <a href="detail-artikel.html" class="article-card-arsip">
+      <div class="article-card-arsip-img">
+        <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&q=80" alt="Article">
+      </div>
+      <span class="article-card-arsip-tag">Style Guide</span>
+      <h3 class="article-card-arsip-title">Mix & Match: Styling Oversized Blazer untuk Berbagai Occasions</h3>
+      <p class="article-card-arsip-excerpt">Dari casual brunch sampai dinner date, blazer oversized selalu aman.</p>
+      <div class="article-card-arsip-meta">3 Jan 2025 · 6 min</div>
+    </a>
+
+    <!-- Article 6 -->
+    <a href="detail-artikel.html" class="article-card-arsip">
+      <div class="article-card-arsip-img">
+        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&q=80" alt="Article">
+      </div>
+      <span class="article-card-arsip-tag">Brand Story</span>
+      <h3 class="article-card-arsip-title">Fiera Label: Mendefinisikan Modern Femininity</h3>
+      <p class="article-card-arsip-excerpt">Bagaimana Fiera menggabungkan siluet klasik dengan estetika kontemporer.</p>
+      <div class="article-card-arsip-meta">1 Jan 2025 · 9 min</div>
+    </a>
+
+    <!-- Article 7 -->
+    <a href="detail-artikel.html" class="article-card-arsip">
+      <div class="article-card-arsip-img">
+        <img src="https://images.unsplash.com/photo-1485230946086-1d99d526c458?w=600&q=80" alt="Article">
+      </div>
+      <span class="article-card-arsip-tag">Tips</span>
+      <h3 class="article-card-arsip-title">Shoe Care 101: Tips Rawat Footwear Leather</h3>
+      <p class="article-card-arsip-excerpt">Panduan lengkap merawat sepatu kulit agar tahan bertahun-tahun.</p>
+      <div class="article-card-arsip-meta">28 Des 2024 · 5 min</div>
+    </a>
+
+    <!-- Article 8 -->
+    <a href="detail-artikel.html" class="article-card-arsip">
+      <div class="article-card-arsip-img">
+        <img src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=600&q=80" alt="Article">
+      </div>
+      <span class="article-card-arsip-tag">Style Guide</span>
+      <h3 class="article-card-arsip-title">Office Core: Balancing Professional & Personal Style</h3>
+      <p class="article-card-arsip-excerpt">Cara tetap tampil profesional tanpa kehilangan identitas pribadi di kantor.</p>
+      <div class="article-card-arsip-meta">25 Des 2024 · 8 min</div>
+    </a>
+
+    <!-- Article 9 -->
+    <a href="detail-artikel.html" class="article-card-arsip">
+      <div class="article-card-arsip-img">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80" alt="Article">
+      </div>
+      <span class="article-card-arsip-tag">Trend</span>
+      <h3 class="article-card-arsip-title">Sustainable Fashion: Apa yang Perlu Kamu Ketahui?</h3>
+      <p class="article-card-arsip-excerpt">Memahami konsep fashion berkelanjutan dan brand lokal yang peduli lingkungan.</p>
+      <div class="article-card-arsip-meta">22 Des 2024 · 10 min</div>
+    </a>
+
+  </div>
+
+  <!-- PAGINATION -->
+  <nav class="pagination">
+    <a href="#" class="page-link" aria-label="Previous">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+    </a>
+    <a href="#" class="page-link active">1</a>
+    <a href="#" class="page-link">2</a>
+    <a href="#" class="page-link">3</a>
+    <span class="page-nav">...</span>
+    <a href="#" class="page-link">8</a>
+    <a href="#" class="page-link" aria-label="Next">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+  </nav>
+
+  <!-- NEWSLETTER BOX -->
+  <div class="newsletter-box">
+    <h3 class="newsletter-box-title">Never Miss a Story</h3>
+    <p class="newsletter-box-sub">Dapatkan update artikel terbaru, tips eksklusif, dan inspirasi style langsung ke inbox Anda.</p>
+    <form class="newsletter-form">
+      <input type="email" class="newsletter-input" placeholder="Email address" required>
+      <button type="submit" class="btn-primary btn-small">Subscribe</button>
+    </form>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">LV<span>R</span>E</a>
+      <p class="footer-tagline">Live Fashion Revolution Experience. Menghadirkan fashion editorial Indonesia terkurasi untuk style yang abadi.</p>
+      <div class="footer-socials">
+        <a href="#" class="social-link" aria-label="Instagram">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2 0 2 .3 2.7.7.7.4 1.3 1 1.7 1.7.4.7.6 1.5.7 2.7 0 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c0 1.2-.3 2-.7 2.7-.4.7-1 1.3-1.7 1.7-.7.4-1.5.6-2.7.7-1.2 0-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2 0-2-.3-2.7-.7-.7-.4-1.3-1-1.7-1.7-.4-.7-.6-1.5-.7-2.7 0-1.2-.1-1.6-.1-4.8s0-3.6.1-4.8c0-1.2.3-2 .7-2.7.4-.7 1-1.3 1.7-1.7.7-.4 1.5-.6 2.7-.7 1.2 0 1.6-.1 4.8-.1zm0-2.2c-3.3 0-3.7 0-4.9.1-1.3 0-2.2.3-3 .7-.8.4-1.5.9-2.2 1.6-.7.7-1.2 1.4-1.6 2.2-.4.8-.7 1.7-.7 3 0 1.2-.1 1.6-.1 4.9s0 3.7.1 4.9c0 1.3.3 2.2.7 3 .4.8.9 1.5 1.6 2.2.7.7 1.4 1.2 2.2 1.6.8.4 1.7.7 3 .7 1.2 0 1.6.1 4.9.1s3.7 0 4.9-.1c1.3 0 2.2-.3 3-.7.8-.4 1.5-.9 2.2-1.6.7-.7 1.2-1.4 1.6-2.2.4-.8.7-1.7.7-3 0-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c0-1.3-.3-2.2-.7-3-.4-.8-.9-1.5-1.6-2.2-.7-.7-1.4-1.2-2.2-1.6-.8-.4-1.7-.7-3-.7-1.2 0-1.6-.1-4.9-.1z"/><circle cx="12" cy="12" r="3.5"/><path d="M18 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="TikTok">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M19.6 4.5c-.8.3-1.7.5-2.6.5-.5 0-1-.1-1.5-.2V15c0 3-2.4 5.5-5.5 5.5S4.5 18 4.5 15s2.4-5.5 5.5-5.5c.4 0 .7 0 1.1.1v2.7c-.3-.1-.7-.2-1.1-.2-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3V0h2.5c0 .2 0 .5.1.7.4 2.1 2.2 3.8 4.4 3.8v.5c0 0-.4.3-.4-.5z"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="YouTube">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.2c-.3-1-1-1.8-2-2-1.7-.5-8.5-.5-8.5-.5s-6.8 0-8.5.5c-1 .2-1.8 1-2 2-.5 1.7-.5 5.2-.5 5.2s0 3.5.5 5.2c.3 1 1 1.8 2 2 1.7.5 8.5.5 8.5.5s6.8 0 8.5-.5c1-.2 1.8-1 2-2 .5-1.7.5-5.2.5-5.2s0-3.5-.5-5.2zm-12.7 7.8V7.6l5.7 3.2-5.7 3.2z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-col-title">Belanja</h4>
+      <ul class="footer-links">
+        <li><a href="katalog.html">Katalog Produk</a></li>
+        <li><a href="katalog.html">Koleksi Baru</a></li>
+        <li><a href="katalog.html">Sale</a></li>
+        <li><a href="#">Brand</a></li>
+        <li><a href="#">Gift Card</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-col-title">The Journal</h4>
+      <ul class="footer-links">
+        <li><a href="arsip-artikel.html">Semua Artikel</a></li>
+        <li><a href="arsip-artikel.html">Style Guide</a></li>
+        <li><a href="arsip-artikel.html">Brand Story</a></li>
+        <li><a href="arsip-artikel.html">Tips</a></li>
+        <li><a href="arsip-artikel.html">Trend</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-col-title">Bantuan</h4>
+      <ul class="footer-links">
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Pengiriman</a></li>
+        <li><a href="#">Pengembalian</a></li>
+        <li><a href="#">Size Guide</a></li>
+        <li><a href="#">Hubungi Kami</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 LVRE. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Header scroll effect
+const header = document.getElementById('site-header');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+});
+
+// Fade-up animation
+const observerOptions = { threshold: 0.1 };
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

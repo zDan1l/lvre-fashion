@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kelola Pengguna — Admin LVRE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="admin-styles.css">
+</head>
+<body>
+
+<div class="admin-container">
+  <!-- Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="admin-logo">
+      <a href="../index.html">LV<span>R</span>E</a>
+    </div>
+    <ul class="admin-nav">
+      <li>
+        <a href="dashboard.html">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a href="kelola-artikel.html">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14,2 14,8 20,8"/></svg>
+          Kelola Artikel
+        </a>
+      </li>
+      <li>
+        <a href="kelola-produk.html">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Kelola Produk
+        </a>
+      </li>
+      <li>
+        <a href="kelola-pengguna.html" class="active">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Kelola Pengguna
+        </a>
+      </li>
+      <li>
+        <a href="kelola-transaksi.html">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          Kelola Transaksi
+        </a>
+      </li>
+      <li style="margin-top: 2rem;">
+        <a href="../index.html" style="color: rgba(255,255,255,0.5);">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Kembali ke Website
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="admin-content">
+    <!-- Header -->
+    <div class="admin-header">
+      <div>
+        <h1 class="admin-title">Kelola Pengguna</h1>
+        <p class="admin-subtitle">Kelola data pengguna dan akses sistem LVRE</p>
+      </div>
+      <button class="btn-primary">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Tambah Admin
+      </button>
+    </div>
+
+    <!-- User Stats -->
+    <div class="user-stats">
+      <div class="stat-card">
+        <div class="stat-value">1,245</div>
+        <div class="stat-label">Total Pengguna</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">1,198</div>
+        <div class="stat-label">Pengguna Aktif</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">42</div>
+        <div class="stat-label">Admin</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">5</div>
+        <div class="stat-label">Pending</div>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters-bar">
+      <div class="search-box">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" placeholder="Cari pengguna...">
+      </div>
+      <div class="filter-group">
+        <select class="filter-select">
+          <option>Semua Role</option>
+          <option>Super Admin</option>
+          <option>Admin</option>
+          <option>Customer</option>
+        </select>
+        <select class="filter-select">
+          <option>Semua Status</option>
+          <option>Aktif</option>
+          <option>Inactive</option>
+          <option>Pending</option>
+        </select>
+        <select class="filter-select">
+          <option>Urutkan: Terbaru</option>
+          <option>Terlama</option>
+          <option>Abjad A-Z</option>
+          <option>Abjad Z-A</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Users Table -->
+    <div class="users-table">
+      <div class="table-header">
+        <div></div>
+        <div>Nama & Email</div>
+        <div>Telepon</div>
+        <div>Role</div>
+        <div>Bergabung</div>
+        <div>Order</div>
+        <div>Status</div>
+        <div></div>
+      </div>
+
+      <div class="table-row">
+        <div class="user-avatar">SP</div>
+        <div class="user-info">
+          <h4>Sarah Putri</h4>
+          <div class="user-email">sarah.putri@email.com</div>
+        </div>
+        <div class="user-phone">+62 812-3456-7890</div>
+        <div class="user-role customer">Customer</div>
+        <div class="user-joined">12 Jan 2025</div>
+        <div class="user-orders">8 order</div>
+        <div class="user-status active">● Aktif</div>
+        <div class="user-actions">
+          <button class="action-btn" title="Edit">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+          <button class="action-btn block" title="Block">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+          </button>
+          <button class="action-btn delete" title="Hapus">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="table-row">
+        <div class="user-avatar">CM</div>
+        <div class="user-info">
+          <h4>Calista Moreno</h4>
+          <div class="user-email">calista.m@email.com</div>
+        </div>
+        <div class="user-phone">+62 813-4567-8901</div>
+        <div class="user-role customer">Customer</div>
+        <div class="user-joined">8 Jan 2025</div>
+        <div class="user-orders">12 order</div>
+        <div class="user-status active">● Aktif</div>
+        <div class="user-actions">
+          <button class="action-btn" title="Edit">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+          <button class="action-btn block" title="Block">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+          </button>
+          <button class="action-btn delete" title="Hapus">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="table-row">
+        <div class="user-avatar">AL</div>
+        <div class="user-info">
+          <h4>Admin LVRE</h4>
+          <div class="user-email">admin@lvre.com</div>
+        </div>
+        <div class="user-phone">+62 811-2222-3333</div>
+        <div class="user-role admin">Super Admin</div>
+        <div class="user-joined">1 Des 2024</div>
+        <div class="user-orders">—</div>
+        <div class="user-status active">● Aktif</div>
+        <div class="user-actions">
+          <button class="action-btn" title="Edit">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+          <button class="action-btn" title="Reset Password">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="table-row">
+        <div class="user-avatar">YS</div>
+        <div class="user-info">
+          <h4>Yasmin Salsabila</h4>
+          <div class="user-email">yasmin.s@email.com</div>
+        </div>
+        <div class="user-phone">+62 878-1234-5678</div>
+        <div class="user-role customer">Customer</div>
+        <div class="user-joined">15 Des 2024</div>
+        <div class="user-orders">5 order</div>
+        <div class="user-status active">● Aktif</div>
+        <div class="user-actions">
+          <button class="action-btn" title="Edit">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+          <button class="action-btn block" title="Block">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+          </button>
+          <button class="action-btn delete" title="Hapus">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="table-row">
+        <div class="user-avatar">NW</div>
+        <div class="user-info">
+          <h4>Nadhira Wijaya</h4>
+          <div class="user-email">nadhiraw@email.com</div>
+        </div>
+        <div class="user-phone">+62 857-8901-2345</div>
+        <div class="user-role customer">Customer</div>
+        <div class="user-joined">20 Des 2024</div>
+        <div class="user-orders">3 order</div>
+        <div class="user-status active">● Aktif</div>
+        <div class="user-actions">
+          <button class="action-btn" title="Edit">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+          <button class="action-btn block" title="Block">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+          </button>
+          <button class="action-btn delete" title="Hapus">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="table-row">
+        <div class="user-avatar">DP</div>
+        <div class="user-info">
+          <h4>Dina Pratama</h4>
+          <div class="user-email">dina.p@email.com</div>
+        </div>
+        <div class="user-phone">+62 895-6789-0123</div>
+        <div class="user-role customer">Customer</div>
+        <div class="user-joined">25 Des 2024</div>
+        <div class="user-orders">0 order</div>
+        <div class="user-status pending">⏳ Pending</div>
+        <div class="user-actions">
+          <button class="action-btn" title="Edit">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+          <button class="action-btn" title="Approve">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </button>
+          <button class="action-btn delete" title="Hapus">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="table-row">
+        <div class="user-avatar">RS</div>
+        <div class="user-info">
+          <h4>Rara Setiawan</h4>
+          <div class="user-email">rara.setiawan@email.com</div>
+        </div>
+        <div class="user-phone">+62 882-3456-7890</div>
+        <div class="user-role admin">Admin</div>
+        <div class="user-joined">10 Jan 2025</div>
+        <div class="user-orders">—</div>
+        <div class="user-status active">● Aktif</div>
+        <div class="user-actions">
+          <button class="action-btn" title="Edit">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+          <button class="action-btn block" title="Block">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+          </button>
+          <button class="action-btn delete" title="Hapus">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      <div class="pagination-info">Menampilkan 1–7 dari 1,245 pengguna</div>
+      <div class="pagination-controls">
+        <button class="page-btn">← Sebelumnya</button>
+        <button class="page-btn active">1</button>
+        <button class="page-btn">2</button>
+        <button class="page-btn">3</button>
+        <button class="page-btn">→ Selanjutnya</button>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+</body>
+</html>

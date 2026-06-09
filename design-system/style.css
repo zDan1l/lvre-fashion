@@ -1,0 +1,304 @@
+
+    /* ── DESIGN SYSTEM PAGE STYLES ───────────────────── */
+    .ds-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 6rem 6rem;
+    }
+
+    .ds-header {
+      padding: calc(var(--header-height) + 4rem) 0 4rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 4rem;
+    }
+
+    .ds-title {
+      font-family: var(--heading);
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 1rem;
+    }
+
+    .ds-subtitle {
+      font-size: 18px;
+      color: var(--dark-gray);
+      max-width: 600px;
+      line-height: 1.7;
+    }
+
+    .ds-section {
+      margin-bottom: 6rem;
+    }
+
+    .ds-section-title {
+      font-family: var(--heading);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--primary-blue);
+    }
+
+    .ds-subsection {
+      margin-bottom: 3rem;
+    }
+
+    .ds-subsection-title {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--primary-blue);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Color Palette */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .color-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .color-swatch {
+      height: 120px;
+      width: 100%;
+    }
+
+    .color-info {
+      padding: 1rem;
+      background: var(--pure-white);
+    }
+
+    .color-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 0.3rem;
+    }
+
+    .color-value {
+      font-size: 14px;
+      color: var(--medium-gray);
+      font-family: monospace;
+    }
+
+    .color-usage {
+      font-size: 13px;
+      color: var(--dark-gray);
+      margin-top: 0.5rem;
+      line-height: 1.5;
+    }
+
+    /* Typography */
+    .type-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+
+    .type-table th,
+    .type-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .type-table th {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--primary-blue);
+      background: var(--off-white);
+    }
+
+    .type-demo {
+      font-size: 16px;
+      color: var(--black);
+    }
+
+    .type-info {
+      font-size: 14px;
+      color: var(--dark-gray);
+    }
+
+    .type-usage {
+      font-size: 13px;
+      color: var(--medium-gray);
+      line-height: 1.5;
+    }
+
+    /* Spacing */
+    .spacing-showcase {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .spacing-item {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 1rem;
+      background: var(--off-white);
+      border-radius: 8px;
+    }
+
+    .spacing-visual {
+      background: var(--primary-blue);
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .spacing-info {
+      flex: 1;
+    }
+
+    .spacing-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 0.3rem;
+    }
+
+    .spacing-value {
+      font-size: 14px;
+      color: var(--medium-gray);
+      font-family: monospace;
+    }
+
+    /* Buttons Showcase */
+    .button-showcase {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 2rem;
+      background: var(--off-white);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .button-group-title {
+      width: 100%;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--primary-blue);
+      margin-bottom: 1rem;
+    }
+
+    /* Form Elements */
+    .form-showcase {
+      display: grid;
+      gap: 2rem;
+      max-width: 600px;
+    }
+
+    .form-showcase-item {
+      padding: 2rem;
+      background: var(--off-white);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .form-showcase-label {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--primary-blue);
+      margin-bottom: 1rem;
+    }
+
+    /* Components */
+    .component-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .component-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .component-preview {
+      padding: 2rem;
+      background: var(--off-white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .component-info {
+      padding: 1.5rem;
+    }
+
+    .component-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 0.5rem;
+    }
+
+    .component-desc {
+      font-size: 14px;
+      color: var(--dark-gray);
+      line-height: 1.6;
+    }
+
+    /* Alternative System */
+    .alt-system-notice {
+      background: #FFF8F0;
+      border-left: 4px solid #C4A484;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 4px;
+    }
+
+    .alt-system-notice-title {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #8B6F47;
+      margin-bottom: 0.5rem;
+    }
+
+    .alt-system-notice-text {
+      font-size: 14px;
+      color: #6B5B3F;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .ds-container {
+        padding: 0 1.5rem 3rem;
+      }
+      .ds-header {
+        padding: calc(var(--header-height) + 2rem) 0 2rem;
+      }
+      .color-grid {
+        grid-template-columns: 1fr;
+      }
+    }
