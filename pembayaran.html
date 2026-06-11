@@ -994,7 +994,8 @@
 
     setTimeout(() => {
       alert('Pesanan berhasil dibuat! Terima kasih telah berbelanja di LVRE.');
-      // In production, redirect to order confirmation page
+      // Redirect to order history page
+      window.location.href = 'history-transaksi.html';
     }, 2000);
   });
 </script>
