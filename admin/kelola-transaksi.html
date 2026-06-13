@@ -7,13 +7,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="admin-styles.css">
+<link rel="stylesheet" href="../css/admin-styles.css">
 </head>
 <body>
 
 <div class="admin-container">
+  <!-- Sidebar Overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
   <!-- Sidebar -->
-  <aside class="admin-sidebar">
+  <aside class="admin-sidebar" id="adminSidebar">
     <div class="admin-logo">
       <a href="../index.html">LV<span>R</span>E</a>
     </div>
@@ -62,6 +65,14 @@
     <!-- Header -->
     <div class="admin-header">
       <div>
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Menu">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
         <h1 class="admin-title">Kelola Transaksi</h1>
         <p class="admin-subtitle">Monitor dan kelola semua pesanan pelanggan</p>
       </div>
@@ -352,5 +363,9 @@
   </main>
 </div>
 
-</body>
-</html>
+	<!-- Admin Dashboard JavaScript -->
+	<script src="../js/app.js"></script>
+	<script src="../js/admin.js"></script>
+
+	</body>
+	</html>

@@ -6,9 +6,35 @@
   <title>Riwayat Transaksi — LVRE</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
   <style>
+    /* ── CSS VARIABLES ───────────────────────────────── */
+    :root {
+      --primary-blue:   #1E5A8D;
+      --dark-blue:      #0D2D4A;
+      --light-blue:     #E8F4FC;
+      --pure-white:     #FFFFFF;
+      --off-white:      #F8F9FA;
+      --light-gray:     #E9ECEF;
+      --medium-gray:    #6C757D;
+      --black:          #000000;
+      --dark-gray:      #212529;
+      --border:         #DEE2E6;
+
+      /* Detail page specific colors */
+      --ink:            #212529;
+      --ink-soft:       #6C757D;
+      --ink-muted:      #ADB5BD;
+      --terracotta:     #1E5A8D;
+      --terra-dark:     #0D2D4A;
+      --cream:          #F8F9FA;
+      --warm-sand:      #E8F4FC;
+      --heading:        'Plus Jakarta Sans', sans-serif;
+      --sans:           'Plus Jakarta Sans', sans-serif;
+      --serif:          'Plus Jakarta Sans', sans-serif;
+    }
+
     /* ── HISTORY TRANSAKSI PAGE STYLES ─────────────────── */
     .history-page {
       padding: 0 var(--container-padding) 6rem;
@@ -552,28 +578,57 @@
 
 <!-- HEADER -->
 <header id="site-header">
+  <!-- Logo (left on both desktop and mobile) -->
   <a href="index.html" class="logo">LV<span>R</span>E</a>
-  <nav>
+
+  <!-- Desktop Navigation -->
+  <nav id="desktopNav">
     <a href="katalog.html">Katalog</a>
     <a href="https://lvre.framer.website/">Artikel</a>
     <a href="index.html">Brand</a>
     <a href="katalog.html">Sale</a>
     <a href="index.html">Tentang</a>
   </nav>
+
+  <!-- Header Actions (Account + Cart on mobile, more on desktop) -->
   <div class="header-actions">
-    <button class="icon-btn" aria-label="Cari">
+    <button class="icon-btn" aria-label="Cari" data-search-trigger>
       <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
     </button>
-    <button class="icon-btn" aria-label="Akun">
+    <a href="admin/login.html" class="icon-btn" aria-label="Admin">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </a>
+    <a href="history-transaksi.html" class="icon-btn" aria-label="Akun">
       <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-    </button>
+    </a>
     <div class="cart-wrap">
       <a href="keranjang.html" class="icon-btn" aria-label="Keranjang">
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
       </a>
       <span class="cart-badge">2</span>
     </div>
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+      <span></span>
+    </button>
   </div>
+
+  <!-- Mobile Navigation Overlay -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="katalog.html">Katalog</a>
+    <a href="https://lvre.framer.website/">Artikel</a>
+    <a href="index.html">Brand</a>
+    <a href="katalog.html">Sale</a>
+    <a href="history-transaksi.html">Riwayat Pesanan</a>
+    <a href="admin/login.html">Admin</a>
+    <a href="index.html">Tentang</a>
+    <!-- Search icon at bottom -->
+    <div class="mobile-nav-search">
+      <button aria-label="Cari" data-search-trigger>
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+    </div>
+  </nav>
 </header>
 
 <!-- PAGE HEADER -->
@@ -584,7 +639,7 @@
 </div>
 
 <!-- HISTORY PAGE -->
-<div class="history-page fade-up">
+<div class="history-page">
 
   <div class="history-layout">
 
@@ -698,7 +753,7 @@
         <div class="order-card-body">
           <div class="order-items-preview">
             <div class="order-item-thumb">
-              <img src="https://images.unsplash.com/photo-1617114191518-9e7d4eb77088?w=200&q=80" alt="Oversized Blazer">
+              <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=200&q=80" alt="Oversized Blazer">
             </div>
             <div class="order-item-thumb">
               <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&q=80" alt="Leather Loafers">
@@ -1136,6 +1191,47 @@
   }, { threshold: 0.1 });
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+<!-- Simple Mobile Menu Script -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileBtn = document.getElementById('mobileMenuBtn');
+  const mobileNav = document.getElementById('mobileNav');
+
+  if (mobileBtn && mobileNav) {
+    mobileBtn.addEventListener('click', function() {
+      mobileBtn.classList.toggle('active');
+      mobileNav.classList.toggle('active');
+      document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+    });
+
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', function() {
+        mobileBtn.classList.remove('active');
+        mobileNav.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
+  // Modal functions
+  window.openModal = function(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  window.closeModal = function(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  };
+});
 </script>
 
 </body>

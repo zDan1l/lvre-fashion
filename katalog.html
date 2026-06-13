@@ -7,12 +7,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/styles.css">
   <style>
     /* ── KATALOG PAGE SPECIFIC STYLES ─────────────── */
     .katalog-layout {
       display: grid;
-      grid-template-columns: 260px 1fr;
+      grid-template-columns: 280px 1fr;
       gap: 3rem;
       padding: 0 var(--container-padding) 6rem;
     }
@@ -22,23 +22,22 @@
       position: sticky;
       top: calc(var(--header-height) + 2rem);
       height: fit-content;
-      max-height: calc(100vh - var(--header-height) - 4rem);
-      overflow-y: auto;
     }
 
     .filter-section {
-      padding-bottom: 2rem;
-      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      margin-bottom: 1.5rem;
       border-bottom: 1px solid var(--border);
     }
     .filter-section:last-child { border-bottom: none; }
 
     .filter-title {
-      font-family: var(--serif);
-      font-size: 1.2rem;
-      font-weight: 500;
-      color: var(--ink);
+      font-family: var(--heading);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--black);
       margin-bottom: 1rem;
+      letter-spacing: 0.05em;
     }
 
     .filter-options {
@@ -54,62 +53,22 @@
       gap: 0.8rem;
       cursor: pointer;
       font-size: 15px;
-      color: var(--ink-soft);
+      color: var(--dark-gray);
       transition: color 0.25s;
     }
-    .filter-option label:hover { color: var(--terracotta); }
+    .filter-option label:hover { color: var(--primary-blue); }
 
-    .filter-option input[type="checkbox"],
-    .filter-option input[type="radio"] {
-      appearance: none;
+    .filter-option input[type="checkbox"] {
       width: 16px; height: 16px;
-      border: 1px solid var(--border);
+      accent-color: var(--primary-blue);
       cursor: pointer;
-      position: relative;
-      flex-shrink: 0;
     }
-    .filter-option input[type="checkbox"]:checked,
-    .filter-option input[type="radio"]:checked {
-      background: var(--terracotta);
-      border-color: var(--terracotta);
-    }
-    .filter-option input[type="checkbox"]:checked::after,
-    .filter-option input[type="radio"]:checked::after {
-      content: '✓';
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      color: #fff;
-      font-size: 10px;
-    }
-    .filter-option input[type="radio"] { border-radius: 50%; }
 
     .filter-count {
       margin-left: auto;
       font-size: 14px;
-      color: var(--ink-muted);
+      color: var(--medium-gray);
     }
-
-    /* Price Range */
-    .price-range {
-      margin-top: 1rem;
-    }
-    .price-inputs {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-    }
-    .price-input {
-      width: 100%;
-      padding: 0.5rem 0.8rem;
-      border: 1px solid var(--border);
-      font-family: var(--sans);
-      font-size: 14px;
-      outline: none;
-      transition: border-color 0.25s;
-    }
-    .price-input:focus { border-color: var(--terracotta); }
-    .price-separator { color: var(--ink-muted); }
 
     /* Color Swatches */
     .color-swatches {
@@ -125,10 +84,6 @@
       transition: transform 0.2s, border-color 0.2s;
     }
     .color-swatch:hover { transform: scale(1.1); }
-    .color-swatch.active {
-      border-color: var(--terracotta);
-      box-shadow: 0 0 0 2px var(--cream), 0 0 0 3px var(--terracotta);
-    }
 
     /* Size Filter */
     .size-filter {
@@ -143,164 +98,16 @@
       cursor: pointer;
       transition: background 0.25s, border-color 0.25s;
     }
-    .size-chip:hover { border-color: var(--terracotta); }
-    .size-chip.active {
-      background: var(--terracotta);
-      border-color: var(--terracotta);
-      color: #fff;
-    }
-
-    /* Main Content */
-    .katalog-content {
-      min-width: 0;
-    }
-
-    /* Sort & View Bar */
-    .toolbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 2rem;
-    }
-
-    .results-count {
-      font-size: 15px;
-      color: var(--ink-soft);
-    }
-    .results-count strong { color: var(--ink); }
-
-    .toolbar-actions {
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-    }
-
-    .sort-wrap {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .sort-label {
-      font-size: 15px;
-      color: var(--ink-soft);
-    }
-    .sort-select {
-      padding: 0.4rem 2rem 0.4rem 0.8rem;
-      border: 1px solid var(--border);
-      background: var(--off-white);
-      font-family: var(--sans);
-      font-size: 14px;
-      color: var(--ink);
-      cursor: pointer;
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%233A3526' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 0.6rem center;
-    }
-
-    .view-toggle {
-      display: flex;
-      gap: 0.3rem;
-    }
-    .view-btn {
-      width: 36px; height: 36px;
-      display: flex;
-      align-items: center; justify-content: center;
-      border: 1px solid var(--border);
-      background: none;
-      cursor: pointer;
-      color: var(--ink-muted);
-      transition: background 0.25s, border-color 0.25s, color 0.25s;
-    }
-    .view-btn:hover { border-color: var(--terracotta); color: var(--terracotta); }
-    .view-btn.active {
-      background: var(--terracotta);
-      border-color: var(--terracotta);
-      color: #fff;
-    }
-
-    /* Product Grid */
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-    }
-
-    /* Active Filters */
-    .active-filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-bottom: 2rem;
-    }
-    .filter-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.4rem 0.8rem;
-      background: var(--cream);
-      border: 1px solid var(--border);
-      font-size: 14px;
-      color: var(--ink-soft);
-    }
-    .filter-tag-remove {
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: var(--ink-muted);
-      display: flex;
-      align-items: center;
-    }
-    .filter-tag-remove:hover { color: var(--terracotta); }
-    .clear-filters {
-      font-size: 14px;
-      color: var(--terracotta);
-      background: none;
-      border: none;
-      cursor: pointer;
-      text-decoration: underline;
-    }
-
-    /* Pagination */
-    .pagination {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 4rem;
-    }
-    .page-link {
-      width: 40px; height: 40px;
-      display: flex;
-      align-items: center; justify-content: center;
-      border: 1px solid var(--border);
-      font-size: 15px;
-      color: var(--ink-soft);
-      text-decoration: none;
-      transition: background 0.25s, border-color 0.25s, color 0.25s;
-    }
-    .page-link:hover { border-color: var(--terracotta); color: var(--terracotta); }
-    .page-link.active {
-      background: var(--terracotta);
-      border-color: var(--terracotta);
-      color: #fff;
-    }
-    .page-nav {
-      padding: 0 0.8rem;
-      font-size: 14px;
-      color: var(--ink-soft);
-    }
+    .size-chip:hover { border-color: var(--primary-blue); }
 
     /* Mobile Filter Toggle */
     .mobile-filter-btn {
       display: none;
       width: 100%;
       padding: 1rem;
-      background: var(--cream);
+      background: var(--off-white);
       border: 1px solid var(--border);
-      font-family: var(--sans);
+      font-family: var(--body);
       font-size: 15px;
       font-weight: 500;
       letter-spacing: 0.18em;
@@ -328,13 +135,34 @@
         overflow-y: auto;
       }
       .mobile-filter-btn { display: block; }
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .product-card {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .product-card:hover .product-name {
+      color: var(--primary-blue);
+    }
+
+    @media (max-width: 1200px) {
+      .product-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 768px) {
       .product-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 480px) {
       .product-grid { grid-template-columns: 1fr; }
-      .toolbar { flex-direction: column; gap: 1rem; align-items: stretch; }
-      .toolbar-actions { justify-content: space-between; }
     }
   </style>
 </head>
@@ -343,27 +171,50 @@
 <!-- HEADER -->
 <header id="site-header">
   <a href="index.html" class="logo">LV<span>R</span>E</a>
-  <nav>
+
+  <nav id="desktopNav">
     <a href="katalog.html" class="active">Katalog</a>
     <a href="https://lvre.framer.website/">Artikel</a>
     <a href="index.html">Brand</a>
     <a href="katalog.html">Sale</a>
     <a href="index.html">Tentang</a>
   </nav>
+
   <div class="header-actions">
-    <button class="icon-btn" aria-label="Cari">
+    <button class="icon-btn" aria-label="Cari" data-search-trigger>
       <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
     </button>
-    <button class="icon-btn" aria-label="Akun">
+    <a href="admin/login.html" class="icon-btn" aria-label="Admin">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </a>
+    <a href="history-transaksi.html" class="icon-btn" aria-label="Akun">
       <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-    </button>
+    </a>
     <div class="cart-wrap">
       <a href="keranjang.html" class="icon-btn" aria-label="Keranjang">
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
       </a>
       <span class="cart-badge">2</span>
     </div>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+      <span></span>
+    </button>
   </div>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="katalog.html">Katalog</a>
+    <a href="https://lvre.framer.website/">Artikel</a>
+    <a href="index.html">Brand</a>
+    <a href="katalog.html">Sale</a>
+    <a href="history-transaksi.html">Riwayat Pesanan</a>
+    <a href="admin/login.html">Admin</a>
+    <a href="index.html">Tentang</a>
+    <div class="mobile-nav-search">
+      <button aria-label="Cari" data-search-trigger>
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+    </div>
+  </nav>
 </header>
 
 <!-- PAGE HEADER -->
@@ -376,44 +227,44 @@
 </div>
 
 <!-- KATALOG LAYOUT -->
-<div class="katalog-layout fade-up">
+<div class="katalog-layout">
 
   <!-- SIDEBAR FILTER -->
-  <aside class="filter-sidebar" id="filterSidebar">
+  <aside class="filter-sidebar">
     <div class="filter-section">
       <h3 class="filter-title">Kategori</h3>
       <ul class="filter-options">
         <li class="filter-option">
           <label>
-            <input type="checkbox" name="category" value="clothing">
+            <input type="checkbox">
             <span>Clothing</span>
             <span class="filter-count">(142)</span>
           </label>
         </li>
         <li class="filter-option">
           <label>
-            <input type="checkbox" name="category" value="tas">
+            <input type="checkbox">
             <span>Tas & Dompet</span>
             <span class="filter-count">(68)</span>
           </label>
         </li>
         <li class="filter-option">
           <label>
-            <input type="checkbox" name="category" value="sepatu">
+            <input type="checkbox">
             <span>Sepatu</span>
             <span class="filter-count">(95)</span>
           </label>
         </li>
         <li class="filter-option">
           <label>
-            <input type="checkbox" name="category" value="aksesori">
+            <input type="checkbox">
             <span>Aksesori</span>
             <span class="filter-count">(53)</span>
           </label>
         </li>
         <li class="filter-option">
           <label>
-            <input type="checkbox" name="category" value="outer">
+            <input type="checkbox">
             <span>Outer & Jacket</span>
             <span class="filter-count">(44)</span>
           </label>
@@ -426,35 +277,35 @@
       <ul class="filter-options">
         <li class="filter-option">
           <label>
-            <input type="checkbox" name="brand" value="naura">
+            <input type="checkbox">
             <span>Naura Studio</span>
             <span class="filter-count">(32)</span>
           </label>
         </li>
         <li class="filter-option">
           <label>
-            <input type="checkbox" name="brand" value="fiera">
+            <input type="checkbox">
             <span>Fiera Label</span>
             <span class="filter-count">(28)</span>
           </label>
         </li>
         <li class="filter-option">
           <label>
-            <input type="checkbox" name="brand" value="rima">
+            <input type="checkbox">
             <span>Rima Collective</span>
             <span class="filter-count">(24)</span>
           </label>
         </li>
         <li class="filter-option">
           <label>
-            <input type="checkbox" name="brand" value="kaia">
+            <input type="checkbox">
             <span>Kaia Haus</span>
             <span class="filter-count">(19)</span>
           </label>
         </li>
         <li class="filter-option">
           <label>
-            <input type="checkbox" name="brand" value="elara">
+            <input type="checkbox">
             <span>Elara Mode</span>
             <span class="filter-count">(15)</span>
           </label>
@@ -463,27 +314,16 @@
     </div>
 
     <div class="filter-section">
-      <h3 class="filter-title">Harga</h3>
-      <div class="price-range">
-        <div class="price-inputs">
-          <input type="number" class="price-input" placeholder="Min" min="0">
-          <span class="price-separator">—</span>
-          <input type="number" class="price-input" placeholder="Max" min="0">
-        </div>
-      </div>
-    </div>
-
-    <div class="filter-section">
       <h3 class="filter-title">Warna</h3>
       <div class="color-swatches">
-        <button class="color-swatch" style="background: #141208" data-color="black" title="Black"></button>
-        <button class="color-swatch" style="background: #FAF9F6; border-color: #D8D2C4" data-color="white" title="White"></button>
-        <button class="color-swatch" style="background: #8B7355" data-color="brown" title="Brown"></button>
-        <button class="color-swatch" style="background: #2D5016" data-color="green" title="Green"></button>
-        <button class="color-swatch" style="background: #1E3A0E" data-color="forest" title="Forest"></button>
-        <button class="color-swatch" style="background: #E8D5C4" data-color="beige" title="Beige"></button>
-        <button class="color-swatch" style="background: #D4A574" data-color="tan" title="Tan"></button>
-        <button class="color-swatch" style="background: #8A8472" data-color="grey" title="Grey"></button>
+        <button class="color-swatch" style="background: #141208" title="Black"></button>
+        <button class="color-swatch" style="background: #FAF9F6; border-color: #D8D2C4" title="White"></button>
+        <button class="color-swatch" style="background: #8B7355" title="Brown"></button>
+        <button class="color-swatch" style="background: #2D5016" title="Green"></button>
+        <button class="color-swatch" style="background: #1E3A0E" title="Forest"></button>
+        <button class="color-swatch" style="background: #E8D5C4" title="Beige"></button>
+        <button class="color-swatch" style="background: #D4A574" title="Tan"></button>
+        <button class="color-swatch" style="background: #8A8472" title="Grey"></button>
       </div>
     </div>
 
@@ -498,226 +338,238 @@
         <button class="size-chip">XXL</button>
       </div>
     </div>
-
-    <button class="btn-primary" style="width: 100%; margin-top: 1rem;">Terapkan Filter</button>
   </aside>
 
   <!-- MAIN CONTENT -->
   <main class="katalog-content">
-    <button class="mobile-filter-btn" id="mobileFilterBtn">
-      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-right: 0.5rem"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    <button class="mobile-filter-btn">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-right: 0.5rem; vertical-align: -3px;"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
       Filter
     </button>
+  <div class="product-grid">
 
-    <!-- ACTIVE FILTERS -->
-    <div class="active-filters" id="activeFilters" style="display: none;">
-      <span class="filter-tag">
-        Clothing
-        <button class="filter-tag-remove"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-      </span>
-      <span class="filter-tag">
-        Naura Studio
-        <button class="filter-tag-remove"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-      </span>
-      <button class="clear-filters">Hapus Semua</button>
-    </div>
-
-    <!-- TOOLBAR -->
-    <div class="toolbar">
-      <p class="results-count">Menampilkan <strong>1–12</strong> dari <strong>302</strong> produk</p>
-      <div class="toolbar-actions">
-        <div class="sort-wrap">
-          <span class="sort-label">Urutkan:</span>
-          <select class="sort-select">
-            <option>Rekomendasi</option>
-            <option>Terbaru</option>
-            <option>Harga Terendah</option>
-            <option>Harga Tertinggi</option>
-            <option>Populer</option>
-          </select>
-        </div>
-        <div class="view-toggle">
-          <button class="view-btn active" aria-label="Grid View">
-            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-          </button>
-          <button class="view-btn" aria-label="List View">
-            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-          </button>
-        </div>
+    <!-- Product 1 -->
+    <a href="detail.html?id=p1" class="product-card">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=600&q=80" alt="Linen Co-ord Set — Sage">
+        <span class="product-badge badge-new">New</span>
+        <button class="product-wishlist" aria-label="Wishlist">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </button>
       </div>
-    </div>
+      <div class="product-brand">Naura Studio</div>
+      <div class="product-stars">★★★★★</div>
+      <div class="product-name">Linen Co-ord Set — Sage</div>
+      <div class="product-price">
+        <span class="price-current">Rp 485.000</span>
+      </div>
+    </a>
 
-    <!-- PRODUCT GRID -->
-    <div class="product-grid">
+    <!-- Product 2 -->
+    <a href="detail.html?id=p2" class="product-card">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Wrap Midi Dress — Ivory">
+        <span class="product-badge badge-sale">−20%</span>
+        <button class="product-wishlist" aria-label="Wishlist">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="product-brand">Fiera Label</div>
+      <div class="product-stars">★★★★☆</div>
+      <div class="product-name">Wrap Midi Dress — Ivory</div>
+      <div class="product-price">
+        <span class="price-current">Rp 320.000</span>
+        <span class="price-original">Rp 400.000</span>
+      </div>
+    </a>
 
-      <!-- Product 1 -->
-      <a href="detail.html" class="product-card">
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=600&q=80" alt="Linen Co-ord Set">
-          <span class="product-badge badge-new">New</span>
-          <button class="product-wishlist" aria-label="Wishlist">
-            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </button>
-        </div>
-        <div class="product-brand">Naura Studio</div>
-        <div class="product-stars">★★★★★</div>
-        <div class="product-name">Linen Co-ord Set — Sage</div>
-        <div class="product-price">
-          <span class="price-current">Rp 485.000</span>
-        </div>
-      </a>
+    <!-- Product 3 -->
+    <a href="detail.html?id=p3" class="product-card">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80" alt="Oversized Blazer — Forest">
+        <button class="product-wishlist" aria-label="Wishlist">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="product-brand">Rima Collective</div>
+      <div class="product-stars">★★★★★</div>
+      <div class="product-name">Oversized Blazer — Forest</div>
+      <div class="product-price">
+        <span class="price-current">Rp 620.000</span>
+      </div>
+    </a>
 
-      <!-- Product 2 -->
-      <a href="detail.html" class="product-card">
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Wrap Midi Dress">
-          <span class="product-badge badge-sale">−20%</span>
-          <button class="product-wishlist" aria-label="Wishlist">
-            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </button>
-        </div>
-        <div class="product-brand">Fiera Label</div>
-        <div class="product-stars">★★★★☆</div>
-        <div class="product-name">Wrap Midi Dress — Ivory</div>
-        <div class="product-price">
-          <span class="price-current">Rp 320.000</span>
-          <span class="price-original">Rp 400.000</span>
-        </div>
-      </a>
+    <!-- Product 4 -->
+    <a href="detail.html?id=p4" class="product-card">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600&q=80" alt="Satin Slip Skirt — Moss">
+        <span class="product-badge badge-new">New</span>
+        <button class="product-wishlist" aria-label="Wishlist">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="product-brand">Kaia Haus</div>
+      <div class="product-stars">★★★★☆</div>
+      <div class="product-name">Satin Slip Skirt — Moss</div>
+      <div class="product-price">
+        <span class="price-current">Rp 255.000</span>
+      </div>
+    </a>
 
-      <!-- Product 3 -->
-      <a href="detail.html" class="product-card">
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80" alt="Oversized Blazer">
-          <button class="product-wishlist" aria-label="Wishlist">
-            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </button>
-        </div>
-        <div class="product-brand">Rima Collective</div>
-        <div class="product-stars">★★★★★</div>
-        <div class="product-name">Oversized Blazer — Forest</div>
-        <div class="product-price">
-          <span class="price-current">Rp 620.000</span>
-        </div>
-      </a>
+    <!-- Product 5 -->
+    <a href="detail.html?id=p5" class="product-card">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?w=600&q=80" alt="Structured Handbag — Cognac">
+        <button class="product-wishlist" aria-label="Wishlist">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="product-brand">Elara Mode</div>
+      <div class="product-stars">★★★★★</div>
+      <div class="product-name">Structured Handbag — Cognac</div>
+      <div class="product-price">
+        <span class="price-current">Rp 780.000</span>
+      </div>
+    </a>
 
-      <!-- Product 4 -->
-      <a href="detail.html" class="product-card">
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600&q=80" alt="Satin Slip Skirt">
-          <span class="product-badge badge-new">New</span>
-          <button class="product-wishlist" aria-label="Wishlist">
-            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </button>
-        </div>
-        <div class="product-brand">Kaia Haus</div>
-        <div class="product-stars">★★★★☆</div>
-        <div class="product-name">Satin Slip Skirt — Moss</div>
-        <div class="product-price">
-          <span class="price-current">Rp 255.000</span>
-        </div>
-      </a>
+    <!-- Product 6 -->
+    <a href="detail.html?id=p6" class="product-card">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80" alt="Leather Loafers — Tan">
+        <button class="product-wishlist" aria-label="Wishlist">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="product-brand">Rima Collective</div>
+      <div class="product-stars">★★★★☆</div>
+      <div class="product-name">Leather Loafers — Tan</div>
+      <div class="product-price">
+        <span class="price-current">Rp 545.000</span>
+      </div>
+    </a>
 
-      <!-- Product 5 -->
-      <a href="detail.html" class="product-card">
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?w=600&q=80" alt="Structured Handbag">
-          <button class="product-wishlist" aria-label="Wishlist">
-            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </button>
-        </div>
-        <div class="product-brand">Elara Mode</div>
-        <div class="product-stars">★★★★★</div>
-        <div class="product-name">Structured Handbag — Cognac</div>
-        <div class="product-price">
-          <span class="price-current">Rp 780.000</span>
-        </div>
-      </a>
+    <!-- Product 7 -->
+    <a href="detail.html?id=p7" class="product-card">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80" alt="Gold Statement Earrings">
+        <span class="product-badge badge-new">New</span>
+        <button class="product-wishlist" aria-label="Wishlist">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="product-brand">Kaia Haus</div>
+      <div class="product-stars">★★★★★</div>
+      <div class="product-name">Gold Statement Earrings</div>
+      <div class="product-price">
+        <span class="price-current">Rp 185.000</span>
+      </div>
+    </a>
 
-      <!-- Product 6 -->
-      <a href="detail.html" class="product-card">
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80" alt="Leather Loafers">
-          <button class="product-wishlist" aria-label="Wishlist">
-            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </button>
-        </div>
-        <div class="product-brand">Rima Collective</div>
-        <div class="product-stars">★★★★☆</div>
-        <div class="product-name">Leather Loafers — Tan</div>
-        <div class="product-price">
-          <span class="price-current">Rp 545.000</span>
-        </div>
-      </a>
+    <!-- Product 8 -->
+    <a href="detail.html?id=p8" class="product-card">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&q=80" alt="Pleated Midi Skirt — Blush">
+        <button class="product-wishlist" aria-label="Wishlist">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="product-brand">Fiera Label</div>
+      <div class="product-stars">★★★★☆</div>
+      <div class="product-name">Pleated Midi Skirt — Blush</div>
+      <div class="product-price">
+        <span class="price-current">Rp 295.000</span>
+      </div>
+    </a>
 
-      <!-- Product 7 -->
-      <a href="detail.html" class="product-card">
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80" alt="Gold Statement Earrings">
-          <span class="product-badge badge-new">New</span>
-          <button class="product-wishlist" aria-label="Wishlist">
-            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </button>
-        </div>
-        <div class="product-brand">Kaia Haus</div>
-        <div class="product-stars">★★★★★</div>
-        <div class="product-name">Gold Statement Earrings</div>
-        <div class="product-price">
-          <span class="price-current">Rp 185.000</span>
-        </div>
-      </a>
+    <!-- Product 9 -->
+    <a href="detail.html?id=p9" class="product-card">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?w=600&q=80" alt="Canvas Tote Bag — Natural">
+        <button class="product-wishlist" aria-label="Wishlist">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="product-brand">Naura Studio</div>
+      <div class="product-stars">★★★★☆</div>
+      <div class="product-name">Canvas Tote Bag — Natural</div>
+      <div class="product-price">
+        <span class="price-current">Rp 225.000</span>
+      </div>
+    </a>
 
-      <!-- Product 8 -->
-      <a href="detail.html" class="product-card">
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&q=80" alt="Pleated Midi Skirt">
-          <button class="product-wishlist" aria-label="Wishlist">
-            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </button>
-        </div>
-        <div class="product-brand">Fiera Label</div>
-        <div class="product-stars">★★★★☆</div>
-        <div class="product-name">Pleated Midi Skirt — Blush</div>
-        <div class="product-price">
-          <span class="price-current">Rp 295.000</span>
-        </div>
-      </a>
+    <!-- Product 10 -->
+    <a href="detail.html?id=p10" class="product-card">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=600&q=80" alt="Denim Jacket — Classic Blue">
+        <button class="product-wishlist" aria-label="Wishlist">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="product-brand">Rima Collective</div>
+      <div class="product-stars">★★★★★</div>
+      <div class="product-name">Denim Jacket — Classic Blue</div>
+      <div class="product-price">
+        <span class="price-current">Rp 550.000</span>
+      </div>
+    </a>
 
-      <!-- Product 9 -->
-      <a href="detail.html" class="product-card">
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80" alt="Silk Button-Up Shirt">
-          <span class="product-badge badge-sale">−15%</span>
-          <button class="product-wishlist" aria-label="Wishlist">
-            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </button>
-        </div>
-        <div class="product-brand">Naura Studio</div>
-        <div class="product-stars">★★★★★</div>
-        <div class="product-name">Silk Button-Up Shirt — Cream</div>
-        <div class="product-price">
-          <span class="price-current">Rp 385.000</span>
-          <span class="price-original">Rp 450.000</span>
-        </div>
-      </a>
+    <!-- Product 11 -->
+    <a href="detail.html?id=p11" class="product-card">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=600&q=80" alt="Silk Scarf — Floral Print">
+        <button class="product-wishlist" aria-label="Wishlist">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="product-brand">Kaia Haus</div>
+      <div class="product-stars">★★★★☆</div>
+      <div class="product-name">Silk Scarf — Floral Print</div>
+      <div class="product-price">
+        <span class="price-current">Rp 145.000</span>
+      </div>
+    </a>
 
-    </div>
+    <!-- Product 12 -->
+    <a href="detail.html?id=p12" class="product-card">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80" alt="Linen Trousers — Sand">
+        <button class="product-wishlist" aria-label="Wishlist">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="product-brand">Naura Studio</div>
+      <div class="product-stars">★★★★☆</div>
+      <div class="product-name">Linen Trousers — Sand</div>
+      <div class="product-price">
+        <span class="price-current">Rp 375.000</span>
+      </div>
+    </a>
 
-    <!-- PAGINATION -->
-    <nav class="pagination">
-      <a href="#" class="page-link" aria-label="Previous">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
-      </a>
-      <a href="#" class="page-link active">1</a>
-      <a href="#" class="page-link">2</a>
-      <a href="#" class="page-link">3</a>
-      <span class="page-nav">...</span>
-      <a href="#" class="page-link">26</a>
-      <a href="#" class="page-link" aria-label="Next">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-      </a>
-    </nav>
-
+  </div>
   </main>
 </div>
 
@@ -725,113 +577,101 @@
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <a href="index.html" class="logo">LV<span style="color:var(--terracotta)">R</span>E</a>
-      <p class="footer-tagline">Fashion yang Bercerita, Gaya yang Abadi. Platform editorial fashion Indonesia terkurasi.</p>
+      <a href="index.html" class="logo">LV<span>R</span>E</a>
+      <p class="footer-tagline">Live Fashion Revolution Experience - Kurasi fashion terbaik dari brand lokal Indonesia.</p>
       <div class="footer-socials">
         <a href="#" class="social-link" aria-label="Instagram">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         </a>
-        <a href="#" class="social-link" aria-label="TikTok">
-          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.77a4.85 4.85 0 0 1-1.01-.08z"/></svg>
+        <a href="#" class="social-link" aria-label="Twitter">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
         </a>
-        <a href="#" class="social-link" aria-label="Pinterest">
-          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+        <a href="#" class="social-link" aria-label="Facebook">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
         </a>
       </div>
     </div>
-    <div>
-      <div class="footer-col-title">Belanja</div>
+    <div class="footer-col">
+      <h4 class="footer-col-title">Belanja</h4>
       <ul class="footer-links">
-        <li><a href="katalog.html">Katalog Produk</a></li>
-        <li><a href="#">Tas & Dompet</a></li>
-        <li><a href="#">Sepatu</a></li>
-        <li><a href="#">Aksesori</a></li>
-        <li><a href="#">Sale</a></li>
+        <li><a href="katalog.html">Semua Produk</a></li>
+        <li><a href="katalog.html">Clothing</a></li>
+        <li><a href="katalog.html">Tas & Dompet</a></li>
+        <li><a href="katalog.html">Sepatu</a></li>
+        <li><a href="katalog.html">Aksesori</a></li>
       </ul>
     </div>
-    <div>
-      <div class="footer-col-title">Informasi</div>
+    <div class="footer-col">
+      <h4 class="footer-col-title">Informasi</h4>
       <ul class="footer-links">
-        <li><a href="#">Tentang LVRE</a></li>
-        <li><a href="arsip-artikel.html">Artikel Fashion</a></li>
-        <li><a href="#">Brand Partner</a></li>
-        <li><a href="#">Karir</a></li>
-        <li><a href="#">Press</a></li>
+        <li><a href="https://lvre.framer.website/">Artikel</a></li>
+        <li><a href="#">Tentang Kami</a></li>
+        <li><a href="#">Cara Belanja</a></li>
+        <li><a href="#">Pengiriman</a></li>
+        <li><a href="#">Pengembalian</a></li>
       </ul>
     </div>
-    <div>
-      <div class="footer-col-title">Bantuan</div>
+    <div class="footer-col">
+      <h4 class="footer-col-title">Bantuan</h4>
       <ul class="footer-links">
         <li><a href="#">FAQ</a></li>
-        <li><a href="#">Pengiriman</a></li>
-        <li><a href="#">Return & Refund</a></li>
         <li><a href="#">Hubungi Kami</a></li>
-        <li><a href="#">Panduan Ukuran</a></li>
+        <li><a href="#">Konfirmasi Pembayaran</a></li>
+        <li><a href="#">Lacak Pesanan</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2025 LVRE — Live Fashion Revolution Experience. All rights reserved.</p>
+    <p class="footer-copy">&copy; 2025 LVRE. All rights reserved.</p>
     <div class="footer-legal">
-      <a href="#">Kebijakan Privasi</a>
-      <a href="#">Syarat & Ketentuan</a>
-      <a href="#">Cookie</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
     </div>
   </div>
 </footer>
 
+<!-- Simple Mobile Menu & Filter Script -->
 <script>
-  // Header scroll effect
-  const header = document.getElementById('site-header');
-  window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 20);
-  });
+document.addEventListener('DOMContentLoaded', function() {
+  // Mobile Menu
+  const mobileBtn = document.getElementById('mobileMenuBtn');
+  const mobileNav = document.getElementById('mobileNav');
 
-  // Fade-up on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
+  if (mobileBtn && mobileNav) {
+    mobileBtn.addEventListener('click', function() {
+      mobileBtn.classList.toggle('active');
+      mobileNav.classList.toggle('active');
+      document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+    });
+
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', function() {
+        mobileBtn.classList.remove('active');
+        mobileNav.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
+  // Mobile Filter Toggle
+  const mobileFilterBtn = document.querySelector('.mobile-filter-btn');
+  const filterSidebar = document.querySelector('.filter-sidebar');
+
+  if (mobileFilterBtn && filterSidebar) {
+    mobileFilterBtn.addEventListener('click', function() {
+      filterSidebar.classList.toggle('active');
+      document.body.style.overflow = filterSidebar.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!filterSidebar.contains(e.target) && !mobileFilterBtn.contains(e.target)) {
+        filterSidebar.classList.remove('active');
+        document.body.style.overflow = '';
       }
     });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  // Mobile filter toggle
-  const mobileFilterBtn = document.getElementById('mobileFilterBtn');
-  const filterSidebar = document.getElementById('filterSidebar');
-
-  mobileFilterBtn.addEventListener('click', () => {
-    filterSidebar.classList.toggle('active');
-    mobileFilterBtn.textContent = filterSidebar.classList.contains('active')
-      ? '✕ Tutup Filter'
-      : '☰ Filter';
-  });
-
-  // Color swatch selection
-  document.querySelectorAll('.color-swatch').forEach(swatch => {
-    swatch.addEventListener('click', () => {
-      document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
-      swatch.classList.add('active');
-    });
-  });
-
-  // Size chip selection
-  document.querySelectorAll('.size-chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      chip.classList.toggle('active');
-    });
-  });
-
-  // View toggle
-  document.querySelectorAll('.view-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-    });
-  });
+  }
+});
 </script>
 
 </body>
