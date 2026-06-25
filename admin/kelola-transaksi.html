@@ -163,8 +163,22 @@
       </div>
     </div>
 
-    <!-- Transactions Table -->
-    <div class="transactions-table">
+    <!-- Transactions Management Container -->
+    <div id="transactionsManagementContainer">
+
+      <!-- Orders List View -->
+      <div class="orders-list-container">
+        <!-- Stats -->
+        <div class="orders-stats"></div>
+
+        <!-- Orders List Table -->
+        <div class="admin-orders-list"></div>
+      </div>
+
+      <!-- Order Details View (Hidden by default) -->
+      <div class="order-details-container" style="display: none;"></div>
+
+    </div>
       <div class="table-header">
         <div>Order ID</div>
         <div>Pelanggan</div>
@@ -366,6 +380,7 @@
 	<!-- Admin Dashboard JavaScript -->
 	<script src="../js/app.js"></script>
 	<script src="../js/admin.js"></script>
+	<script src="../js/admin-transaction.js"></script>
 
 	</body>
 	</html>

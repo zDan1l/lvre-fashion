@@ -111,155 +111,21 @@
       </div>
     </div>
 
-    <!-- Articles Table -->
-    <div class="articles-table">
-      <div class="table-header">
-        <div></div>
-        <div>Artikel</div>
-        <div>Kategori</div>
-        <div>Penulis</div>
-        <div>Tanggal</div>
-        <div>Status</div>
-        <div></div>
+    <!-- Articles Management Container -->
+    <div id="articlesManagementContainer">
+
+      <!-- Articles List View -->
+      <div class="articles-list-container">
+        <!-- Stats -->
+        <div class="articles-stats"></div>
+
+        <!-- Articles List Table -->
+        <div class="admin-articles-list"></div>
       </div>
 
-      <div class="table-row">
-        <div class="article-img">
-          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=200&q=80" alt="Cool Tones">
-        </div>
-        <div class="article-info">
-          <h4>Cool Tones Takeover: Panduan Warna Dingin untuk Lemari Minimalis</h4>
-          <p class="article-excerpt">Membangun wardrobe yang timeless dimulai dari pilihan warna yang tepat...</p>
-        </div>
-        <div class="article-category">Trend</div>
-        <div class="article-author">Almira Dewi</div>
-        <div class="article-date">12 Jan 2025</div>
-        <div class="article-status published">● Diterbitkan</div>
-        <div class="article-actions">
-          <button class="action-btn" title="Edit">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-          </button>
-          <button class="action-btn" title="Lihat">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          </button>
-          <button class="action-btn delete" title="Hapus">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
-          </button>
-        </div>
-      </div>
+      <!-- Article Form View (Hidden by default) -->
+      <div class="article-form-container" style="display: none;"></div>
 
-      <div class="table-row">
-        <div class="article-img">
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&q=80" alt="Styling Co-ord">
-        </div>
-        <div class="article-info">
-          <h4>5 Cara Styling Co-ord Set agar Tidak Terlihat Monoton</h4>
-          <p class="article-excerpt">Co-ord set yang sama bisa tampil empat cara berbeda — kuncinya ada di aksesori dan layering...</p>
-        </div>
-        <div class="article-category">Tips</div>
-        <div class="article-author">Tasya Kamila</div>
-        <div class="article-date">8 Jan 2025</div>
-        <div class="article-status published">● Diterbitkan</div>
-        <div class="article-actions">
-          <button class="action-btn" title="Edit">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-          </button>
-          <button class="action-btn" title="Lihat">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          </button>
-          <button class="action-btn delete" title="Hapus">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
-          </button>
-        </div>
-      </div>
-
-      <div class="table-row">
-        <div class="article-img">
-          <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=200&q=80" alt="Brand Lokal">
-        </div>
-        <div class="article-info">
-          <h4>Brand Lokal yang Redefinisi Makna Luxury di Indonesia</h4>
-          <p class="article-excerpt">Dari Bali hingga Jakarta, brand-brand ini membuktikan bahwa lokal bisa setara dengan internasional...</p>
-        </div>
-        <div class="article-category">Brand Story</div>
-        <div class="article-author">Rara Setiawan</div>
-        <div class="article-date">3 Jan 2025</div>
-        <div class="article-status published">● Diterbitkan</div>
-        <div class="article-actions">
-          <button class="action-btn" title="Edit">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-          </button>
-          <button class="action-btn" title="Lihat">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          </button>
-          <button class="action-btn delete" title="Hapus">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
-          </button>
-        </div>
-      </div>
-
-      <div class="table-row">
-        <div class="article-img">
-          <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=200&q=80" alt="Sustainable Fashion">
-        </div>
-        <div class="article-info">
-          <h4>Mengenal Sustainable Fashion: Lebih dari Sekadar Tren</h4>
-          <p class="article-excerpt">Fashion berkelanjutan bukan hanya tentang bahan organik — ini tentang kesadaran penuh...</p>
-        </div>
-        <div class="article-category">Inspirasi</div>
-        <div class="article-author">Yasmin Salsabila</div>
-        <div class="article-date">28 Des 2024</div>
-        <div class="article-status draft">● Draft</div>
-        <div class="article-actions">
-          <button class="action-btn" title="Edit">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-          </button>
-          <button class="action-btn" title="Lihat">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          </button>
-          <button class="action-btn delete" title="Hapus">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
-          </button>
-        </div>
-      </div>
-
-      <div class="table-row">
-        <div class="article-img">
-          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=200&q=80" alt="Spring Collection">
-        </div>
-        <div class="article-info">
-          <h4>Spring Collection 2025: Warna & Siluet yang Akan Mendominasi</h4>
-          <p class="article-excerpt">Persiapan untuk musim semi dimulai dari sini — intip prediksi tren dari para expert...</p>
-        </div>
-        <div class="article-category">Trend</div>
-        <div class="article-author">Almira Dewi</div>
-        <div class="article-date">15 Feb 2025</div>
-        <div class="article-status scheduled">● Terjadwal</div>
-        <div class="article-actions">
-          <button class="action-btn" title="Edit">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-          </button>
-          <button class="action-btn" title="Lihat">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          </button>
-          <button class="action-btn delete" title="Hapus">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
-          </button>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Pagination -->
-    <div class="pagination">
-      <div class="pagination-info">Menampilkan 1–5 dari 42 artikel</div>
-      <div class="pagination-controls">
-        <button class="page-btn">← Sebelumnya</button>
-        <button class="page-btn active">1</button>
-        <button class="page-btn">2</button>
-        <button class="page-btn">3</button>
-        <button class="page-btn">→ Selanjutnya</button>
-      </div>
     </div>
 
   </main>
@@ -268,6 +134,7 @@
 	<!-- Admin Dashboard JavaScript -->
 	<script src="../js/app.js"></script>
 	<script src="../js/admin.js"></script>
+	<script src="../js/admin-article.js"></script>
 
 	</body>
 	</html>
