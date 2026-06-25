@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Riwayat Transaksi — LVRE</title>
+  <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
+  <link rel="manifest" href="assets/favicon/site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -113,9 +118,30 @@
       height: 18px;
     }
 
+    /* Content Sections */
+    .content-section {
+      display: none;
+    }
+
+    .content-section.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Mobile Navigation for Account */
+    .mobile-account-nav {
+      display: none;
+      margin-bottom: 2rem;
+    }
+
     /* History Content */
     .history-content {
-      padding-top: 2rem;
+      padding-top: 0;
     }
 
     .history-header {
@@ -550,6 +576,438 @@
       }
     }
 
+    /* Profile Tab Styles */
+    .profile-section {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .profile-avatar-large {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--warm-sand);
+      flex-shrink: 0;
+    }
+
+    .profile-avatar-large img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .profile-info h2 {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .profile-email-display {
+      font-size: 14px;
+      color: var(--ink-soft);
+      margin-bottom: 1rem;
+    }
+
+    .profile-member-since {
+      font-size: 13px;
+      color: var(--ink-muted);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      font-size: 15px;
+      color: var(--ink);
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      transition: border-color 0.25s;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--terracotta);
+    }
+
+    .form-input[readonly] {
+      background: var(--cream);
+      cursor: not-allowed;
+    }
+
+    /* Wishlist Tab Styles */
+    .wishlist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .wishlist-item {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      transition: border-color 0.25s, box-shadow 0.25s;
+      position: relative;
+    }
+
+    .wishlist-item:hover {
+      border-color: var(--terracotta);
+      box-shadow: 0 4px 20px rgba(26,20,16,0.06);
+    }
+
+    .wishlist-image {
+      width: 100%;
+      height: 280px;
+      overflow: hidden;
+      background: var(--warm-sand);
+      position: relative;
+    }
+
+    .wishlist-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .wishlist-remove {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.25s, border-color 0.25s;
+    }
+
+    .wishlist-remove:hover {
+      background: #fff;
+      border-color: #dc2626;
+      color: #dc2626;
+    }
+
+    .wishlist-details {
+      padding: 1.2rem;
+    }
+
+    .wishlist-brand {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .wishlist-name {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .wishlist-price {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--terracotta);
+      margin-bottom: 1rem;
+    }
+
+    .wishlist-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .wishlist-btn {
+      flex: 1;
+      padding: 0.6rem;
+      font-size: 14px;
+      font-weight: 500;
+      text-align: center;
+      border: 1px solid var(--border);
+      background: var(--off-white);
+      cursor: pointer;
+      transition: background 0.25s, border-color 0.25s, color 0.25s;
+    }
+
+    .wishlist-btn:hover {
+      border-color: var(--terracotta);
+      color: var(--terracotta);
+    }
+
+    .wishlist-btn.primary {
+      background: var(--terracotta);
+      border-color: var(--terracotta);
+      color: #fff;
+    }
+
+    .wishlist-btn.primary:hover {
+      background: var(--terra-dark);
+      border-color: var(--terra-dark);
+    }
+
+    .empty-wishlist {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: var(--cream);
+      border: 1px solid var(--border);
+    }
+
+    /* Address Tab Styles */
+    .address-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .address-card {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+
+    .address-card:hover {
+      border-color: var(--terracotta);
+      box-shadow: 0 2px 12px rgba(26,20,16,0.04);
+    }
+
+    .address-card.primary {
+      border-color: var(--terracotta);
+      background: rgba(30, 90, 141, 0.02);
+    }
+
+    .address-info h4 {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.8rem;
+    }
+
+    .address-info p {
+      font-size: 14px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
+    }
+
+    .address-badge {
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: rgba(30, 90, 141, 0.1);
+      color: var(--terracotta);
+      margin-top: 0.5rem;
+    }
+
+    .address-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .address-btn {
+      padding: 0.4rem 0.8rem;
+      font-size: 13px;
+      border: 1px solid var(--border);
+      background: var(--off-white);
+      cursor: pointer;
+      transition: background 0.25s, border-color 0.25s;
+    }
+
+    .address-btn:hover {
+      border-color: var(--terracotta);
+      color: var(--terracotta);
+    }
+
+    .add-address-btn {
+      width: 100%;
+      padding: 1rem;
+      font-size: 15px;
+      font-weight: 500;
+      background: var(--off-white);
+      border: 2px dashed var(--border);
+      cursor: pointer;
+      transition: background 0.25s, border-color 0.25s;
+      margin-top: 1rem;
+    }
+
+    .add-address-btn:hover {
+      border-color: var(--terracotta);
+      color: var(--terracotta);
+    }
+
+    /* Settings Tab Styles */
+    .settings-section {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .settings-section h3 {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .settings-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .settings-item:last-child {
+      border-bottom: none;
+    }
+
+    .settings-label {
+      font-size: 15px;
+      color: var(--ink);
+    }
+
+    .settings-description {
+      font-size: 13px;
+      color: var(--ink-muted);
+      margin-top: 0.2rem;
+    }
+
+    .settings-toggle {
+      position: relative;
+      width: 50px;
+      height: 26px;
+      background: var(--border);
+      border-radius: 13px;
+      cursor: pointer;
+      transition: background 0.25s;
+    }
+
+    .settings-toggle.active {
+      background: var(--terracotta);
+    }
+
+    .settings-toggle::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform 0.25s;
+    }
+
+    .settings-toggle.active::after {
+      transform: translateX(24px);
+    }
+
+    .settings-select {
+      padding: 0.5rem 2rem 0.5rem 1rem;
+      font-size: 14px;
+      color: var(--ink);
+      background: var(--cream);
+      border: 1px solid var(--border);
+      cursor: pointer;
+    }
+
+    /* Action Buttons */
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .btn-secondary {
+      padding: 0.8rem 1.5rem;
+      font-size: 15px;
+      font-weight: 500;
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.25s, border-color 0.25s, color 0.25s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--terracotta);
+      color: var(--terracotta);
+    }
+
+    .btn-danger {
+      padding: 0.8rem 1.5rem;
+      font-size: 15px;
+      font-weight: 500;
+      background: #dc2626;
+      border: 1px solid #dc2626;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.25s, border-color 0.25s;
+    }
+
+    .btn-danger:hover {
+      background: #b91c1c;
+      border-color: #b91c1c;
+    }
+
+    @media (max-width: 1024px) {
+      .history-layout {
+        grid-template-columns: 1fr;
+      }
+      .account-sidebar {
+        display: none;
+      }
+      .mobile-account-nav {
+        display: block;
+      }
+    }
+
     @media (max-width: 768px) {
       .history-header {
         flex-direction: column;
@@ -571,6 +1029,28 @@
       .order-card-actions {
         flex-wrap: wrap;
       }
+      .account-tabs {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+      }
+      .profile-header {
+        flex-direction: column;
+        text-align: center;
+      }
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      .wishlist-grid {
+        grid-template-columns: 1fr;
+      }
+      .address-card {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .address-actions {
+        width: 100%;
+        justify-content: flex-start;
+      }
     }
   </style>
 </head>
@@ -585,9 +1065,9 @@
   <nav id="desktopNav">
     <a href="katalog.html">Katalog</a>
     <a href="https://lvre.framer.website/">Artikel</a>
-    <a href="index.html">Brand</a>
+    <a href="brand.html">Brand</a>
     <a href="katalog.html">Sale</a>
-    <a href="index.html">Tentang</a>
+    <a href="about.html">Tentang</a>
   </nav>
 
   <!-- Header Actions (Account + Cart on mobile, more on desktop) -->
@@ -653,23 +1133,23 @@
         <div class="account-email">sarah.wijaya@email.com</div>
 
         <div class="account-menu">
-          <a href="#" class="menu-item">
+          <a href="#" class="menu-item" data-section="profile">
             <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
             Profil Saya
           </a>
-          <a href="history-transaksi.html" class="menu-item active">
+          <a href="#" class="menu-item active" data-section="history">
             <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
             Riwayat Transaksi
           </a>
-          <a href="#" class="menu-item">
+          <a href="#" class="menu-item" data-section="wishlist">
             <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
             Wishlist
           </a>
-          <a href="#" class="menu-item">
+          <a href="#" class="menu-item" data-section="address">
             <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
             Alamat Pengiriman
           </a>
-          <a href="#" class="menu-item">
+          <a href="#" class="menu-item" data-section="settings">
             <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
             Pengaturan
           </a>
@@ -681,22 +1161,101 @@
       </div>
     </aside>
 
-    <!-- HISTORY CONTENT -->
+    <!-- MAIN CONTENT AREA -->
     <main class="history-content">
 
-      <div class="history-header">
-        <h1 class="history-title">Riwayat Transaksi</h1>
-        <p style="color: var(--ink-soft);">Menampilkan 5 dari 12 transaksi</p>
+      <!-- Mobile Account Navigation (visible only on mobile) -->
+      <div class="mobile-account-nav">
+        <select id="mobileSectionSelector" class="form-input">
+          <option value="profile">Profil Saya</option>
+          <option value="history" selected>Riwayat Transaksi</option>
+          <option value="wishlist">Wishlist</option>
+          <option value="address">Alamat Pengiriman</option>
+          <option value="settings">Pengaturan</option>
+        </select>
       </div>
 
-      <!-- Filter Tabs -->
-      <div class="filter-tabs">
-        <button class="filter-tab active">Semua</button>
-        <button class="filter-tab">Selesai</button>
-        <button class="filter-tab">Diproses</button>
-        <button class="filter-tab">Dikirim</button>
-        <button class="filter-tab">Dibatalkan</button>
+      <!-- PROFILE SECTION -->
+      <div class="content-section" id="profile-section">
+        <div class="profile-section">
+          <div class="profile-header">
+            <div class="profile-avatar-large">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80" alt="Avatar">
+            </div>
+            <div class="profile-info">
+              <h2>Sarah Wijaya</h2>
+              <p class="profile-email-display">sarah.wijaya@email.com</p>
+              <p class="profile-member-since">Member sejak Januari 2024</p>
+            </div>
+          </div>
+
+          <form class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Nama Depan</label>
+              <input type="text" class="form-input" value="Sarah" readonly>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Nama Belakang</label>
+              <input type="text" class="form-input" value="Wijaya" readonly>
+            </div>
+            <div class="form-group full-width">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-input" value="sarah.wijaya@email.com" readonly>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Nomor Telepon</label>
+              <input type="tel" class="form-input" value="+62 812-3456-7890">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tanggal Lahir</label>
+              <input type="date" class="form-input" value="1995-05-15">
+            </div>
+            <div class="form-group full-width">
+              <label class="form-label">Bio</label>
+              <textarea class="form-input" rows="3" placeholder="Ceritakan sedikit tentang Anda...">Fashion enthusiast and sustainable living advocate. Love minimalism and timeless pieces.</textarea>
+            </div>
+          </form>
+
+          <div class="action-buttons">
+            <button class="btn-secondary">Simpan Perubahan</button>
+            <button class="btn-secondary">Ubah Password</button>
+          </div>
+        </div>
+
+        <div class="profile-section">
+          <h3 style="font-size: 16px; font-weight: 500; color: var(--ink); margin-bottom: 1rem;">Statistik Akun</h3>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+            <div style="text-align: center; padding: 1.5rem; background: var(--cream); border: 1px solid var(--border);">
+              <div style="font-size: 2rem; font-family: var(--serif); color: var(--terracotta); margin-bottom: 0.5rem;">12</div>
+              <div style="font-size: 13px; color: var(--ink-soft);">Total Pesanan</div>
+            </div>
+            <div style="text-align: center; padding: 1.5rem; background: var(--cream); border: 1px solid var(--border);">
+              <div style="font-size: 2rem; font-family: var(--serif); color: var(--terracotta); margin-bottom: 0.5rem;">5</div>
+              <div style="font-size: 13px; color: var(--ink-soft);">Wishlist Items</div>
+            </div>
+            <div style="text-align: center; padding: 1.5rem; background: var(--cream); border: 1px solid var(--border);">
+              <div style="font-size: 2rem; font-family: var(--serif); color: var(--terracotta); margin-bottom: 0.5rem;">3</div>
+              <div style="font-size: 13px; color: var(--ink-soft);">Alamat Tersimpan</div>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- HISTORY SECTION -->
+      <div class="content-section active" id="history-section">
+        <div class="history-header">
+          <h1 class="history-title">Riwayat Transaksi</h1>
+          <p style="color: var(--ink-soft);">Menampilkan 5 dari 12 transaksi</p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs">
+          <button class="filter-tab active">Semua</button>
+          <button class="filter-tab">Selesai</button>
+          <button class="filter-tab">Diproses</button>
+          <button class="filter-tab">Dikirim</button>
+          <button class="filter-tab">Dibatalkan</button>
+        </div>
 
       <!-- Order 1 - Completed -->
       <div class="order-card">
@@ -893,6 +1452,262 @@
         </a>
       </div>
 
+      <!-- WISHLIST SECTION -->
+      <div class="content-section" id="wishlist-section">
+        <div class="history-header">
+          <h1 class="history-title">Wishlist Saya</h1>
+          <p style="color: var(--ink-soft);">5 produk tersimpan</p>
+        </div>
+
+        <div class="wishlist-grid">
+          <!-- Wishlist Item 1 -->
+          <div class="wishlist-item">
+            <div class="wishlist-image">
+              <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=400&q=80" alt="Linen Co-ord Set">
+              <button class="wishlist-remove" aria-label="Hapus dari Wishlist">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </button>
+            </div>
+            <div class="wishlist-details">
+              <div class="wishlist-brand">LOCAL BRAND</div>
+              <h3 class="wishlist-name">Linen Co-ord Set — Sage Green</h3>
+              <div class="wishlist-price">Rp 485.000</div>
+              <div class="wishlist-actions">
+                <button class="wishlist-btn">Lihat Detail</button>
+                <button class="wishlist-btn primary">Tambah ke Keranjang</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Wishlist Item 2 -->
+          <div class="wishlist-item">
+            <div class="wishlist-image">
+              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="Wrap Midi Dress">
+              <button class="wishlist-remove" aria-label="Hapus dari Wishlist">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </button>
+            </div>
+            <div class="wishlist-details">
+              <div class="wishlist-brand">LOCAL BRAND</div>
+              <h3 class="wishlist-name">Wrap Midi Dress — Ivory</h3>
+              <div class="wishlist-price">Rp 320.000</div>
+              <div class="wishlist-actions">
+                <button class="wishlist-btn">Lihat Detail</button>
+                <button class="wishlist-btn primary">Tambah ke Keranjang</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Wishlist Item 3 -->
+          <div class="wishlist-item">
+            <div class="wishlist-image">
+              <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&q=80" alt="Oversized Blazer">
+              <button class="wishlist-remove" aria-label="Hapus dari Wishlist">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </button>
+            </div>
+            <div class="wishlist-details">
+              <div class="wishlist-brand">LOCAL BRAND</div>
+              <h3 class="wishlist-name">Oversized Blazer — Sand</h3>
+              <div class="wishlist-price">Rp 585.000</div>
+              <div class="wishlist-actions">
+                <button class="wishlist-btn">Lihat Detail</button>
+                <button class="wishlist-btn primary">Tambah ke Keranjang</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Wishlist Item 4 -->
+          <div class="wishlist-item">
+            <div class="wishlist-image">
+              <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80" alt="Leather Loafers">
+              <button class="wishlist-remove" aria-label="Hapus dari Wishlist">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </button>
+            </div>
+            <div class="wishlist-details">
+              <div class="wishlist-brand">LOCAL BRAND</div>
+              <h3 class="wishlist-name">Leather Loafers — Black</h3>
+              <div class="wishlist-price">Rp 425.000</div>
+              <div class="wishlist-actions">
+                <button class="wishlist-btn">Lihat Detail</button>
+                <button class="wishlist-btn primary">Tambah ke Keranjang</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Wishlist Item 5 -->
+          <div class="wishlist-item">
+            <div class="wishlist-image">
+              <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?w=400&q=80" alt="Structured Handbag">
+              <button class="wishlist-remove" aria-label="Hapus dari Wishlist">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </button>
+            </div>
+            <div class="wishlist-details">
+              <div class="wishlist-brand">LOCAL BRAND</div>
+              <h3 class="wishlist-name">Structured Handbag — Cognac</h3>
+              <div class="wishlist-price">Rp 780.000</div>
+              <div class="wishlist-actions">
+                <button class="wishlist-btn">Lihat Detail</button>
+                <button class="wishlist-btn primary">Tambah ke Keranjang</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADDRESS SECTION -->
+      <div class="content-section" id="address-section">
+        <div class="history-header">
+          <h1 class="history-title">Alamat Pengiriman</h1>
+          <p style="color: var(--ink-soft);">Kelola alamat pengiriman Anda</p>
+        </div>
+
+        <div class="address-list">
+          <!-- Primary Address -->
+          <div class="address-card primary">
+            <div class="address-info">
+              <h4>Rumah - Utama</h4>
+              <p><strong>Sarah Wijaya (+62 812-3456-7890)</strong></p>
+              <p>Jl. Sudirman No. 45, Apartemen Sudirman Park, Tower B, Lantai 12, Unit 1205<br>Tanah Abang, Jakarta Pusat, 10250</p>
+              <span class="address-badge">Alamat Utama</span>
+            </div>
+            <div class="address-actions">
+              <button class="address-btn">Edit</button>
+              <button class="address-btn" style="color: #dc2626;">Hapus</button>
+            </div>
+          </div>
+
+          <!-- Office Address -->
+          <div class="address-card">
+            <div class="address-info">
+              <h4>Kantor</h4>
+              <p><strong>Sarah Wijaya (+62 812-3456-7890)</strong></p>
+              <p>Gedung Menara Mulia, Lantai 8, Unit 805<br>Jl. HR Rasuna Said Kav 10, Setiabudi, Jakarta Selatan, 12920</p>
+            </div>
+            <div class="address-actions">
+              <button class="address-btn">Set Utama</button>
+              <button class="address-btn">Edit</button>
+              <button class="address-btn" style="color: #dc2626;">Hapus</button>
+            </div>
+          </div>
+
+          <!-- Parents Address -->
+          <div class="address-card">
+            <div class="address-info">
+              <h4>Orang Tua</h4>
+              <p><strong>Ibu Sarah (+62 811-2345-6789)</strong></p>
+              <p>Komplek Perumahan Griya Indah Blok C No. 15<br>Kecamatan Regol, Kota Bandung, 40254</p>
+            </div>
+            <div class="address-actions">
+              <button class="address-btn">Set Utama</button>
+              <button class="address-btn">Edit</button>
+              <button class="address-btn" style="color: #dc2626;">Hapus</button>
+            </div>
+          </div>
+        </div>
+
+        <button class="add-address-btn">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="display:inline-block;vertical-align:middle;margin-right:0.5rem;"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Tambah Alamat Baru
+        </button>
+      </div>
+
+      <!-- SETTINGS SECTION -->
+      <div class="content-section" id="settings-section">
+        <div class="history-header">
+          <h1 class="history-title">Pengaturan Akun</h1>
+          <p style="color: var(--ink-soft);">Kelola preferensi dan keamanan akun Anda</p>
+        </div>
+
+        <!-- Notification Settings -->
+        <div class="settings-section">
+          <h3>Notifikasi</h3>
+          <div class="settings-item">
+            <div>
+              <div class="settings-label">Notifikasi Email</div>
+              <div class="settings-description">Terima update pesanan, promo, dan info lainnya via email</div>
+            </div>
+            <div class="settings-toggle active"></div>
+          </div>
+          <div class="settings-item">
+            <div>
+              <div class="settings-label">Notifikasi SMS</div>
+              <div class="settings-description">Terima update penting via SMS</div>
+            </div>
+            <div class="settings-toggle"></div>
+          </div>
+          <div class="settings-item">
+            <div>
+              <div class="settings-label">Notifikasi Push</div>
+              <div class="settings-description">Terima notifikasi di browser</div>
+            </div>
+            <div class="settings-toggle active"></div>
+          </div>
+        </div>
+
+        <!-- Privacy Settings -->
+        <div class="settings-section">
+          <h3>Privasi</h3>
+          <div class="settings-item">
+            <div>
+              <div class="settings-label">Profil Publik</div>
+              <div class="settings-description">Tampilkan profil Anda di review dan komentar</div>
+            </div>
+            <div class="settings-toggle"></div>
+          </div>
+          <div class="settings-item">
+            <div>
+              <div class="settings-label">Aktivitas Terlihat</div>
+              <div class="settings-description">Izinkan orang lain melihat aktivitas belanja Anda</div>
+            </div>
+            <div class="settings-toggle active"></div>
+          </div>
+        </div>
+
+        <!-- Preferences -->
+        <div class="settings-section">
+          <h3>Preferensi</h3>
+          <div class="settings-item">
+            <div>
+              <div class="settings-label">Bahasa</div>
+              <div class="settings-description">Pilih bahasa tampilan</div>
+            </div>
+            <select class="settings-select">
+              <option value="id" selected>Bahasa Indonesia</option>
+              <option value="en">English</option>
+            </select>
+          </div>
+          <div class="settings-item">
+            <div>
+              <div class="settings-label">Mata Uang</div>
+              <div class="settings-description">Pilih mata uang untuk harga</div>
+            </div>
+            <select class="settings-select">
+              <option value="idr" selected>IDR - Indonesian Rupiah</option>
+              <option value="usd">USD - US Dollar</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Account Actions -->
+        <div class="settings-section" style="border-color: #dc2626;">
+          <h3 style="color: #dc2626;">Zona Bahaya</h3>
+          <div class="settings-item">
+            <div>
+              <div class="settings-label">Hapus Akun</div>
+              <div class="settings-description">Hapus permanen akun dan semua data Anda</div>
+            </div>
+            <button class="btn-danger">Hapus Akun</button>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button class="btn-secondary">Simpan Perubahan</button>
+        </div>
+      </div>
+
     </main>
 
   </div>
@@ -1087,8 +1902,8 @@
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <a href="#" class="logo">LV<span>R</span>E</a>
-      <p class="footer-tagline">Live Fashion Revolution Experience — Kurasi fashion editorial Indonesia terbaik untuk wardrobe timeless Anda.</p>
+      <a href="index.html" class="logo">LV<span style="color:var(--primary-blue)">R</span>E</a>
+      <p class="footer-tagline">Fashion yang Bercerita, Gaya yang Abadi. Platform editorial fashion Indonesia terkurasi.</p>
       <div class="footer-socials">
         <a href="#" class="social-link" aria-label="Instagram">
           <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
@@ -1133,10 +1948,11 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2025 LVRE. All rights reserved.</p>
+    <p class="footer-copy">© 2025 LVRE — Live Fashion Revolution Experience. All rights reserved.</p>
     <div class="footer-legal">
-      <a href="#">Syarat & Ketentuan</a>
       <a href="#">Kebijakan Privasi</a>
+      <a href="#">Syarat & Ketentuan</a>
+      <a href="#">Cookie</a>
     </div>
   </div>
 </footer>
@@ -1231,6 +2047,68 @@ document.addEventListener('DOMContentLoaded', function() {
       document.body.style.overflow = '';
     }
   };
+
+  // Account section switching
+  const menuItems = document.querySelectorAll('.menu-item[data-section]');
+  const sections = document.querySelectorAll('.content-section');
+  const mobileSelector = document.getElementById('mobileSectionSelector');
+
+  function switchSection(sectionId) {
+    // Remove active class from all menu items and sections
+    menuItems.forEach(item => item.classList.remove('active'));
+    sections.forEach(section => section.classList.remove('active'));
+
+    // Add active class to clicked menu item and corresponding section
+    const activeMenuItem = document.querySelector(`.menu-item[data-section="${sectionId}"]`);
+    const activeSection = document.getElementById(`${sectionId}-section`);
+
+    if (activeMenuItem && activeSection) {
+      activeMenuItem.classList.add('active');
+      activeSection.classList.add('active');
+
+      // Update mobile selector if it exists
+      if (mobileSelector) {
+        mobileSelector.value = sectionId;
+      }
+
+      // Scroll to top of content
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  // Add click event listeners to sidebar menu items
+  menuItems.forEach(item => {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
+      const sectionId = this.getAttribute('data-section');
+      switchSection(sectionId);
+    });
+  });
+
+  // Add change event listener to mobile selector
+  if (mobileSelector) {
+    mobileSelector.addEventListener('change', function() {
+      switchSection(this.value);
+    });
+  }
+
+  // Settings toggle functionality
+  const toggles = document.querySelectorAll('.settings-toggle');
+  toggles.forEach(toggle => {
+    toggle.addEventListener('click', function() {
+      this.classList.toggle('active');
+    });
+  });
+
+  // Wishlist remove functionality
+  const removeButtons = document.querySelectorAll('.wishlist-remove');
+  removeButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      if (confirm('Hapus produk ini dari wishlist?')) {
+        this.closest('.wishlist-item').remove();
+      }
+    });
+  });
 });
 </script>
 

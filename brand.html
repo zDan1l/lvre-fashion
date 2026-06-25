@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Partner — LVRE</title>
+<link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
+<link rel="manifest" href="assets/favicon/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  /* ── BRAND PAGE STYLES ───────────────────────────────── */
+  .brand-hero {
+    padding: 6rem 6rem 4rem;
+    text-align: center;
+    background: var(--off-white);
+  }
+  .brand-hero h1 {
+    font-family: var(--heading);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    color: var(--black);
+  }
+  .brand-hero p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--dark-gray);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+  }
+
+  .brands-section {
+    padding: 4rem 6rem;
+    background: var(--pure-white);
+  }
+
+  .brands-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .brand-card {
+    background: var(--pure-white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .brand-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+    border-color: var(--primary-blue);
+  }
+
+  .brand-header {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+    background: var(--light-gray);
+  }
+
+  .brand-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .brand-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--primary-blue);
+    color: var(--pure-white);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .brand-info {
+    padding: 1.5rem;
+  }
+
+  .brand-name {
+    font-family: var(--heading);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--black);
+  }
+
+  .brand-category {
+    font-size: 0.9rem;
+    color: var(--primary-blue);
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+  }
+
+  .brand-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--dark-gray);
+    margin-bottom: 1rem;
+  }
+
+  .brand-stats {
+    display: flex;
+    gap: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .brand-stat {
+    text-align: center;
+  }
+
+  .brand-stat-num {
+    font-family: var(--heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    line-height: 1;
+  }
+
+  .brand-stat-label {
+    font-size: 0.75rem;
+    color: var(--medium-gray);
+    margin-top: 0.2rem;
+  }
+
+  .featured-section {
+    padding: 4rem 6rem;
+    background: var(--primary-blue);
+    color: var(--pure-white);
+  }
+
+  .featured-section h2 {
+    font-family: var(--heading);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .featured-section p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    text-align: center;
+  }
+
+  .featured-brands {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .featured-brand-item {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+  }
+
+  .featured-brand-item strong {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .brand-hero, .brands-section, .featured-section {
+      padding: 3rem 1.5rem;
+    }
+    .brands-grid {
+      grid-template-columns: 1fr;
+    }
+    .brand-stats {
+      gap: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="site-header">
+  <a href="index.html" class="logo"><img src="assets/logo-lvre-removebg-preview.png" alt="LVRE Logo" style="height: 40px;"></a>
+
+  <nav id="desktopNav">
+    <a href="katalog.html">Katalog</a>
+    <a href="https://lvre.framer.website/">Artikel</a>
+    <a href="brand.html" class="active">Brand</a>
+    <a href="katalog.html">Sale</a>
+    <a href="about.html">Tentang</a>
+  </nav>
+
+  <div class="header-actions">
+    <button class="icon-btn" aria-label="Cari" data-search-trigger>
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+    </button>
+    <a href="admin/login.html" class="icon-btn" aria-label="Admin">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </a>
+    <a href="history-transaksi.html" class="icon-btn" aria-label="Akun">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+    </a>
+    <div class="cart-wrap">
+      <a href="keranjang.html" class="icon-btn" aria-label="Keranjang">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      </a>
+      <span class="cart-badge">2</span>
+    </div>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+      <span></span>
+    </button>
+  </div>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="katalog.html">Katalog</a>
+    <a href="https://lvre.framer.website/">Artikel</a>
+    <a href="brand.html" class="active">Brand</a>
+    <a href="katalog.html">Sale</a>
+    <a href="about.html">Tentang</a>
+    <div class="mobile-nav-search">
+      <button aria-label="Cari" data-search-trigger>
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- BRAND HERO -->
+<section class="brand-hero">
+  <h1>Brand Partner Lokal</h1>
+  <p>Temukan koleksi dari brand lokal Indonesia terbaik yang telah dikurasi dengan standar kualitas premium dan desain autentik.</p>
+</section>
+
+<!-- BRANDS GRID -->
+<section class="brands-section">
+  <div class="brands-grid">
+
+    <!-- Brand 1 -->
+    <div class="brand-card">
+      <div class="brand-header">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Naura Studio">
+        <span class="brand-badge">Premium</span>
+      </div>
+      <div class="brand-info">
+        <h3 class="brand-name">Naura Studio</h3>
+        <p class="brand-category">Women's Clothing</p>
+        <p class="brand-desc">Brand lokal yang fokus pada pakaian wanita dengan material linen premium dan desain minimalis elegan.</p>
+        <div class="brand-stats">
+          <div class="brand-stat">
+            <div class="brand-stat-num">24</div>
+            <div class="brand-stat-label">Produk</div>
+          </div>
+          <div class="brand-stat">
+            <div class="brand-stat-num">4.9</div>
+            <div class="brand-stat-label">Rating</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Brand 2 -->
+    <div class="brand-card">
+      <div class="brand-header">
+        <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600&q=80" alt="Fiera Label">
+        <span class="brand-badge">Popular</span>
+      </div>
+      <div class="brand-info">
+        <h3 class="brand-name">Fiera Label</h3>
+        <p class="brand-category">Dresses & Rompers</p>
+        <p class="brand-desc">Spesialis dress dan romper dengan sentuhan feminin modern dan warna-warna cerah.</p>
+        <div class="brand-stats">
+          <div class="brand-stat">
+            <div class="brand-stat-num">18</div>
+            <div class="brand-stat-label">Produk</div>
+          </div>
+          <div class="brand-stat">
+            <div class="brand-stat-num">4.7</div>
+            <div class="brand-stat-label">Rating</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Brand 3 -->
+    <div class="brand-card">
+      <div class="brand-header">
+        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80" alt="Rima Collective">
+        <span class="brand-badge">New</span>
+      </div>
+      <div class="brand-info">
+        <h3 class="brand-name">Rima Collective</h3>
+        <p class="brand-category">Outerwear & Blazers</p>
+        <p class="brand-desc">Koleksi outerwear dan blazer oversized dengan material premium dan cut modern.</p>
+        <div class="brand-stats">
+          <div class="brand-stat">
+            <div class="brand-stat-num">15</div>
+            <div class="brand-stat-label">Produk</div>
+          </div>
+          <div class="brand-stat">
+            <div class="brand-stat-num">4.8</div>
+            <div class="brand-stat-label">Rating</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Brand 4 -->
+    <div class="brand-card">
+      <div class="brand-header">
+        <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&q=80" alt="Kaia Haus">
+        <span class="brand-badge">Premium</span>
+      </div>
+      <div class="brand-info">
+        <h3 class="brand-name">Kaia Haus</h3>
+        <p class="brand-category">Skirts & Bottoms</p>
+        <p class="brand-desc">Spesialis skirt dan bottoms dengan material satin dan silk yang luxurious.</p>
+        <div class="brand-stats">
+          <div class="brand-stat">
+            <div class="brand-stat-num">12</div>
+            <div class="brand-stat-label">Produk</div>
+          </div>
+          <div class="brand-stat">
+            <div class="brand-stat-num">4.6</div>
+            <div class="brand-stat-label">Rating</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Brand 5 -->
+    <div class="brand-card">
+      <div class="brand-header">
+        <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&q=80" alt="Luxe Bags">
+        <span class="brand-badge">Popular</span>
+      </div>
+      <div class="brand-info">
+        <h3 class="brand-name">Luxe Bags</h3>
+        <p class="brand-category">Bags & Wallets</p>
+        <p class="brand-desc">Koleksi tas dan dompet dengan material kulit asli dan desain timeless.</p>
+        <div class="brand-stats">
+          <div class="brand-stat">
+            <div class="brand-stat-num">20</div>
+            <div class="brand-stat-label">Produk</div>
+          </div>
+          <div class="brand-stat">
+            <div class="brand-stat-num">4.9</div>
+            <div class="brand-stat-label">Rating</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Brand 6 -->
+    <div class="brand-card">
+      <div class="brand-header">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80" alt="Urban Steps">
+        <span class="brand-badge">Trending</span>
+      </div>
+      <div class="brand-info">
+        <h3 class="brand-name">Urban Steps</h3>
+        <p class="brand-category">Footwear</p>
+        <p class="brand-desc">Brand sepatu lokal dengan desain streetwear modern dan kenyamanan premium.</p>
+        <div class="brand-stats">
+          <div class="brand-stat">
+            <div class="brand-stat-num">16</div>
+            <div class="brand-stat-label">Produk</div>
+          </div>
+          <div class="brand-stat">
+            <div class="brand-stat-num">4.5</div>
+            <div class="brand-stat-label">Rating</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FEATURED SECTION -->
+<section class="featured-section">
+  <h2>Brand Unggulan Bulan Ini</h2>
+  <p>Brand partner dengan performa terbaik dan review positif dari pelanggan.</p>
+  <div class="featured-brands">
+    <div class="featured-brand-item">
+      <strong>🏆 Naura Studio</strong>
+    </div>
+    <div class="featured-brand-item">
+      <strong>⭐ Fiera Label</strong>
+    </div>
+    <div class="featured-brand-item">
+      <strong>🔥 Rima Collective</strong>
+    </div>
+    <div class="featured-brand-item">
+      <strong>💎 Luxe Bags</strong>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">LV<span style="color:var(--primary-blue)">R</span>E</a>
+      <p class="footer-tagline">Fashion yang Bercerita, Gaya yang Abadi. Platform editorial fashion Indonesia terkurasi.</p>
+      <div class="footer-socials">
+        <a href="#" class="social-link" aria-label="Instagram">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="TikTok">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.77a4.85 4.85 0 0 1-1.01-.08z"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="Pinterest">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Belanja</div>
+      <ul class="footer-links">
+        <li><a href="katalog.html">Clothing</a></li>
+        <li><a href="katalog.html">Tas & Dompet</a></li>
+        <li><a href="katalog.html">Sepatu</a></li>
+        <li><a href="katalog.html">Aksesori</a></li>
+        <li><a href="katalog.html">Sale</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Informasi</div>
+      <ul class="footer-links">
+        <li><a href="#">Tentang LVRE</a></li>
+        <li><a href="arsip-artikel.html">Artikel Fashion</a></li>
+        <li><a href="#">Brand Partner</a></li>
+        <li><a href="#">Karir</a></li>
+        <li><a href="#">Press</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Bantuan</div>
+      <ul class="footer-links">
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Pengiriman</a></li>
+        <li><a href="#">Return & Refund</a></li>
+        <li><a href="#">Hubungi Kami</a></li>
+        <li><a href="#">Panduan Ukuran</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 LVRE — Live Fashion Revolution Experience. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Kebijakan Privasi</a>
+      <a href="#">Syarat & Ketentuan</a>
+      <a href="#">Cookie</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
