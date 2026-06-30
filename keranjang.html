@@ -413,6 +413,186 @@
         gap: 1rem;
       }
     }
+
+    /* Very Small Mobile (360px minimum) */
+    @media (max-width: 360px) {
+      .cart-page {
+        padding: 0 var(--container-padding) 4rem;
+      }
+
+      .cart-layout {
+        gap: 2rem;
+      }
+
+      /* Enhanced cart items */
+      .cart-item {
+        grid-template-columns: 60px 1fr;
+        gap: 0.8rem;
+        padding: 1rem 0;
+      }
+
+      .cart-item-image {
+        aspect-ratio: 3/4;
+      }
+
+      .cart-item-details {
+        gap: 0.3rem;
+      }
+
+      .cart-item-brand {
+        font-size: 11px;
+        margin-bottom: 0.2rem;
+      }
+
+      .cart-item-name {
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
+        line-height: 1.2;
+      }
+
+      .cart-item-variant {
+        font-size: 12px;
+        margin-bottom: 0.5rem;
+      }
+
+      .cart-item-price {
+        font-size: 14px;
+      }
+
+      /* Enhanced quantity controls */
+      .cart-qty-control {
+        width: 100%;
+      }
+
+      .cart-qty-btn {
+        width: 36px;
+        height: 40px;
+        font-size: 16px;
+      }
+
+      .cart-qty-input {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+      }
+
+      /* Enhanced cart actions */
+      .cart-item-actions {
+        gap: 0.8rem;
+        margin-top: 0.3rem;
+      }
+
+      .cart-item-remove {
+        font-size: 12px;
+      }
+
+      .cart-item-remove svg {
+        width: 12px;
+        height: 12px;
+      }
+
+      /* Optimized subtotal */
+      .subtotal-price {
+        font-size: 1rem;
+      }
+
+      /* Enhanced cart summary */
+      .summary-card {
+        padding: 1.5rem 1rem;
+      }
+
+      .summary-title {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.8rem;
+      }
+
+      .summary-row {
+        padding: 0.6rem 0;
+        font-size: 13px;
+      }
+
+      .summary-total {
+        padding: 0.8rem 0;
+      }
+
+      .total-label {
+        font-size: 1rem;
+      }
+
+      .total-value {
+        font-size: 1.2rem;
+      }
+
+      .summary-note {
+        font-size: 11px;
+        margin-top: 0.8rem;
+        padding-top: 0.8rem;
+      }
+
+      /* Enhanced checkout button */
+      .checkout-btn {
+        padding: 1rem 1.5rem;
+        font-size: 13px;
+        margin-top: 1rem;
+        min-height: 48px;
+      }
+
+      .checkout-btn svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      .continue-shopping {
+        padding: 0.8rem 1rem;
+        font-size: 12px;
+        margin-top: 0.8rem;
+      }
+
+      /* Enhanced coupon section */
+      .coupon-toggle {
+        font-size: 13px;
+        padding: 0.6rem 0;
+      }
+
+      .coupon-input {
+        padding: 0.6rem 1rem;
+        font-size: 13px;
+      }
+
+      .coupon-apply-btn {
+        padding: 0.6rem 1rem;
+        font-size: 12px;
+      }
+
+      /* Enhanced trust badges */
+      .trust-badges {
+        gap: 0.8rem;
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+      }
+
+      .trust-badge {
+        font-size: 11px;
+        gap: 0.4rem;
+      }
+
+      .trust-badge svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      /* Enhanced payment methods */
+      .payment-methods-text {
+        font-size: 11px;
+        margin-bottom: 0.6rem;
+      }
+
+      .payment-method-item {
+        font-size: 11px;
+        padding: 0.3rem 0.6rem;
+      }
+    }
   </style>
 </head>
 <body>

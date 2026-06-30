@@ -223,6 +223,107 @@
       font-size: 1.125rem;
     }
   }
+
+  /* Very Small Mobile (360px minimum) */
+  @media (max-width: 360px) {
+    body {
+      padding: 0.8rem;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-wrapper {
+      width: 100%;
+      max-width: 100%;
+      padding: 0 0.5rem;
+    }
+
+    .login-card {
+      padding: 1.2rem 1rem;
+      border-radius: 8px;
+    }
+
+    /* Enhanced login header */
+    .login-header {
+      margin-bottom: 1.2rem;
+      text-align: center;
+    }
+
+    .login-logo img {
+      height: 36px !important;
+    }
+
+    .login-title {
+      font-size: 1.1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .login-subtitle {
+      font-size: 12px;
+    }
+
+    /* Enhanced error message */
+    .error-message {
+      padding: 0.6rem 0.8rem;
+      font-size: 12px;
+      margin-bottom: 0.8rem;
+    }
+
+    /* Enhanced credentials info */
+    .credentials-info {
+      padding: 0.6rem 0.8rem;
+      margin-bottom: 1rem;
+      font-size: 11px;
+    }
+
+    .credentials-info-title {
+      font-size: 11px;
+      margin-bottom: 0.4rem;
+    }
+
+    /* Enhanced form elements */
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-label {
+      font-size: 11px;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-input {
+      padding: 0.8rem 1rem;
+      font-size: 14px;
+      border-radius: 6px;
+    }
+
+    /* Enhanced login button */
+    .login-btn {
+      padding: 0.9rem 1.5rem;
+      font-size: 13px;
+      margin-top: 0.4rem;
+      min-height: 48px;
+    }
+
+    /* Enhanced login footer */
+    .login-footer {
+      margin-top: 1.2rem;
+      text-align: center;
+    }
+
+    .back-link {
+      font-size: 11px;
+      padding: 0.6rem 1rem;
+      min-height: 40px;
+    }
+
+    .back-link svg {
+      width: 12px;
+      height: 12px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -230,7 +331,7 @@
 <div class="login-wrapper">
   <div class="login-card">
     <div class="login-header">
-      <div class="login-logo"><img src="../assets/logo-lvre-removebg-preview.png" alt="LVRE Logo" style="height: 32px;"></div>
+      <div class="login-logo"><img src="../assets/logo-lvre-removebg-preview.png" alt="LVRE Logo" style="height: 48px;"></div>
       <h1 class="login-title">Admin Login</h1>
       <p class="login-subtitle">Masuk ke dashboard admin</p>
     </div>

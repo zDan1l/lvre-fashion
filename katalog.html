@@ -261,6 +261,48 @@
         max-width: 100%;
       }
     }
+
+    /* Very Small Mobile (360px minimum) */
+    @media (max-width: 360px) {
+      .katalog-layout {
+        padding: 0 var(--container-padding) 2.5rem;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .product-card {
+        max-width: 100%;
+      }
+
+      /* Enhanced filter button for 360px */
+      .mobile-filter-btn {
+        padding: 0.8rem 1rem;
+        font-size: 13px;
+        margin-bottom: 1rem;
+      }
+
+      /* Optimized search bar */
+      #catalogSearch {
+        padding: 0.8rem 1rem;
+        font-size: 14px;
+      }
+
+      /* Enhanced sort select */
+      #sortSelect {
+        padding: 0.6rem 1rem;
+        font-size: 13px;
+        min-width: 120px;
+      }
+
+      /* Optimized reset button */
+      .clear-filters-btn {
+        padding: 0.6rem 1rem;
+        font-size: 12px;
+      }
+    }
   </style>
 </head>
 <body>

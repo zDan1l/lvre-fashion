@@ -524,6 +524,155 @@
       .reviews-summary { flex-direction: column; gap: 1rem; align-items: flex-start; }
       .related-grid { grid-template-columns: 1fr; }
     }
+
+    /* Very Small Mobile (360px minimum) */
+    @media (max-width: 360px) {
+      .product-detail {
+        padding: 0 var(--container-padding) 4rem;
+        gap: 2rem;
+      }
+
+      .product-title {
+        font-size: 1.4rem;
+        line-height: 1.2;
+      }
+
+      .product-price-detail {
+        font-size: 1.4rem;
+      }
+
+      .price-detail-original {
+        font-size: 1rem;
+      }
+
+      .product-short-desc {
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      /* Enhanced gallery for 360px */
+      .thumbnail-list {
+        gap: 0.5rem;
+      }
+
+      .thumbnail {
+        width: 60px;
+        aspect-ratio: 1;
+      }
+
+      /* Optimized color selector */
+      .color-option {
+        width: 36px;
+        height: 36px;
+      }
+
+      /* Enhanced size grid */
+      .size-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.4rem;
+      }
+
+      .size-option {
+        padding: 0.8rem 0.4rem;
+        font-size: 13px;
+        min-height: 40px;
+      }
+
+      .size-guide-link {
+        font-size: 12px;
+        margin-top: 0.6rem;
+      }
+
+      /* Optimized quantity selector */
+      .qty-btn {
+        width: 40px;
+        height: 44px;
+        font-size: 18px;
+      }
+
+      .qty-input {
+        width: 44px;
+        height: 44px;
+        font-size: 14px;
+      }
+
+      /* Enhanced add to cart button */
+      .add-to-cart-btn {
+        padding: 1rem 1.5rem;
+        font-size: 13px;
+        min-height: 48px;
+      }
+
+      .add-to-cart-btn svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      /* Optimized secondary actions */
+      .secondary-actions {
+        gap: 0.8rem;
+      }
+
+      .wishlist-btn {
+        padding: 0.8rem 1rem;
+        font-size: 12px;
+        min-height: 44px;
+      }
+
+      .wishlist-btn svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      /* Enhanced accordion */
+      .accordion-header {
+        padding: 1rem 0;
+      }
+
+      .accordion-title {
+        font-size: 1rem;
+      }
+
+      .accordion-body {
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      /* Optimized product features */
+      .product-features {
+        gap: 1rem;
+        padding: 1rem 0;
+      }
+
+      .feature-item {
+        font-size: 12px;
+        gap: 0.4rem;
+      }
+
+      /* Enhanced reviews section */
+      .reviews-section {
+        padding: 4rem var(--container-padding);
+      }
+
+      .review-card {
+        padding: 1.5rem 1rem;
+      }
+
+      .review-text {
+        font-size: 13px;
+      }
+
+      /* Optimized related section */
+      .related-section {
+        padding: 4rem var(--container-padding);
+      }
+
+      .related-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+    }
   </style>
 </head>
 <body>

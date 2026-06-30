@@ -309,6 +309,174 @@
       .article-grid-arsip { grid-template-columns: 1fr; }
       .newsletter-form { flex-direction: column; }
     }
+
+    /* Very Small Mobile (360px minimum) */
+    @media (max-width: 360px) {
+      .arsip-layout {
+        padding: 0 var(--container-padding) 4rem;
+      }
+
+      /* Enhanced featured article */
+      .featured-article {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+        padding-bottom: 3rem;
+      }
+
+      .featured-article-img {
+        aspect-ratio: 16/10;
+      }
+
+      .featured-article-content {
+        padding: 0.5rem 0;
+      }
+
+      .article-tag {
+        font-size: 13px;
+        margin-bottom: 0.6rem;
+      }
+
+      .featured-article-title {
+        font-size: 1.4rem;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+      }
+
+      .featured-article-excerpt {
+        font-size: 13px;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+        max-width: 100%;
+      }
+
+      .featured-article-meta {
+        font-size: 12px;
+      }
+
+      /* Enhanced arsip toolbar */
+      .arsip-toolbar {
+        flex-direction: column;
+        gap: 0.8rem;
+        align-items: stretch;
+        padding: 1rem 0;
+      }
+
+      .arsip-title {
+        font-size: 1.4rem;
+      }
+
+      .search-arsip {
+        width: 100%;
+      }
+
+      .search-arsip input {
+        padding: 0.8rem 1rem 0.8rem 2.2rem;
+        font-size: 14px;
+      }
+
+      .category-filter-arsip {
+        width: 100%;
+      }
+
+      .category-filter-arsip select {
+        padding: 0.8rem 1rem;
+        font-size: 13px;
+      }
+
+      /* Enhanced article grid */
+      .article-grid-arsip {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      /* Enhanced article cards */
+      .article-card-arsip {
+        border-radius: 8px;
+      }
+
+      .article-img-arsip {
+        aspect-ratio: 16/10;
+        margin-bottom: 0.6rem;
+      }
+
+      .article-category-arsip {
+        font-size: 12px;
+        margin-bottom: 0.3rem;
+      }
+
+      .article-title-arsip {
+        font-size: 1rem;
+        line-height: 1.3;
+        margin-bottom: 0.4rem;
+        min-height: 2.6em;
+      }
+
+      .article-excerpt-arsip {
+        font-size: 12px;
+        line-height: 1.5;
+        margin-bottom: 0.5rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .article-meta-arsip {
+        font-size: 11px;
+      }
+
+      /* Enhanced newsletter section */
+      .newsletter-arsip {
+        padding: 2rem 0.8rem;
+      }
+
+      .newsletter-arsip h2 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+      }
+
+      .newsletter-arsip p {
+        font-size: 13px;
+        margin-bottom: 1.5rem;
+      }
+
+      .newsletter-form {
+        gap: 0.8rem;
+      }
+
+      .newsletter-input {
+        padding: 0.8rem 1rem;
+        font-size: 14px;
+      }
+
+      .newsletter-btn {
+        padding: 0.9rem 1.5rem;
+        font-size: 13px;
+        min-height: 44px;
+      }
+
+      /* Enhanced pagination */
+      .pagination-arsip {
+        padding: 1rem 0.8rem;
+        gap: 0.8rem;
+      }
+
+      .pagination-info-arsip {
+        font-size: 12px;
+      }
+
+      .pagination-controls-arsip {
+        gap: 0.4rem;
+      }
+
+      .page-btn-arsip {
+        padding: 0.5rem 0.8rem;
+        font-size: 12px;
+        min-height: 36px;
+        min-width: 36px;
+      }
+    }
   </style>
 </head>
 <body>
